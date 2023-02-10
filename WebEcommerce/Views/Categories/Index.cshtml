@@ -4,6 +4,8 @@
 ViewData["Title"] = "Index";
 }
 
+<!-- View table of Category -->.
+
 <div class="row">
     <div class="col-md-9 offset-md-1">
         <table class=" table table-striped table-hover">
@@ -34,4 +36,14 @@ ViewData["Title"] = "Index";
 
     </div>
 </div>
+
+<!-- View Create Button -->
+<div class="text-white" style="position:fixed;right:50px;bottom:auto;">
+    <a asp-action="Create" asp-controller="Categories" class="btn btn-outline-success">
+        <i class="fas fa-regular fa-plus-square mr-2"></i>
+        Create
+    </a>
+
+</div>
+
 

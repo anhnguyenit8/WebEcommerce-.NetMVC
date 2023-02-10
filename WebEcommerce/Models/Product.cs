@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebEcommerce.Data;
+using WebEcommerce.Data.Enums;
 
 namespace WebEcommerce.Models
 {

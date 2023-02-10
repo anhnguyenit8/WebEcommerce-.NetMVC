@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
 using WebEcommerce.Initializer;
+using WebEcommerce.Services;
 
 namespace WebEcommerce
 {
@@ -31,6 +32,7 @@ namespace WebEcommerce
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddControllersWithViews();
+            services.AddScoped<ICategoryServices, CategoryServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

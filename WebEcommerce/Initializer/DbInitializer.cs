@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
 using WebEcommerce.Data;
+using WebEcommerce.Data.Enums;
 using WebEcommerce.Models;
 
 namespace WebEcommerce.Initializer
