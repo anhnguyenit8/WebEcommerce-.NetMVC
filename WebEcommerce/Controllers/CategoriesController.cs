@@ -11,7 +11,7 @@ namespace WebEcommerce.Controllers
 {
     public class CategoriesController : Controller
     {
-
+        
         private readonly ICategoryServices _services;
 
         public CategoriesController(ICategoryServices services)
@@ -25,7 +25,7 @@ namespace WebEcommerce.Controllers
         }
         
 
-        //Create Services
+        //Create//
         [HttpGet]
         public IActionResult Create()
         {
@@ -41,6 +41,52 @@ namespace WebEcommerce.Controllers
                 return RedirectToAction(nameof(Index));
                 }
                 return View(category);
-        } 
+        }
+
+        //Detail//
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var category = await _services.GetByIdAsync(id);
+            if(category != null)
+            {
+                return View(category);
+            }
+            return View("NotFound");
+        }
+
+
+        //Edit//
+        public async Task<IActionResult> Edit(int id)
+        {
+            var category = await _services.GetByIdAsync(id);
+            if (category != null)
+            {
+                return View(category);
+            }
+            return View("NotFound");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+                var categoryId = await _services.GetByIdAsync(category.Id);
+            
+                if(!ModelState.IsValid && categoryId == null)
+                {
+                    return View("NotFound");
+                }
+                await _services.UpdateAsync(category);
+                return RedirectToAction(nameof(Index)); 
+        }
+
+
+        //Delete//
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _services.DeleteAsync(id);           
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

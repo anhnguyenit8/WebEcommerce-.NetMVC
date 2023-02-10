@@ -21,23 +21,35 @@ namespace WebEcommerce.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var categoryId = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            if (categoryId != null)
+            {
+                _context.Categories.Remove(categoryId);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()        
             => await _context.Categories.ToListAsync();
            
 
-        public Task<Category> GetByIdAsync(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<Category> GetByIdAsync(int id)        
+            => await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+        
 
-        public Task UpdateAsync(Category entity)
+        public async Task UpdateAsync(Category entity)
         {
-            throw new System.NotImplementedException();
+            var CategoryId = await _context.Categories.FirstOrDefaultAsync(x => x.Id == entity.Id);
+            if(CategoryId != null)
+            {
+                CategoryId.Id= entity.Id;
+                CategoryId.Name= entity.Name;
+                CategoryId.Description= entity.Description;
+                await _context.SaveChangesAsync();
+            }
+            
         }
     }
 }
