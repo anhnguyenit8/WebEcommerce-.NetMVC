@@ -51,7 +51,7 @@ namespace WebEcommerce.Initializer
                             Name = "P1",
                             Description = "D1",
                             Price= 200,
-                            ImageURL="https...",
+                            ImageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSleSktbNDRE9njorB2zT3TnYPPI3qjYVl8uw&usqp=CAU",
                             ProductType = ProductType.Red,CategoryId=1
 
                         },
@@ -60,7 +60,7 @@ namespace WebEcommerce.Initializer
                             Name = "P2",
                             Description = "D2",
                             Price= 250,
-                            ImageURL="https...",
+                            ImageURL="https://antien.vn/uploads/product/dong-ho-thong-minh-fitbit-versa-2-chinh-hang_1604387316.jpg",
                             ProductType = ProductType.Green,CategoryId=2
 
                         },
@@ -69,7 +69,7 @@ namespace WebEcommerce.Initializer
                             Name = "P3",
                             Description = "D3",
                             Price= 300,
-                            ImageURL="https...",
+                            ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
                             ProductType = ProductType.Blue,CategoryId=3
 
                         }

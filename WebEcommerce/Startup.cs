@@ -57,7 +57,7 @@ namespace WebEcommerce
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Products}/{action=Index}/{id?}");
             });
 
             DbInitializer.Seed(app);
