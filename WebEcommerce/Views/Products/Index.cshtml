@@ -8,13 +8,16 @@
     {
         <div class="col-md-3">
             <div class="card">
-                <img src="@item.ImageURL" alt="@item.Name" style="width:90%;height:200px;">
-                <h4><b>@item.Name</b></h4>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.ImageURL" alt="@item.Name" style="width:90%;height:200px;">
+                </a>
+                <h1><b>@item.Name</b></h1>
                 <p>@item.Price.ToString("c")</p>
                 <p>@item.Description</p>
                 <p style="color:@item.ProductType">@item.ProductType</p>
                 <p>@item.Category.Name</p>
-                <button>Add To Cart</button>
+                <button class="btn btn-success">
+                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</button>
             </div>
         </div>
     }
@@ -42,8 +45,8 @@
         border: none;
         outline: 0;
         padding: 12px;
-        color: white;
-        background-color: orangered;
+        color: black;
+        background-color: white;
         text-align: center;
         cursor: pointer;
         width: 100%;

@@ -3,24 +3,29 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
+using WebEcommerce.Services;
 
 namespace WebEcommerce.Controllers
 {
     public class ProductsController : Controller
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly IProductServices _services;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(IProductServices services)
         {
-            _context = context;
+            _services = services;
         }
         public async Task<IActionResult> Index()
         {
-            var Response =await _context.Products.Include(x=>x.Category)
-                .OrderBy(x=>x.Price)
-                .ToListAsync();
+            var Response =await _services.GetAllAsync(x=>x.Category);
             return View(Response);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var Product = await _services.GetByIdAsync(id,x=>x.Category);
+            return View(Product);
         }
     }
 }

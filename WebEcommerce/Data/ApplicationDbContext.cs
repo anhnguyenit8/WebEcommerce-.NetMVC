@@ -14,9 +14,6 @@ namespace WebEcommerce.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get;set; }
 
-        internal DbSet<T> DbSet<T>()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

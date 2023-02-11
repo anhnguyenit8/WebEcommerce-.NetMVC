@@ -8,7 +8,7 @@ using WebEcommerce.Models;
 
 namespace WebEcommerce.Initializer
 {
-    public class DbInitializer
+    public class DbInitializer: IDbInitializer
     {
         public static void Seed(IApplicationBuilder builder)
         {
@@ -35,6 +35,16 @@ namespace WebEcommerce.Initializer
                         {
                             Name = "C3",
                             Description = "C3"
+                        },
+                            new Category()
+                        {
+                            Name = "C4",
+                            Description = "C4"
+                        },
+                              new Category()
+                        {
+                            Name = "C5",
+                            Description = "C5"
                         },
                     };
                     context.Categories.AddRange(categories);
@@ -72,6 +82,15 @@ namespace WebEcommerce.Initializer
                             Price= 300,
                             ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
                             ProductType = ProductType.Blue,CategoryId=3
+
+                        },
+                        new Product()
+                        {
+                            Name = "P4",
+                            Description = "D4",
+                            Price= 350,
+                            ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
+                            ProductType = ProductType.Yellow,CategoryId=4
 
                         }
                     };

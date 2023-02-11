@@ -10,14 +10,8 @@ namespace WebEcommerce.Services
     public class CategoryServices : BaseEntityRepository<Category>,ICategoryServices
     {
 
-        private readonly ApplicationDbContext _context;
-        public CategoryServices(ApplicationDbContext context):base(context)
+           public CategoryServices(ApplicationDbContext context):base(context)
         {
-        }
-
-        public Task CreateAsync(Category category)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
