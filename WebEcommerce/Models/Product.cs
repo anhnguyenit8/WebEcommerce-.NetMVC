@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebEcommerce.Base;
 using WebEcommerce.Data.Enums;
+
 
 namespace WebEcommerce.Models
 {
-    public class Product
+    public class Product: IBaseEntity
     {
         [Key]
         public int Id { get; set; }
