@@ -6,12 +6,13 @@
 <div class = "row">
     @foreach (var item in Model)
     {
-        <div class="col-md-3">
-            <div class="card">
+
+        <div class="col-md-3">    
+             <div class="card">
                 <a asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.ImageURL" alt="@item.Name" style="width:90%;height:200px;">
                 </a>
-                <h1><b>@item.Name</b></h1>
+                <h><b>@item.Name</b></h>
                 <p>@item.Price.ToString("c")</p>
                 <p>@item.Description</p>
                 <p style="color:@item.ProductType">@item.ProductType</p>
@@ -22,6 +23,17 @@
         </div>
     }
 </div>
+
+<div class="text-white">
+     <a asp-action="Create" asp-controller="Products" class="btn btn-outline-success float-right">
+         <i class="fas fa-regular fa-plus-square mr-2"></i>
+                        Create
+     </a>
+</div>
+
+
+
+
 
 <style>
     .card{
@@ -59,3 +71,5 @@
     }
 
 </style>
+
+
