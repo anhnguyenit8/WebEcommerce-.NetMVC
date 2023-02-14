@@ -27,8 +27,8 @@
                         </li>
                     </ul>
 
-                    <form class="form-inline" style="padding-right=20px;">
-                        <input type="text" class="form-control" placeholder="Enter keywords..."/>
+                    <form class="form-inline" style="padding-right=20px;" asp-action="Index" asp-controller="Products">
+                        <input name="searchTerm" type="text" class="form-control" placeholder="Enter keywords..." autocomplete="off"/>
                         <button type="submit" class="btn btn-outline-success">
                             <i class="fas fa-regular fa-search"></i>
                         </button>

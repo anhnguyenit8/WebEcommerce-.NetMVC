@@ -19,9 +19,14 @@ namespace WebEcommerce.Controllers
             _services = services;
             _categoryServices = categoryServices;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm)
         {
             var Response =await _services.GetAllAsync(x=>x.Category);
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                Response =  Response.Where(x=>x.Name.Contains(searchTerm)).ToList();
+            }
+
             return View(Response);
         }
 
@@ -47,6 +52,30 @@ namespace WebEcommerce.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View("NotFound");
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Category = await _categoryServices.GetAllAsync();
+            var productId = await _services.GetByIdAsync(id, x => x.Category);
+            return View(productId);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await _services.UpdateAsync(product);
+                return RedirectToAction($"{nameof(Index)}");
+            }
+            return View(product);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _services.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
