@@ -24,8 +24,8 @@
                 <p>@item.Description</p>
                 <p style="color:@item.ProductType">@item.ProductType</p>
                 <p>@item.Category.Name</p>
-                <button class="btn btn-success">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</button>
+                <a class="btn btn-success" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</a>
             </div>
         </div>
     }

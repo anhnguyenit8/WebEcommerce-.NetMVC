@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ShoppingCartItem>
+@{
+    ViewData["Title"] = "Shopping Cart Summary";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="text-center">
+            <h2>Shopping Cart Summary</h2>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@item.Amount</td>
+                        <td class="align-middle">@item.Product.Name</td>
+                        <td class="align-middle">@item.Product.Price</td>
+                        <td class="align-middle">@((item.Product.Price * item.Amount).ToString("c"))</td>
+                        <td>
+                            <a asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                            asp-route-id="@item.Product.Id">
+                                <i class="fas fa-regular fa-minus"></i>
+                            </a>
+                            <a asp-controller="Orders" asp-action="AddToCart"
+                            asp-route-id="@item.Product.Id">
+                                <i class="fas fa-regular fa-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="collapse-2"></td>
+                    <td><b>Total:</b></td>
+                    <td>$@(ViewBag.Total).00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <div class="btn btn-group">
+                <a class="btn btn-outline-info" asp-controller="Products" asp-action="Index">
+                    <i class="fas fa-regular fa-refresh"> Continue Shopping</i>
+                </a>
+                <a class="btn btn-outline-success" asp-controller="Orders" asp-action="">
+                    <i class="fas fa-regular fa-check"> Order</i>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
