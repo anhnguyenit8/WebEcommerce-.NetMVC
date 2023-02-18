@@ -39,6 +39,7 @@ namespace WebEcommerce
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(x => ShoppingCart.GetShoppingCart(x));
             services.AddSession();
+            services.AddScoped<IOrderServices, OrderServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

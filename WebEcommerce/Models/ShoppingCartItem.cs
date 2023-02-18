@@ -11,9 +11,6 @@ namespace WebEcommerce.Models
         public int Amount { get; set; }
         public string ShoppingCartId { get; set; }
 
-        /*public static implicit operator Task<object>(ShoppingCartItem v)
-        {
-            throw new NotImplementedException();
-        }*/
+        
     }
 }

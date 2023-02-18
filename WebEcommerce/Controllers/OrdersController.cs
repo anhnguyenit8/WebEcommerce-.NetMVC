@@ -9,10 +9,20 @@ namespace WebEcommerce.Controllers
     {
         private readonly IProductServices _services;
         private readonly ShoppingCart _shoppingCart;
-        public OrdersController(IProductServices services,ShoppingCart shoppingCart)
+        private readonly IOrderServices _orderServices;
+
+        public OrdersController(IProductServices services,ShoppingCart shoppingCart, IOrderServices orderServices)
         {
             _services = services;
             _shoppingCart = shoppingCart;
+            _orderServices = orderServices;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            string userId = "";
+            var order = await _orderServices.GetOrderByUserIdAsync(userId);
+            return View(order);
         }
 
         //View Shopping Cart
@@ -32,6 +42,25 @@ namespace WebEcommerce.Controllers
                 await _shoppingCart.AddItemToShoppingCart(item);
             }
             return RedirectToAction(nameof(ShoppingCart));
+        }
+
+        public async Task<IActionResult> RemoveFromCart(int id)
+        {
+            var item = await _services.GetByIdAsync(id);
+            if (item != null)
+            {
+                await _shoppingCart.RemoveItemFromShoppingCart(item);
+            }
+            return RedirectToAction(nameof(ShoppingCart));
+        }
+
+        public async Task<IActionResult> CompleteOrder()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            string userId = "";
+            await _orderServices.StoreOrderAsync(items, userId); //// Bug Here
+            _shoppingCart.ClearShoppingCart();
+            return View("CompleteOrder");
         }
     }
 }

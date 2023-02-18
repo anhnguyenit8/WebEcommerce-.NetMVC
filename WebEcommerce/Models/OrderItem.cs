@@ -11,7 +11,7 @@ namespace WebEcommerce.Models
 
         //Navigation Property
         public int OrderId { get; set; }
-        [ForeignKey(nameof(OrderId))]
+        [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }

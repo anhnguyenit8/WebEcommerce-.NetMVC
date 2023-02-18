@@ -41,6 +41,9 @@ namespace WebEcommerce.Data.Cart
         //Calculate Total Amount in Shopping Cart Item
         public double GetShoppingCartTotal()
            => _context.ShoppingCartItems.Where(x=>x.ShoppingCartId == ShoppingCartId).Select(x=>x.Product.Price * x.Amount).Sum();
+       
+        public int GetShoppingCartTotalAmount()
+            =>_context.ShoppingCartItems.Where(x=>x.ShoppingCartId == ShoppingCartId).Select(x=>x.Amount).Sum();
         
         //Adding Item to Shopping Cart
         public async Task AddItemToShoppingCart(Product product)
@@ -84,6 +87,12 @@ namespace WebEcommerce.Data.Cart
             }
         }
 
-      
+        public void ClearShoppingCart()
+        {
+            var items = _context.ShoppingCartItems.Where(x=>x.ShoppingCartId ==
+            ShoppingCartId).ToList();
+            _context.ShoppingCartItems.RemoveRange(items);
+            _context.SaveChanges();
+        }
     }
 }

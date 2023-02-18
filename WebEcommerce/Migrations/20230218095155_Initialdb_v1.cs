@@ -4,7 +4,7 @@
 
 namespace WebEcommerce.Migrations
 {
-    public partial class InitialCreated : Migration
+    public partial class Initialdb_v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
