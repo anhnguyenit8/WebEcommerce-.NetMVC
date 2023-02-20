@@ -52,13 +52,59 @@
             <div class="btn btn-group">
                 <a class="btn btn-outline-info" asp-controller="Products" asp-action="Index">
                     <i class="fas fa-regular fa-refresh mr-2"> Continue Shopping</i>
-                </a>
-                <a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">
+                </a> | or |
+                <div id="paypal-button"></div>
+
+                @*<a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">
                     <i class="fas fa-regular fa-check mr-2"> Order</i>
-                </a>
+                </a>*@
 
             </div>
 
         </div>
     </div>
 </div>
+
+
+
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        var _total = @Html.Raw(ViewBag.Total);
+        paypal.Button.render({
+            //Configure Enviroment
+            env:'sandbox',
+            client:{
+                sandbox: 'Afc0UyG6sSiyPfIItQykTxPnK7Uc7dESxnaFdQy96Tq11b7x73ucuinyiA8wCg-MNTdAW5LA4qB1X0L5'                
+            },
+            //Customize Button
+            locale:'en_US',
+            style:{
+                color:'gold',
+                size:'small',
+                shape:'pill'
+            },
+            //Enable Pay Now Checkout
+            commit:true,
+            //Set Up A Payment 
+            payment:function(data,actions){
+                return actions.payment.create({
+                    transactions:[{
+                        amount:{
+                            total:_total,
+                            currency:'USD'
+                        }
+                    }]
+                });
+            },
+            //Excute The Payment
+            onAuthorize:function(data,actions){
+                return actions.payment.get().then(function(){
+                  var url = '@Url.Action("CompleteOrder", "Orders", new{} )';
+                  window.location.href = url;
+                });
+
+            }
+        }, "#paypal-button");
+    </script>
+}
