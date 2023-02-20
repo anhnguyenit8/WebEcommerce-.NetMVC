@@ -58,7 +58,7 @@ namespace WebEcommerce.Controllers
         {
             var items = _shoppingCart.GetShoppingCartItems();
             string userId = "";
-            await _orderServices.StoreOrderAsync(items, userId); //// Bug Here
+            await _orderServices.StoreOrderAsync(items, userId);
             _shoppingCart.ClearShoppingCart();
             return View("CompleteOrder");
         }

@@ -38,6 +38,21 @@
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
 
+                    <div class="dropdown">
+                        <button class="btn btn-outline-success dropdown-toggle" id="profile-btn" data-toggle="dropdown">
+                            <i class="fas fa-person"></i> Hello, . . .
+                        </button>
+                        <ul class="dropdown-menu" area-labledby="profile-btn">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                    <i class="fas fa-regular fa-list-check"></i> Orders
+
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
                 </div>
             </div>
         </nav>
