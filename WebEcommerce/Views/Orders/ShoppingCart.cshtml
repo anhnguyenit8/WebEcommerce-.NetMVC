@@ -66,7 +66,7 @@
 </div>
 
 
-
+@*Paypal Sandbox API*@
 @section Scripts{
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
@@ -103,7 +103,6 @@
                   var url = '@Url.Action("CompleteOrder", "Orders", new{} )';
                   window.location.href = url;
                 });
-
             }
         }, "#paypal-button");
     </script>

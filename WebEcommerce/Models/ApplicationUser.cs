@@ -6,13 +6,8 @@ namespace WebEcommerce.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required]
+        [Display(Name ="Full Name")]
         public string FullName { get; set; }
-        [Required]
-        public int Age { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [NotMapped]
-        public string Role { get; set; }
+        
     }
 }

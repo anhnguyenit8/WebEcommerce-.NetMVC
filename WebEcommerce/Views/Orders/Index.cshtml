@@ -24,7 +24,7 @@
                             <ul style="list-style-type:none" class ="alert alert-success">
                                 @foreach (var subitem in item.OrderItems)
                                 {
-                                    <li>@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
+                                    <li> <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Product.Name - @subitem.Price.ToString("c")</li>
                                     
                                 }
                             </ul>

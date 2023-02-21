@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 using WebEcommerce.Data;
 using WebEcommerce.Data.Cart;
 using WebEcommerce.Initializer;
+using WebEcommerce.Models;
 using WebEcommerce.Services;
 
 namespace WebEcommerce
@@ -40,6 +43,14 @@ namespace WebEcommerce
             services.AddScoped(x => ShoppingCart.GetShoppingCart(x));
             services.AddSession();
             services.AddScoped<IOrderServices, OrderServices>();
+            //Identity
+            services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddMemoryCache();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +71,7 @@ namespace WebEcommerce
 
             app.UseRouting();
             app.UseSession();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -70,6 +82,7 @@ namespace WebEcommerce
             });
 
             DbInitializer.Seed(app);
+            DbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }
