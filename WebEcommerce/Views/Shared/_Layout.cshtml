@@ -13,8 +13,9 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index">
-                    <i class="fas fa-duotone fa-cart-arrow-down"></i>
-                    WebEcommerce
+                    <img src="~/Img/Nagear yellow.png" height="67px" width="220px" />
+                    @*<i class="fas fa-duotone fa-cart-arrow-down"></i>
+                    WebEcommerce*@
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -25,17 +26,17 @@
                         @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Category</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index"><b>Category</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Product</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index"><b>Product</b></a>
                         </li>
                         }
                     </ul>  
 
                     <form class="form-inline" style="padding-right=20px;" asp-action="Index" asp-controller="Products">
-                        <input name="searchTerm" type="text" class="form-control" placeholder="Enter keywords..." autocomplete="off"/>
-                        <button type="submit" class="btn btn-outline-success">
+                        <input name="searchTerm" type="text" class="form-control" placeholder="Searching..." autocomplete="off"/>
+                        <button type="submit" class="btn btn-outline-warning">
                             <i class="fas fa-regular fa-search"></i>
                         </button>
                     </form>
@@ -56,8 +57,8 @@
 
     <footer class="footer text-muted">
         <div class="container">
-            <i class="fas fa-duotone fa-cart-arrow-down"></i>
-            &copy; 2023 - NADILAC CREATIVE JSC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <i><img src="~/Img/Nagear yellow.png" height="31px" width="100px" /></i>
+            &copy; 2023 - NAGEAR.VN by Nadilac - <a asp-area="" asp-controller="Home" asp-action="Privacy">About Project</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

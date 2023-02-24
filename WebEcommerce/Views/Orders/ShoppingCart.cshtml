@@ -27,11 +27,11 @@
                         <td class="align-middle">@item.Product.Price</td>
                         <td class="align-middle">@((item.Product.Price * item.Amount).ToString("c"))</td>
                         <td>
-                            <a asp-controller="Orders" asp-action="RemoveFromCart"
+                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveFromCart"
                             asp-route-id="@item.Product.Id">
                                 <i class="fas fa-regular fa-minus"></i>
                             </a>
-                            <a asp-controller="Orders" asp-action="AddToCart"
+                            <a class="text-warning" asp-controller="Orders" asp-action="AddToCart"
                             asp-route-id="@item.Product.Id">
                                 <i class="fas fa-regular fa-plus"></i>
                             </a>
@@ -50,9 +50,9 @@
         </table>
         <div class="text-center">
             <div class="btn btn-group">
-                <a class="btn btn-outline-info" asp-controller="Products" asp-action="Index">
+                <a class="btn btn-outline-warning mr-3" asp-controller="Products" asp-action="Index">
                     <i class="fas fa-regular fa-refresh mr-2"> Continue Shopping</i>
-                </a> | or |
+                </a>| or | 
                 <div id="paypal-button"></div>
 
                 @*<a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">

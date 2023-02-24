@@ -24,10 +24,10 @@
                     <tr>
                         <td class="align-middle">@item.Id</td>
                         <td class="align-middle">
-                            <ul style="list-style-type:none" class="alert alert-success">
+                            <ul style="list-style-type:none" class="alert alert-warning">
                                 @foreach (var subitem in item.OrderItems)
                                 {
-                                    <li>@subitem.Product.Name - <b class="badge badge-danger rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
+                                    <li>@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
                                 }
                             </ul>
                         </td>
