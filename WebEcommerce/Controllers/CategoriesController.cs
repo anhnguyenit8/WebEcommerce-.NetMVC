@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
+using WebEcommerce.Data.Static;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
 
 namespace WebEcommerce.Controllers
 {
+    [Authorize(Roles =UserRoles.Admin)]
     public class CategoriesController : Controller
     {
         

@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
+using WebEcommerce.Data.Static;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
 
 namespace WebEcommerce.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ProductsController : Controller
     {
 
@@ -19,6 +23,8 @@ namespace WebEcommerce.Controllers
             _services = services;
             _categoryServices = categoryServices;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchTerm)
         {
             var Response =await _services.GetAllAsync(x=>x.Category);

@@ -1,0 +1,56 @@
+﻿@using WebEcommerce.ViewModels
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>Sign In Account</h2>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label class="control-label" asp-for="FullName"></label>
+                        <input class="form-control" asp-for="FullName" autocomplete="off" />
+                        <span class="text-danger" asp-validation-for="FullName"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" asp-for="EmailAddress"></label>
+                        <input class="form-control" asp-for="EmailAddress" autocomplete="off" />
+                        <span class="text-danger" asp-validation-for="EmailAddress"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" asp-for="Password"></label>
+                        <input class="form-control" asp-for="Password" autocomplete="off" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" asp-for="ConfirmPassword"></label>
+                        <input class="form-control" asp-for="ConfirmPassword" autocomplete="off" />
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn btn-outline-success float-right" type="submit" value="Sign In" />
+                        <a class="btn btn-outline-secondary" asp-action="Login">Back to Login</a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

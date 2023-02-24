@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebEcommerce.Data.Cart;
 using WebEcommerce.Services;
@@ -17,14 +18,13 @@ namespace WebEcommerce.Controllers
             _shoppingCart = shoppingCart;
             _orderServices = orderServices;
         }
-
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var order = await _orderServices.GetOrderByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string roleId = User.FindFirstValue(ClaimTypes.Role);
+            var order = await _orderServices.GetOrderAndRoleByUserIdAsync(userId,roleId);
             return View(order);
         }
-
         //View Shopping Cart
         public IActionResult ShoppingCart()
         {
@@ -33,7 +33,6 @@ namespace WebEcommerce.Controllers
             ViewBag.Total = _shoppingCart.GetShoppingCartTotal();
             return View(item);
         }
-
         public async Task<IActionResult> AddToCart(int id)
         {
             var item =  await _services.GetByIdAsync(id);
@@ -43,7 +42,6 @@ namespace WebEcommerce.Controllers
             }
             return RedirectToAction(nameof(ShoppingCart));
         }
-
         public async Task<IActionResult> RemoveFromCart(int id)
         {
             var item = await _services.GetByIdAsync(id);
@@ -53,11 +51,10 @@ namespace WebEcommerce.Controllers
             }
             return RedirectToAction(nameof(ShoppingCart));
         }
-
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            string userId = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             await _orderServices.StoreOrderAsync(items, userId);
             _shoppingCart.ClearShoppingCart();
             return View("CompleteOrder");

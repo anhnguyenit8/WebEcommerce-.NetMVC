@@ -39,13 +39,15 @@ ViewData["Title"] = "Index";
     </div>
 </div>
 
-<div class="text-white" style="position:fixed;right:50px;bottom:auto;">
-    <a asp-action="Create" asp-controller="Categories" class="btn btn-outline-success">
-        <i class="fas fa-regular fa-plus-square mr-2"></i>
-        Create
-    </a>
+@if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div class="text-white" style="position:fixed;right:50px;bottom:auto;">
+        <a asp-action="Create" asp-controller="Categories" class="btn btn-outline-success">
+            <i class="fas fa-regular fa-plus-square mr-2"></i>
+            Create
+        </a>
 
-</div>
-
+    </div>
+}
 
 

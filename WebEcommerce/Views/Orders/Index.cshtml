@@ -6,13 +6,16 @@
     <div class="col-md-8 offset-2">
         <h2>All Orders</h2>
         <hr />
-        <table class=" table table-hover">
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Order Id</th>
                     <th>Items</th>
                     <th>Totals</th>
-                    <th>User</th>
+                    @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+                    {
+                        <th>User</th>
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -21,21 +24,22 @@
                     <tr>
                         <td class="align-middle">@item.Id</td>
                         <td class="align-middle">
-                            <ul style="list-style-type:none" class ="alert alert-success">
+                            <ul style="list-style-type:none" class="alert alert-success">
                                 @foreach (var subitem in item.OrderItems)
                                 {
-                                    <li> <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Product.Name - @subitem.Price.ToString("c")</li>
-                                    
+                                    <li>@subitem.Product.Name - <b class="badge badge-danger rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
                                 }
                             </ul>
                         </td>
                         <td class="align-middle">
                             @item.OrderItems.Select(x=>x.Price * x.Amount).Sum().ToString("c")
                         </td>
-                        <td> - </td>
+                        @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+                        {
+                            <td> @item.User.FullName </td>
+                        }
                     </tr>
                 }
-
             </tbody>
         </table>
     </div>

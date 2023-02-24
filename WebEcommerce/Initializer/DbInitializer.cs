@@ -66,7 +66,7 @@ namespace WebEcommerce.Initializer
                             Description = "D1",
                             Price= 200,
                             ImageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSleSktbNDRE9njorB2zT3TnYPPI3qjYVl8uw&usqp=CAU",
-                            ProductType = ProductType.Red,CategoryId=1
+                            ProductType = ProductType.VGA,CategoryId=1
 
                         },
                         new Product()
@@ -75,7 +75,7 @@ namespace WebEcommerce.Initializer
                             Description = "D2",
                             Price= 250,
                             ImageURL="https://antien.vn/uploads/product/dong-ho-thong-minh-fitbit-versa-2-chinh-hang_1604387316.jpg",
-                            ProductType = ProductType.Green,CategoryId=2
+                            ProductType = ProductType.SDD,CategoryId=2
 
                         },
                         new Product()
@@ -84,7 +84,7 @@ namespace WebEcommerce.Initializer
                             Description = "D3",
                             Price= 300,
                             ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
-                            ProductType = ProductType.Blue,CategoryId=3
+                            ProductType = ProductType.HDD,CategoryId=3
 
                         },
                         new Product()
@@ -93,7 +93,7 @@ namespace WebEcommerce.Initializer
                             Description = "D4",
                             Price= 350,
                             ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
-                            ProductType = ProductType.Yellow,CategoryId=4
+                            ProductType = ProductType.RAM,CategoryId=4
 
                         }
                     };
@@ -114,13 +114,13 @@ namespace WebEcommerce.Initializer
                 var roleManager =
                     applicationservices.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 
-                if(! await roleManager.RoleExistsAsync(UserRoles.Role_Admin))
+                if(! await roleManager.RoleExistsAsync(UserRoles.Admin))
                 {
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Role_Admin));
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
                 }
-                if (!await roleManager.RoleExistsAsync(UserRoles.Role_User))
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
                 {
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Role_User));
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
                 }
 
                 #endregion
@@ -140,7 +140,7 @@ namespace WebEcommerce.Initializer
                         UserName = "Admin"
                     };
                     await userManager.CreateAsync(newAdminUser,"@Dmin123");
-                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Role_Admin);
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
 
                     if (await userManager.FindByEmailAsync("user@user.com") == null)
                     {
@@ -152,7 +152,7 @@ namespace WebEcommerce.Initializer
                             UserName = "User"
                         };
                         await userManager.CreateAsync(newOriginalUser, "@User123");
-                        await userManager.AddToRoleAsync(newOriginalUser, UserRoles.Role_User);
+                        await userManager.AddToRoleAsync(newOriginalUser, UserRoles.User);
                     }
                 }
 

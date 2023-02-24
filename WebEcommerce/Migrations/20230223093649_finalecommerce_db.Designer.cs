@@ -12,8 +12,8 @@ using WebEcommerce.Data;
 namespace WebEcommerce.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230221050054_Initialdb")]
-    partial class Initialdb
+    [Migration("20230223093649_finalecommerce_db")]
+    partial class finalecommerce_db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -255,9 +255,11 @@ namespace WebEcommerce.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -397,6 +399,15 @@ namespace WebEcommerce.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebEcommerce.Models.Order", b =>
+                {
+                    b.HasOne("WebEcommerce.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebEcommerce.Models.OrderItem", b =>

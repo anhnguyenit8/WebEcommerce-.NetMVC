@@ -15,7 +15,7 @@ namespace WebEcommerce.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Name is required")]
-        [StringLength(20,ErrorMessage ="This {0} is spesific between{2},{1}",MinimumLength =5)]
+        [StringLength(20,ErrorMessage ="This {0} is spesific between{2},{1}",MinimumLength =3)]
         [Display(Name ="Category Name")]
 
         public string Name { get; set; }

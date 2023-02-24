@@ -2,6 +2,6 @@
 {
     public enum ProductType
     {
-        Red = 1, Green, Yellow, Blue
+        VGA = 1, SDD, HDD, RAM, CASE, MAIN, CPU, COOLERFAN, SPU
     }
 }

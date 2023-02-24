@@ -63,7 +63,7 @@ namespace WebEcommerce.Data.Cart
             }
             else
             {
-                shoppingCartItem.Amount += 1;               
+                shoppingCartItem.Amount ++;               
             }
             await _context.SaveChangesAsync();
         }
@@ -77,7 +77,7 @@ namespace WebEcommerce.Data.Cart
             {
                 if (shoppingCartItem.Amount>1)
                 {
-                    shoppingCartItem.Amount-= 1;
+                    shoppingCartItem.Amount--;
                 }
                 else
                 {
