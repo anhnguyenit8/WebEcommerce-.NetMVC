@@ -1,0 +1,72 @@
+﻿@using WebEcommerce.Data.Enums;
+@model Product
+@{
+    ViewData["Title"] = $"Edit Product - {Model.Name}";
+    var Category = new SelectList(ViewBag.Category, "Id", "Name");
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h2 class="text-center">Edit @Model.Name Product</h2>
+        </p>
+
+    </div>
+
+    <div class="col-md-8 offset-2">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-lable"></label>
+                <input asp-for="Name" class="form-control" autocomplete="off">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-lable"></label>
+                <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-lable"></label>
+                <input asp-for="Price" class="form-control" autocomplete="off">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageURL" class="control-lable"></label>
+                <input asp-for="ImageURL" class="form-control" autocomplete="off">
+                <span asp-validation-for="ImageURL" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 offset-4 text-conter">
+                <img style="width:100%" src="@Model.ImageURL" alt="@Model.Name" id="imagePreview" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductType" class="control-lable"></label>
+                <select asp-for="ProductType" class="form-control" asp-items="@Html.GetEnumSelectList<ProductType>()"></select>
+                <span asp-validation-for="ProductType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for ="Category.Name" class="control-lable"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="@Category"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-outline-info float-right" />
+                <a asp-action="Index" class="btn btn-outline-secondary">Show All Products</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+        <script>
+            $("#ImageURL").on("change", function(){
+                var Result = document.getElementById("imagePreview");
+                Result.src = $(this).val();
+            })
+        </script>
+}

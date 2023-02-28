@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Listing Product";
+}
+
+<div class = "row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3">    
+            <div class="card">
+                @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <span class="alert alert-info">
+                        <a class="btn btn-outline-info btn-sm float-left" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
+                            Edit
+                        </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                            <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm float-right" onclick="return confirm('Delete This Product ?')" />
+                </a>
+                    </span>
+                }
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.ImageURL" alt="@item.Name" style="width:100%; height:300px;">
+                </a>
+                <h><b>@item.Name</b></h>
+                <p>@item.Price.ToString("c")</p>
+                <p>@item.Description</p>
+                <p><b>@item.ProductType</b></p>
+                <p>@item.Category.Name</p>
+                <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</a>
+            </div>
+        </div>
+    }
+</div>
+
+@if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+  {
+    <div class="text-white" style="position:fixed;right:30px;bottom:50px;">
+        <a asp-action="Create" asp-controller="Products" class="btn btn-outline-success float-right">
+            <i class="fas fa-regular fa-plus-square mr-2"></i>
+            Create
+        </a>
+    </div>
+  }
+
+
+<style>
+    .card{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        max-width: 300px;
+        margin: auto;
+        margin-bottom: 25px;
+        text-align: center;
+        font-family: 'Franklin Gothic Medium';
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .price{
+        color: grey;
+        font-size: 22px;
+    }
+
+    .card button{
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-family:'Franklin Gothic Medium';
+        font-size: 15px;
+    }
+
+    .card button:hover{
+        opacity: 0.7;
+    }
+
+</style>
+
+

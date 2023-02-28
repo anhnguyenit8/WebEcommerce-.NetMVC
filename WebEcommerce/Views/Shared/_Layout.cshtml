@@ -6,38 +6,59 @@
     <title>@ViewData["Title"] - WebEcommerce</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebEcommerce</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index">
+                    <img src="~/Img/Nagear yellow.png" height="67px" width="220px" />
+                    @*<i class="fas fa-duotone fa-cart-arrow-down"></i>
+                    WebEcommerce*@
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                                        
                     <ul class="navbar-nav flex-grow-1">
+                        @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index"><b>Category</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index"><b>Product</b></a>
                         </li>
+                        }
+                    </ul>  
+
+                    <form class="form-inline" style="padding-right=20px;" asp-action="Index" asp-controller="Products">
+                        <input name="searchTerm" type="text" class="form-control" placeholder="Searching..." autocomplete="off"/>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-regular fa-search"></i>
+                        </button>
+                    </form>
+
+                    <ul class="navbar-nav mr-2">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
+                    <partial name="_Identity"/>                    
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
-            &copy; 2023 - WebEcommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <i><img src="~/Img/Nagear yellow.png" height="31px" width="100px" /></i>
+            &copy; 2023 - NAGEAR.VN by Nadilac - <a asp-area="" asp-controller="Home" asp-action="Privacy">About Project</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
