@@ -70,4 +70,47 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+/*<style >*/
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium';
+}
 
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium';
+    font-size: 15px;
+}
+
+    .card button:hover {
+        opacity: 0.7;
+    }
+
+/*</style >*/
+
+/*div {    
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+}*/
