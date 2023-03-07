@@ -2,19 +2,9 @@
 @{
     ViewData["Title"] = "Listing Product";
 }
-<img src="~/Img/Background.png" style="width:100%; height:460px;" />
-
-@*<div class="filter" style="padding:30px; font-size:15px;">
-    <h3>Filter Product</h3>
-    <input id="all" type="checkbox" /> <label class="filter__button" for="all">All</label> <br />
-        <input id="VGA" type="checkbox" /> <label class="filter__button" for="VGA">VGA</label><br />
-        <input id="RAM" type="checkbox" /> <label class="filter__button" for="RAM">RAM</label><br />
-        <input id="CPU" type="checkbox" /> <label class="filter__button" for="CPU">CPU</label><br />
-        <input id="Mainboard" type="checkbox" /> <label class="filter__button" for="Mainboard">Mainboard</label><br />
-        <input id="SSD" type="checkbox" /> <label class="filter__button" for="SSD/HDD">SSD/HDD</label>
-  
-  </div>
-*@
+<body>
+<img class="background" src="~/Img/Background.png" style="width:80%;" />
+<br />
 <div class = "row">
     @foreach (var item in Model)
     {
@@ -34,11 +24,16 @@
                 <a asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.ImageURL" alt="@item.Name" style="width:100%; height:300px;">
                 </a>
-                <h><b>@item.Name</b></h>
-                <p>Price: @item.Price.ToString("c")</p>
-                <p>UPC: @item.Description</p>
-                <p>Type: <b>@item.ProductType</b></p>
-                <p>Manufacturer: @item.Category.Name</p>
+                <hr />                
+                    <h><b>@item.Name</b></h>                
+                <br>
+                <div class="text-sm-left" style="padding:20px;">
+                
+                    <p>UPC : @item.Description</p>
+                    <p>Manufacturer : @item.Category.Name</p>
+                    <p>Type : <b>@item.ProductType</b></p>
+                    <p>Price : <b>@item.Price.ToString("c")</b></p>
+                </div>
                 <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
                 <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</a>
             </div>
@@ -55,25 +50,5 @@
         </a>
     </div>
   }
+</body>
 
-@*<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-</script>*@

@@ -24,32 +24,34 @@
         <div class="border mb-12">
             <div class="row g-0">
                 <div class="col-md-12">
-                    <div class="border-header text-dark bg-warning">
-                        <p class="border-text">
-                            <h5 class="border-title">
-                                @Model.Name
-                            </h5>
+                    <div class="border text-dark bg-warning">
+                        <p class="border-text">                            
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="@Model.ImageURL" width="100%" height="400px;" alt="@Model.Name">
+                    <img src="@Model.ImageURL" width="400px" height="400px;" style="padding:20px;" alt="@Model.Name">
                 </div>
                 <div class="col-md-8">
-                    <div class="border-body">
-                        <br /><p class="border-text"><b>Price : </b>@Model.Price.ToString("c")</p>
-                        <p class="border-text"><b>UPC : </b>@Model.Description</p>
-                        <p class="border-text"><b>Devices Type : </b>@Model.ProductType</p>
-                        <p class="border-text"><b>Manufacturer : </b>@Model.Category.Name</p>
+                    <div class="border-body text-lg-left" style="font-size:20px;">
+                        <br />
+                        <h2><p class="border-text">@Model.Name</p></h2>
+                        <hr />
+                        <h3>General Information :</h3>                        
+                        <p class="border-text">  UPC : @Model.Description</p>
+                        <p class="border-text">  Type : @Model.ProductType</p>
+                        <p class="border-text">  Manufacturer : @Model.Category.Name</p>
+                        <hr />
+                        <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="border-footer">
                         <p class="border-text">
-                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                            <a class="btn btn-outline-primary" asp-action="Index">
                                 Back to List
                             </a>                            
-                            <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                            <a class="btn btn-warning float-right" style="" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
                                 <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart
                             </a>
                         </p>
@@ -59,3 +61,4 @@
         </div>
     </div>
 </div>
+
