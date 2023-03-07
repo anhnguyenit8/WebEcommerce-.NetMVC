@@ -3,7 +3,7 @@
     ViewData["Title"] = "Details of Product ";
 }
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
             <img src="@Model.ImageURL" alt="@Model.Name" style="width:90%;height:200px;">
@@ -17,42 +17,45 @@
         </div>
     </div>
 </div>
+*@
 
-
-<style>
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        max-width: 300px;
-        margin: auto;
-        text-align: center;
-        font-family: arial;
-    }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-
-    .price {
-        color: grey;
-        font-size: 22px;
-    }
-
-    .card button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: orangered;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-family: 'Franklin Gothic Medium';
-        font-size: 15px;
-    }
-
-        .card button:hover {
-            opacity: 0.7;
-        }
-
-</style>
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="border mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="border-header text-dark bg-warning">
+                        <p class="border-text">
+                            <h5 class="border-title">
+                                @Model.Name
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.ImageURL" width="100%" height="400px;" alt="@Model.Name">
+                </div>
+                <div class="col-md-8">
+                    <div class="border-body">
+                        <br /><p class="border-text"><b>Price : </b>@Model.Price.ToString("c")</p>
+                        <p class="border-text"><b>UPC : </b>@Model.Description</p>
+                        <p class="border-text"><b>Devices Type : </b>@Model.ProductType</p>
+                        <p class="border-text"><b>Manufacturer : </b>@Model.Category.Name</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="border-footer">
+                        <p class="border-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                Back to List
+                            </a>                            
+                            <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
