@@ -36,6 +36,7 @@ namespace WebEcommerce.Controllers
             return View(Response);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var Product = await _services.GetByIdAsync(id, x => x.Category);

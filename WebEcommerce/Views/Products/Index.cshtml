@@ -3,8 +3,8 @@
     ViewData["Title"] = "Listing Product";
 }
 <body>
-<img class="background" src="~/Img/Background.png" style="width:80%;" />
-<br />
+@*<img class="background" src="~/Img/Background.png" style="width:80%;" />
+<br />*@
 <div class = "row">
     @foreach (var item in Model)
     {
@@ -44,7 +44,7 @@
 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
   {
     <div class="text-white" style="position:fixed;right:30px;bottom:50px;">
-        <a asp-action="Create" asp-controller="Products" class="btn btn-outline-success float-right">
+        <a asp-action="Create" asp-controller="Products" class="btn btn-success float-right" style="text-align">
             <i class="fas fa-regular fa-plus-square mr-2"></i>
             Create
         </a>

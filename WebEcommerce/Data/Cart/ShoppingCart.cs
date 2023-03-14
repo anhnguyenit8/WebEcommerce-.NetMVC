@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
@@ -10,6 +12,7 @@ using WebEcommerce.Models;
 
 namespace WebEcommerce.Data.Cart
 {
+    
     public class ShoppingCart
     {
         private readonly ApplicationDbContext _context;
@@ -21,8 +24,7 @@ namespace WebEcommerce.Data.Cart
         public static ShoppingCart GetShoppingCart(IServiceProvider service)
         {
 
-            var session = service.GetRequiredService<IHttpContextAccessor>
-                ().HttpContext.Session;
+            ISession session = service.GetRequiredService<IHttpContextAccessor>().HttpContext.Session;
             var context = service.GetRequiredService<ApplicationDbContext>();
             string cartId = session.GetString("CartId")??Guid.NewGuid().ToString();
             session.SetString("CartId", cartId);

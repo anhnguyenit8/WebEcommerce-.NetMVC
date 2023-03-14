@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebEcommerce.Data.Cart;
@@ -6,6 +8,7 @@ using WebEcommerce.Services;
 
 namespace WebEcommerce.Controllers
 {
+    [Authorize(Roles ="Admin, User")]
     public class OrdersController : Controller
     {
         private readonly IProductServices _services;

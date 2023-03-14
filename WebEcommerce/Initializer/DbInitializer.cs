@@ -26,17 +26,17 @@ namespace WebEcommerce.Initializer
                     {
                         new Category()
                         {
-                            Name = "C1",
+                            Name = "MSI",
                             Description = "C1"
                         },
                          new Category()
                         {
-                            Name = "C2",
+                            Name = "ASUS",
                             Description = "C2"
                         },
                           new Category()
                         {
-                            Name = "C3",
+                            Name = "GIGABYTE",
                             Description = "C3"
                         },
                             new Category()

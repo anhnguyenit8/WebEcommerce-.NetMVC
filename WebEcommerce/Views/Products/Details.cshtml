@@ -3,21 +3,6 @@
     ViewData["Title"] = "Details of Product ";
 }
 
-@*<div class="row">
-    <div class="col-md-8 offset-2">
-        <div class="card">
-            <img src="@Model.ImageURL" alt="@Model.Name" style="width:90%;height:200px;">
-            <h1>@Model.Name</h1>
-            <p>@Model.Price.ToString("c")</p>
-            <p>@Model.Description</p>
-            <p @Model.ProductType</p>
-            <p>@Model.Category.Name</p>
-            <a class="btn btn-success" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart</a>
-        </div>
-    </div>
-</div>
-*@
 
 <div class="row">
     <div class="col-md-8 offset-2">
@@ -51,7 +36,8 @@
                             <a class="btn btn-outline-primary" asp-action="Index">
                                 Back to List
                             </a>                            
-                            <a class="btn btn-warning float-right" style="" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                            <a class="btn btn-warning float-right" style=""
+                            asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
                                 <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart
                             </a>
                         </p>

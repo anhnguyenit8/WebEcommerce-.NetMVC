@@ -50,10 +50,11 @@
         </table>
         <div class="text-center">
             <div class="btn btn-group">
+                <span style="padding:5px"></span>
                 <a class="btn btn-outline-warning mr-3" asp-controller="Products" asp-action="Index">
-                    <i class="fas fa-regular fa-refresh mr-2"> Continue Shopping</i>
+                     Continue Shopping
                 </a>| or | 
-                <div id="paypal-button"></div>
+                <div id="paypal-btn"></div>
 
                 @*<a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">
                     <i class="fas fa-regular fa-check mr-2"> Order</i>
@@ -65,23 +66,29 @@
     </div>
 </div>
 
+@*EL6NYkN0-bbxwtgSskVlKo_OqI5tz6sta-gJXib5Kq2brwa-3GsokyXmEwy2-W809Gd5LHVz8vl0iQhc5*@
+@*AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx*@
+@*ECjkH2JDNRLYCSAN9lOBZZxLMuJtWfvU7nQDclIH1kd6eqq4zbyQdPGMS4YKeOshhY1OsdUv6STocOMm*@
+@*ENNxAN1WOKsLaGKLR_1uJztcGWIOu5KIR0fM0d41AdObipKH7LTSqYSFavZ4wJPA0-cpiPYm_S3iE-3P*@
+@*ASHQuoBUwBWxLSNO_JNmOTFmH9zjMRUI-uwyMSJGmnpY-XEs5ZVY7bODE6lxtkAVhTdZPeXg5B94kSTP*@
+
 
 @*Paypal Sandbox API*@
 @section Scripts{
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
-        var _total = @Html.Raw(ViewBag.Total);
+        let _total = @Html.Raw(ViewBag.Total);
         paypal.Button.render({
             //Configure Enviroment
             env:'sandbox',
             client:{
-                sandbox: 'EL6NYkN0-bbxwtgSskVlKo_OqI5tz6sta-gJXib5Kq2brwa-3GsokyXmEwy2-W809Gd5LHVz8vl0iQhc5'
+                sandbox: 'ASHQuoBUwBWxLSNO_JNmOTFmH9zjMRUI-uwyMSJGmnpY-XEs5ZVY7bODE6lxtkAVhTdZPeXg5B94kSTP'
             },
             //Customize Button
             locale:'en_US',
             style:{
                 color:'gold',
-                size:'small',
+                size:'medium',
                 shape:'pill'
             },
             //Enable Pay Now Checkout
@@ -104,6 +111,6 @@
                   window.location.href = url;
                 });
             }
-        }, "#paypal-button");
+        }, '#paypal-btn');
     </script>
 }
