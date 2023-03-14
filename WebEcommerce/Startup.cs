@@ -46,12 +46,17 @@ namespace WebEcommerce
             //Identity
             services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddMemoryCache();
+
             /*services.Configure<OpenIdConnectDefault.AuthenticationScheme>(options =>
             {
                 // Use the groups claim for populating roles
                 options.TokenValidationParameters.RoleClaimType = "groups";
                 options.AccessDeniedPath = "/MicrosoftIdentity/Account/AccessDenied";
-            });*/
+            });
+            services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, options => {
+                options.AccessDeniedPath = new PathString("/MicrosoftIdentity/Account/AccessDenied");
+            });
+*/
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

@@ -54,8 +54,12 @@ namespace WebEcommerce.Controllers
                         return RedirectToAction("Index", "Products");
                     }
                 }
+                TempData["Error"] = "Incorrect password! Please, try again!";
+                
+                
                 return View(model);
             }
+            TempData["Error"] = "Can't find account! Please, try again!";
             return View(model);
         }
 
@@ -67,9 +71,12 @@ namespace WebEcommerce.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM model)
         {
+            if (!ModelState.IsValid) return View(model);
+
             var user = await _userManager.FindByEmailAsync(model.EmailAddress);
             if (user != null)
             {
+                TempData["Error"] = "This email address is already in use";
                 return View(model);
             }
             var newUser = new ApplicationUser() { Email = model.EmailAddress, FullName = model.FullName, UserName = model.EmailAddress.Split('@')[0] };
@@ -85,6 +92,11 @@ namespace WebEcommerce.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Products");
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
     }
 }
