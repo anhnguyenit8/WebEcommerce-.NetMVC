@@ -2,6 +2,60 @@
 @{
     ViewData["Title"] = "Listing Product";
 }
+
+<style>
+    #atc {
+        transition: 0.3s;
+        color: black;
+    }
+
+    #atc:hover {
+            background-image: linear-gradient(to right,#b03d56,#a1407b);
+            color: white;
+    }
+
+    #edt {
+        border: 1px solid limegreen;
+        color: limegreen;
+        
+    }
+
+
+    #del {
+        border: 1px solid red;
+        color: red;
+        
+    }
+     
+    #crt-prd{
+        border-radius:30px;
+        background-color: #be3930;
+        color: white;
+        
+        
+    }
+    #crt-prd:hover{
+    }
+
+    #img-prd:hover{
+        background-color: #afafaf;
+    }
+
+    #inf{
+        padding:10px;
+        color:dimgray;
+    }
+
+    /*#inf{
+        transition: 0.3s;
+    }
+    #inf:hover{
+        border:1px solid #34353a;
+    }*/
+
+
+</style>
+
 <body>
 @*<img class="background" src="~/Img/Background.png" style="width:80%;" />
 <br />*@
@@ -12,30 +66,32 @@
             <div class="card">
                 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <span class="alert alert-info">
-                        <a class="btn btn-outline-info btn-sm float-left" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
+                    <span class="alert" style="background-color:white;">
+                        <a class="btn btn-sm float-left" id="edt" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
                             Edit
                         </a>
                     <a asp-action="Delete" asp-route-id="@item.Id">
-                            <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm float-right" onclick="return confirm('Delete This Product ?')" />
+                            <input type="submit" value="Delete" class="btn btn-sm float-right" id="del" onclick="return confirm('Delete This Product ?')" />
                 </a>
                     </span>
                 }
+                <div id="img-prd">
                 <a asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.ImageURL" alt="@item.Name" style="width:100%; height:300px;">
                 </a>
-                <hr />                
-                    <h><b>@item.Name</b></h>                
-                <br>
-                <div class="text-sm-left" style="padding:20px;">
+                </div>
+                             
                 
+                <div class="text-sm-left"  id="inf">
+                    <h><b>@item.Name</b></h>
+                    <hr />                   
                     <p>UPC : @item.Description</p>
                     <p>Manufacturer : @item.Category.Name</p>
                     <p>Type : <b>@item.ProductType</b></p>
                     <p>Price : <b>@item.Price.ToString("c")</b></p>
                 </div>
-                <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</a>
+                <a class="btn" id="atc" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
             </div>
         </div>
     }
@@ -44,7 +100,7 @@
 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
   {
     <div class="text-white" style="position:fixed;right:30px;bottom:50px;">
-        <a asp-action="Create" asp-controller="Products" class="btn btn-success float-right" style="text-align">
+            <a asp-action="Create" asp-controller="Products" class="btn float-right" id="crt-prd">
             <i class="fas fa-regular fa-plus-square mr-2"></i>
             Create
         </a>

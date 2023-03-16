@@ -1,10 +1,18 @@
 ﻿@model int
+
+<style>
+    #scs {
+        
+    }
+
+</style>
+
 @if(Model>0){
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-controller="Orders" asp-action="ShoppingCart">
+    <li class="nav-item" id="scs">
+    <a class="nav-link text-white" asp-controller="Orders" asp-action="ShoppingCart">
         <i class="fas fafa-regular fa-shopping-cart"></i>
         @Model
-        - <b class="text-danger"> @(ViewBag.Total.ToString("c"))</b>
+        - <b class="text" style="color:greenyellow"> @(ViewBag.Total.ToString("c"))</b>
     </a>
 </li>
 }

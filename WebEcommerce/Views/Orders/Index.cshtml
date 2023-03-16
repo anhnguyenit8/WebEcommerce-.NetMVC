@@ -36,7 +36,7 @@
                         </td>
                         @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
                         {
-                            <td> @item.User.FullName </td>
+                            @*<td> @item.User.FullName </td>*@
                         }
                     </tr>
                 }

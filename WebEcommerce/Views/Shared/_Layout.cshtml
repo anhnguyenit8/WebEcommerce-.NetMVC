@@ -1,4 +1,25 @@
 ﻿<!DOCTYPE html>
+
+<style>
+    #layout{
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+    }
+
+    #srcbx{
+        
+        border-radius: 30px;
+        border: 1px solid white;
+        height:40px;
+        width:700px;
+        padding:20px;
+    }
+
+       
+
+
+</style>
+
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,12 +32,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  navbar-light border-bottom box-shadow mb-3" id="layout")">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index">
-                    <img src="~/Img/Nagear yellow.png" height="45px" width="150px" />
-                    @*<i class="fas fa-duotone fa-cart-arrow-down"></i>
-                    WebEcommerce*@
+                    <img src="~/Img/Nagear White.png" height="45px" width="150px" />
+                    
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -24,32 +44,33 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                                        
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        <li class="nav-item"  id="prd1">
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
                         </li>
                         @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                         <li class="nav-item dropdown dropdown-hover">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-gear"></i> Managerment
+                                <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-gear" style="color:white;"></i> MANAGERMENT
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Category</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Product</a>
+                                <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">CATEGORY</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
                                 
                             </div>
                         </li>                                                
                         }   
                     </ul>  
 
-                    <form class="form-inline my-2 my-lg-0" style="padding-right=25px;" asp-action="Index" asp-controller="Products">
-                        <input name="searchTerm" type="text" class="form-control" placeholder="Searching Some Devices..." autocomplete="off" />
-                        <button type="submit" class="btn btn-outline-warning my-2 my-sm-0">
-                            <i class="fas fa-regular fa-search"></i>
+                    <form class="form-inline"  style="" asp-action="Index" asp-controller="Products">
+                        <button type="submit" class="btn" style="color:white; font-size:25px;">
+                            <i class="fas fa-search"></i>
                         </button>
+                        <input name="searchTerm" type="text" id="srcbx"  placeholder="Searching Some Devices..." autocomplete="off" />
+                        
                     </form>
 
-                    <ul class="navbar-nav mr-2">
+                    <ul class="navbar-nav mr-2" >
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
                     <partial name="_Identity"/>                    
