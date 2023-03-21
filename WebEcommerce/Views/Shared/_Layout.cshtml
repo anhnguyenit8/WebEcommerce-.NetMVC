@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="/js/jQuery/Chosen/chosen.css" />
 </head>
 <body>
     <header>
@@ -68,8 +70,16 @@
                         <button type="submit" class="btn" style="color:white; font-size:25px;">
                             <i class="fas fa-search"></i>
                         </button>
-                        <input name="searchTerm" type="text" id="srcbx"  placeholder="Searching Some Devices..." autocomplete="off" />
                         
+                        <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
+                        <datalist id="type">                            
+                            <option value="VGA">VGA</option>
+                            <option value="HDD">HDD</option>
+                            <option value="SDD">SDD</option>
+                            <option value="RAM">RAM</option>
+                            <option value="CPU">CPU</option>
+                            <option value="MAIN">MAIN</option>
+                        </datalist> 
                     </form>
 
                     <ul class="navbar-nav mr-2" >
@@ -95,6 +105,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/jQuery/Chosen/chosen.jquery.js "></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

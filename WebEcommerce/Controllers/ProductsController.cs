@@ -1,40 +1,53 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
+using WebEcommerce.Data.Enums;
 using WebEcommerce.Data.Static;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace WebEcommerce.Controllers
 {
     [Authorize(Roles = UserRoles.Admin)]
     public class ProductsController : Controller
     {
-
+        
         private readonly IProductServices _services;
         private readonly ICategoryServices _categoryServices;
 
         public ProductsController(IProductServices services, ICategoryServices categoryServices)
         {
+            
             _services = services;
             _categoryServices = categoryServices;
         }
 
+
         [AllowAnonymous]
         public async Task<IActionResult> Index(string searchTerm)
         {
-            var Response =await _services.GetAllAsync(x=>x.Category);
+           
+            var Response = await _services.GetAllAsync(x=>x.Category);
             if(!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                Response =  Response.Where(x=>x.Name.ToLower().Contains(searchTerm)).ToList();
+                Response =  Response.Where(x=>x.Name.ToLower().Contains(searchTerm));
             }
+           /* if (ProductType != "0")
+            {
+                books = books.Where(c => c.CategoryID == categoryID);
+            }*/
 
-            return View(Response);
+
+
+            return View(Response.ToList());
         }
 
         [AllowAnonymous]
