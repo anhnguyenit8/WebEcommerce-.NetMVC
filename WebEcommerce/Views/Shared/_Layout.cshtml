@@ -47,19 +47,21 @@
                         <li class="nav-item"  id="prd1">
                             <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
                         </li>
-                        @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
+                        
                         <li class="nav-item dropdown dropdown-hover">
                                 <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bi bi-gear" style="color:white;"></i> MANAGERMENT
                             </a>
                                 <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">
+                                @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">CATEGORY</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
+                                }
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
                                 
                             </div>
                         </li>                                                
-                        }   
+                          
                     </ul>  
 
                     <form class="form-inline"  style="" asp-action="Index" asp-controller="Products">

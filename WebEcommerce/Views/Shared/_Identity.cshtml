@@ -52,7 +52,7 @@ else
             <i class="fa-sharp fa-solid fa-user mr-1"></i> @_userManager.GetUserName(User)
         </button>
         <div class="dropdown-menu" aria-labelledby="profile-btn">
-            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+            @*<a class="dropdown-item" asp-controller="Orders" asp-action="Index">
                 <i class="fas fa-regular fa-list-check mr-2"></i> Orders
             </a>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -60,10 +60,9 @@ else
                 <a class="dropdown-item" asp-controller="Account" asp-action="Users">
                     <i class="fas fa-regular fa-users mr-2"></i> Users
                 </a>
-            }
-            <form asp-controller="Account" asp-action="Logout">
-                <hr />
-                <button class="dropdown-item">
+            }*@
+            <form asp-controller="Account" asp-action="Logout">                
+                <button class="dropdown-item" style="margin-left:auto">
                     <i class="fas fa-duotone fa-arrow-right-from-bracket"></i>
                     Logout
                 </button>

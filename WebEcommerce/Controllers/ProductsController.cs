@@ -30,7 +30,8 @@ namespace WebEcommerce.Controllers
             var Response =await _services.GetAllAsync(x=>x.Category);
             if(!string.IsNullOrEmpty(searchTerm))
             {
-                Response =  Response.Where(x=>x.Name.Contains(searchTerm)).ToList();
+                searchTerm = searchTerm.ToLower();
+                Response =  Response.Where(x=>x.Name.ToLower().Contains(searchTerm)).ToList();
             }
 
             return View(Response);

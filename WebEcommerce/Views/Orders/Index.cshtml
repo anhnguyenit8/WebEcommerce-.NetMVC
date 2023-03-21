@@ -4,13 +4,15 @@
 }
 <div class="row">
     <div class="col-md-8 offset-2">
+        <br />
         <h2>All Orders</h2>
-        <hr />
+        <br />
+
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>Order Id</th>
-                    <th>Items</th>
+                    <th>Items - Quantity - Price</th>
                     <th>Totals</th>
                     @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
                     {
@@ -31,6 +33,7 @@
                                 }
                             </ul>
                         </td>
+                        
                         <td class="align-middle">
                             @item.OrderItems.Select(x=>x.Price * x.Amount).Sum().ToString("c")
                         </td>

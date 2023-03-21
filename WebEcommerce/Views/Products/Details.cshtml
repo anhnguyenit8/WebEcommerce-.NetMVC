@@ -3,8 +3,53 @@
     ViewData["Title"] = "Details of Product ";
 }
 
+<style>
+    #atc1 {
+        transition: 0.3s;
+        color: black;
+        
+    }
 
-<div class="row">
+        #atc1:hover {
+            border: none;
+            background-image: linear-gradient(to right,#b03d56,#a1407b);
+            color: white;
+        }
+</style>
+
+<div class="row" style="padding-top:40px;">
+    <div class="col-sm-9">
+        <div class="row" >
+            <div class="col-8 col-sm-6">
+                <img src="@Model.ImageURL" width="500px" height="500px;" style="padding-left:50px;" alt="@Model.Name">
+            </div>
+            <div class="col-4 col-sm-6">
+                <div class="border-body text-lg-left" style="font-size:20px; padding:50px;">
+                    <h2><p class="border-text">@Model.Name</p></h2>
+                        <hr />
+                        <h4>General Information :</h4>
+                        <p class="border-text">  Type : @Model.ProductType</p>
+                        <p class="border-text">  Manufacturer : @Model.Category.Name</p>
+                        <p class="border-text">  UPC : @Model.Description</p>                        
+                        <hr />
+                        <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
+                        <br />
+                        <a class="btn" style="background-image: linear-gradient(to right,#b03d56,#a1407b); color: white; " asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART
+                        </a>
+                </div>                
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+@*<div class="row">
     <div class="col-md-8 offset-2">
         <div class="border mb-12">
             <div class="row g-0">
@@ -46,5 +91,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
