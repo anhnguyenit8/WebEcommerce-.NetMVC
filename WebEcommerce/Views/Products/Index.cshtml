@@ -44,14 +44,53 @@
     #inf{
         padding:10px;
         color:dimgray;
-    }  
+    }
+    
+    #btn1 {
+        /*border-radius: 40px;*/        
+        transition: 0.3s;
+        
+
+    }
+
+    #btn1:hover {
+        
+        color: white;
+        background-color: #bf392e;
+    }
+
+    #mnf{        
+        border-radius: 10px;        
+        width: auto;
+        height: 40px;
+        
+    }
 
 
 </style>
 
 <body>
-@*<img class="background" src="~/Img/Background.png" style="width:80%;" />
-<br />*@
+ 
+
+ <div class="row">
+     <div class="col-md-12">
+
+            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px;">
+                <input type="text" placeholder="   Manufacture" id="mnf" name="searchTerm" list="type1" autocomplete="off">
+                        <datalist id="type1">                            
+                            <option value="MSI">  MSI</option>
+                            <option value="GIGABYTE">  GIGABYTE</option>
+                            <option value="ASUS">  ASUS</option>
+                            <option value="PYN">  PYN</option>                            
+                        </datalist>
+
+                <button type="submit" id="btn1" class="btn">
+                    <i class="fas fa-search"></i>
+                </button>
+          </form>         
+     </div>
+ </div>
+
 <div class = "row">
     @foreach (var item in Model)
     {
@@ -101,3 +140,10 @@
   }
 </body>
 
+@section Scripts{
+    <script type="text/javascript">
+        $(function(){
+        $("#productType").chosen();
+        });
+        </script>
+}
