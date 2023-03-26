@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebEcommerce.Migrations
 {
-    public partial class database_v1 : Migration
+    public partial class testdbv3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

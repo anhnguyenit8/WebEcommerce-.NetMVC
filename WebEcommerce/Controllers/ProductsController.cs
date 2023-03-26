@@ -40,15 +40,9 @@ namespace WebEcommerce.Controllers
                 searchTerm = searchTerm.ToLower();
                 Response =  Response.Where(x=>x.Name.ToLower().Contains(searchTerm));
             }
-           /* if (ProductType != "0")
-            {
-                books = books.Where(c => c.CategoryID == categoryID);
-            }*/
-
-
-
-            return View(Response.ToList());
+           return View(Response.ToList());
         }
+                
 
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)

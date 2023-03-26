@@ -57,9 +57,7 @@ else
             </a>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                <a class="dropdown-item" asp-controller="Account" asp-action="Users">
-                    <i class="fas fa-regular fa-users mr-2"></i> Users
-                </a>
+                
             }*@
             <form asp-controller="Account" asp-action="Logout">                
                 <button class="dropdown-item" style="margin-left:auto">

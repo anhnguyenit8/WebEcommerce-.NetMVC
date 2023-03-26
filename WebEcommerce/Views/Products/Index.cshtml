@@ -4,14 +4,27 @@
 }
 
 <style>
+
+
+    #dtl {
+        transition: 0.3s;
+        color: white;
+        padding-left:10px;
+    }
+
+        #dtl:hover {
+            background-color: white;
+            color: #a1407b;
+        }
+
     #atc {
         transition: 0.3s;
-        color: black;
+        color: white;
     }
 
     #atc:hover {
-            background-image: linear-gradient(to right,#b03d56,#a1407b);
-            color: white;
+            background-color: white;
+            color: #a1407b;
     }
 
     #edt {
@@ -36,22 +49,26 @@
     }
     #crt-prd:hover{
     }
+       
 
-    #img-prd:hover{
-        background-color: #afafaf;
+    #cardProduct {
+        transition: 0.2s;     
+        padding: 10px;
+        color:dimgray;
     }
 
-    #inf{
-        padding:10px;
-        color:dimgray;
+    #cardProduct:hover {
+        
+        color: white;
     }
     
     #btn1 {
         /*border-radius: 40px;*/        
         transition: 0.3s;
         
-
     }
+
+    
 
     #btn1:hover {
         
@@ -62,8 +79,23 @@
     #mnf{        
         border-radius: 10px;        
         width: auto;
-        height: 40px;
+        height: 30px;
         
+    }
+    p span {
+        white-space: nowrap;
+    }
+
+    #ad {
+        float: left;
+        width: 150px;
+        height: auto;
+    }
+
+    #ad2 {
+        float: right;
+        width: 150px;
+        height: auto;
     }
 
 
@@ -71,27 +103,35 @@
 
 <body>
  
+    <div>
+        <img id="ad" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
+    </div>
+    <div>
+        <img id="ad2" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
+    </div>
+ 
 
- <div class="row">
-     <div class="col-md-12">
-
+     <div>            
             <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px;">
-                <input type="text" placeholder="   Manufacture" id="mnf" name="searchTerm" list="type1" autocomplete="off">
-                        <datalist id="type1">                            
-                            <option value="MSI">  MSI</option>
-                            <option value="GIGABYTE">  GIGABYTE</option>
-                            <option value="ASUS">  ASUS</option>
-                            <option value="PYN">  PYN</option>                            
-                        </datalist>
-
-                <button type="submit" id="btn1" class="btn">
-                    <i class="fas fa-search"></i>
-                </button>
+                <p>
+                    Manufacture:                     
+                    <span>
+                        <input type="text" placeholder="Etc: MSI" id="mnf" name="searchTerm" list="type1" autocomplete="off">
+                            <datalist id="type1">
+                                <option value="MSI">  MSI</option>
+                                <option value="GIGABYTE">  GIGABYTE</option>
+                                <option value="ASUS">  ASUS</option>
+                                <option value="PYN">  PYN</option>
+                            </datalist>  
+                            
+                            <button type="submit" id="btn1" class="btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                    </span>
           </form>         
      </div>
- </div>
-
-<div class = "row">
+ 
+<div class ="row">
     @foreach (var item in Model)
     {
         <div class="col-md-3">    
@@ -107,9 +147,10 @@
                 </a>
                     </span>
                 }
+                    <div id="cardProduct">
                 <div id="img-prd">
                 <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="@item.ImageURL" alt="@item.Name" style="width:100%; height:300px;">
+                    <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px;">
                 </a>
                 </div>
                              
@@ -122,9 +163,14 @@
                     <p>Type : <b>@item.ProductType</b></p>
                     <p>Price : <b>@item.Price.ToString("c")</b></p>
                 </div>
-                <a class="btn" id="atc" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
-            </div>
+                        <a class="btn" id="dtl" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>DETAIL
+                        </a>
+
+                        <a class="btn" id="atc" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                        <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
+                </div>
+                </div>
         </div>
     }
 </div>

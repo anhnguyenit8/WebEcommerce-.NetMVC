@@ -49,20 +49,32 @@
                         <li class="nav-item"  id="prd1">
                             <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
                         </li>
-                        
-                        <li class="nav-item dropdown dropdown-hover">
-                                <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-gear" style="color:white;"></i> MANAGERMENT
-                            </a>
-                                <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">
-                                @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">CATEGORY</a>
-                                }
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
+                        @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                         {                        
+                            <li class="nav-item dropdown dropdown-hover">
+                                    <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-gear" style="color:white;"></i> MANAGERMENT
+                                </a>
+                                    <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">                                
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">CATEGORY</a>                                
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Users">USER</a>
+                                </div>
+                            </li>   
+                        }
+
+                        @if (Context.User.Identity.IsAuthenticated && User.IsInRole("User"))
+                         {                        
+                            <li class="nav-item dropdown dropdown-hover">
+                                    <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-gear" style="color:white;"></i> MANAGERMENT
+                                </a>
+                                    <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">                                                               
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
                                 
-                            </div>
-                        </li>                                                
+                                </div>
+                            </li>   
+                        }
                           
                     </ul>  
 
@@ -96,12 +108,13 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
+    @*<footer class="footer text-muted">
         <div class="container">
-            @*<i><img src="~/Img/Nagear yellow.png" height="31px" width="100px" /></i>*@
+            
             &copy; 2023 - NAGEAR.VN by Nadilac - <a asp-area="" asp-controller="Home" asp-action="Privacy">About Project</a>
         </div>
-    </footer>
+    </footer>*@
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

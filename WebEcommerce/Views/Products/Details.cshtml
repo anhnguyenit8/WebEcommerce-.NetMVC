@@ -15,81 +15,108 @@
             background-image: linear-gradient(to right,#b03d56,#a1407b);
             color: white;
         }
+    #nme{
+        color:#a1407b;
+    }
+
+    #ctn{
+        
+        border: 1px solid gray;
+        padding: 25px;
+        
+    }
+    #ads{
+        width:auto;
+        height:400px;
+    }
+
+    #ad {
+        float: left;        
+        width: 150px;
+        height: auto;
+        
+        
+        
+    }
+
+    #ad2 {
+        float: right;        
+        width: 150px;
+        height: auto;
+        
+        
+    } 
+
+    
+
 </style>
 
-<div class="row" style="padding-top:40px;">
-    <div class="col-sm-9">
-        <div class="row" >
-            <div class="col-8 col-sm-6">
-                <img src="@Model.ImageURL" width="500px" height="500px;" style="padding-left:50px;" alt="@Model.Name">
-            </div>
-            <div class="col-4 col-sm-6">
-                <div class="border-body text-lg-left" style="font-size:20px; padding:50px;">
-                    <h2><p class="border-text">@Model.Name</p></h2>
-                        <hr />
-                        <h4>General Information :</h4>
-                        <p class="border-text">  Type : @Model.ProductType</p>
-                        <p class="border-text">  Manufacturer : @Model.Category.Name</p>
-                        <p class="border-text">  UPC : @Model.Description</p>                        
-                        <hr />
-                        <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
-                        <br />
-                        <a class="btn" style="background-image: linear-gradient(to right,#b03d56,#a1407b); color: white; " asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
-                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART
-                        </a>
-                </div>                
-            </div>
 
-        </div>
+<body>
 
-
-    </div>
-
+<div>
+     <img id="ad" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
+</div>
+    <div >
+        <img id="ad2" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
 </div>
 
 
-
-@*<div class="row">
-    <div class="col-md-8 offset-2">
-        <div class="border mb-12">
-            <div class="row g-0">
-                <div class="col-md-12">
-                    <div class="border text-dark bg-warning">
-                        <p class="border-text">                            
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="@Model.ImageURL" width="400px" height="400px;" style="padding:20px;" alt="@Model.Name">
-                </div>
-                <div class="col-md-8">
-                    <div class="border-body text-lg-left" style="font-size:20px;">
-                        <br />
-                        <h2><p class="border-text">@Model.Name</p></h2>
-                        <hr />
-                        <h3>General Information :</h3>                        
-                        <p class="border-text">  UPC : @Model.Description</p>
-                        <p class="border-text">  Type : @Model.ProductType</p>
-                        <p class="border-text">  Manufacturer : @Model.Category.Name</p>
-                        <hr />
-                        <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="border-footer">
-                        <p class="border-text">
-                            <a class="btn btn-outline-primary" asp-action="Index">
-                                Back to List
-                            </a>                            
-                            <a class="btn btn-warning float-right" style=""
-                            asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
-                                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+ <div class="container" id="ctn">   
+     <div class="row" >
+         <div class="col">
+             <img src="@Model.ImageURL" width="auto" height="500px;" style="padding-left:20px;" alt="@Model.Name">
+         </div>
+         <div class="col" >
+            <div class="border-body text-lg-left" >
+               <h2><p class="border-text" id="nme">@Model.Name</p></h2>
+               <hr />
+               <h4>General Information :</h4>
+               <p class="border-text">  Type : @Model.ProductType</p>
+               <p class="border-text">  Manufacturer : @Model.Category.Name</p>
+               <p class="border-text">  UPC : @Model.Description</p>                        
+               <hr />
+               <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
+               <br />
+               <a class="btn" style="background-image: linear-gradient(to right,#b03d56,#a1407b); color: white; " asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                                <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART
+               </a>
+             </div>                
+         </div>
     </div>
-</div>*@
+</div>
+    
+
+
+
+
+
+<div class="container" id="ctn">
+    <h1>Đánh giá chi tiết card màn hình ASUS Dual GeForce RTX 2060 OC edition EVO 6GB GDDR6</h1>
+    <p>Là phiên bản nâng cấp từ phiên bản RTX 2060 OC Edition trước đó, ASUS Dual GeForce RTX 2060 OC edition EVO vẫn giữa được vẻ ngoài gaming trước đó. Khoác lên màu đen mạnh mẽ cùng các góc cạnh được hoàn thiện một cách bắt mắt, ASUS Dual GeForce RTX 2060 OC edition EVO sẽ làm nổi bật chiếc case nói riêng và góc gaming nói chung.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-01_613a93cbb44d490498312090f9f32c8b.jpg" />
+
+    <h1>Hệ thống tản nhiệt 2x Fans của ASUS Dual GeForce RTX 2060 OC edition EVO</h1>
+    <p>Trang bị 2 chiếc quạt mới mẻ và mạnh mẽ được sản xuất từ công nghệ Axial đem lại thiết kế cánh quạt dài hơn cùng vòng quay hướng áp suất không khí xuống đem lại khả năng tản nhiệt tốt nhất cho ASUS Dual GeForce RTX 2060 OC edition EVO.
+        Kết hợp cùng công nghệ 0dB giúp cho ASUS Dual GeForce RTX 2060 OC edition EVO hoạt động một cách thông minh khi có thể tự động dừng hoạt động khi nhiệt độ lõi GPU dưới 55 độ C và khi nhiệt độ tăng sẽ tự động hoạt động trở lại, đem lại không gian yên tĩnh khi làm việc và chơi game.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-02_8c89abcf25e245489cc3c770b141f03e.jpg" />
+
+    <h1>Mặt lưng bảo vệ chắc chắn</h1>
+    <p>Diện tích PCB của ASUS Dual GeForce RTX 2060 OC edition EVO được bảo vệ bằng mặt lưng được làm từ nhôm, đảm bảo sự an toàn cho PCB và tránh các va đập không mong muốn đến cho mặt sau của VGA.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-03_24d5a69f0c5043609aebd1081c41b068.jpg" />
+
+    <h1>Hoàn thiện từ công nghệ Auto-Extreme</h>
+    <p>Tất cả linh kiện trong ASUS Dual GeForce RTX 2060 OC edition EVO được hoàn thiện bằng quy trình sản xuất tiên tiến dựa trên công nghệ Auto-Extreme mang đến chất lượng tốt nhất cho card màn hình. Các thành phần bên trong như tụ điện, DrMOS và cuộn cảm giúp đẩy hiệu năng ASUS Dual GeForce RTX 2060 OC edition EVO lên mức tối đa.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-04_cd53306688824fbdafb43cdd0f323d98.jpg" />
+
+    <h1>Chọn card màn hình - Chọn ASUS Dual GeForce RTX 2060 OC edition EVO 6GB GDDR6 tại Gearvn</h>
+    </div>
+<section/>
+
+</body>
+
 

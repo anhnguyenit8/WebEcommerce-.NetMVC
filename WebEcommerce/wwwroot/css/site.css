@@ -74,6 +74,7 @@ body {
 /*<style >*/
 .card {
     
+    
     transition: 0.3s;
     max-width: 320px;
     margin: auto;
@@ -85,7 +86,9 @@ body {
 
 
     .card:hover {
-        border: 1px solid #54565e;
+        border: 1px solid;
+        background: linear-gradient(135deg, #bf392e 0%,#8d44ad 100%);
+        color: white;
     }
 
 .price {

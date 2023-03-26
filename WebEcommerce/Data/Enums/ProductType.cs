@@ -2,6 +2,6 @@
 {
     public enum ProductType
     {
-        VGA = 1, SDD, HDD, RAM, MAIN, CPU
+        VGA = 1, SDD = 2, HDD = 3, RAM = 4, MAIN = 5, CPU = 6
     }
 }
