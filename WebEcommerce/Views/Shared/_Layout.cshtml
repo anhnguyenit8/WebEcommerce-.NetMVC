@@ -10,11 +10,11 @@
         border-radius: 30px;
         border: 1px solid white;
         height:40px;
-        width:700px;
+        width:400px;
         padding:20px;
     }
 
-       
+          
 
 
 </style>
@@ -46,8 +46,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                                        
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"  id="prd1">
-                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">PRODUCTS</a>
+                        <li class="nav-item" id="prd1">
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>                        
+                        <li class="nav-item"  id="prd1">                            
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">SHOP</a> 
+                        </li>
+                        <li class="nav-item" id="prd1">                          
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Abouts" asp-action="Index">ABOUT</a>
+                        </li>
+                        <li class="nav-item" id="prd1">                        
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Contacts" asp-action="Index">CONTACT</a>
                         </li>
                         @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                          {                        
@@ -108,12 +117,7 @@
         </main>
     </div>
 
-    @*<footer class="footer text-muted">
-        <div class="container">
-            
-            &copy; 2023 - NAGEAR.VN by Nadilac - <a asp-area="" asp-controller="Home" asp-action="Privacy">About Project</a>
-        </div>
-    </footer>*@
+    
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -123,6 +127,23 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<footer class="footer text-muted" id="foot" >
+        <div class="container" style="color:white">
+            <div class="row">
+            <div class="col" align="center">
+                    Working Hours : 8:00am - 11:00pm
+                </div>
+            <div class="col" align="center">
+                    &copy; 2023 - NAGEAR.VN by Nadilac
+                </div>
+            <div class="col" align="center">
+                    Follow us - nagear.vn
+                </div>
+            
+        </div>
+
+
+    </footer>
 </html>
 
 

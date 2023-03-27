@@ -182,3 +182,7 @@ img {
 /*body{
     background-color: black;
 }*/
+#foot {
+    background-image: linear-gradient(to right,#bf392e,#8d44ad);
+    
+}
