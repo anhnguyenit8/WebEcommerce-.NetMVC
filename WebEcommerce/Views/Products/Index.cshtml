@@ -8,7 +8,7 @@
 
     #dtl {
         transition: 0.3s;
-        color: white;
+        
         padding-left:10px;
     }
 
@@ -19,7 +19,7 @@
 
     #atc {
         transition: 0.3s;
-        color: white;
+        
     }
 
     #atc:hover {
@@ -98,6 +98,8 @@
         height: auto;
     }
 
+    
+
 
 </style>
 
@@ -116,24 +118,19 @@
                 <p>
                     Manufacture:                     
                     <span>
-                        <input type="text" placeholder="Etc: MSI" id="mnf" name="searchTerm" list="type1" autocomplete="off">
+                        <input type="text" placeholder="Etc: MSI" name="searchTerm" list="type1" autocomplete="off">
                             <datalist id="type1">
                                 <option value="MSI">  MSI</option>
                                 <option value="GIGABYTE">  GIGABYTE</option>
                                 <option value="ASUS">  ASUS</option>
                                 <option value="PYN">  PYN</option>
-                            </datalist>  
-                            
-                            <button type="submit" id="btn1" class="btn">
-                                <i class="fas fa-search"></i>
-                            </button>
+                            </datalist>                             
                     </span>
           </form>         
      </div>
- 
-<div class ="row">
+     <div class="row">
     @foreach (var item in Model)
-    {
+    {      
         <div class="col-md-3">    
             <div class="card">
                 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -150,13 +147,13 @@
                     <div id="cardProduct">
                 <div id="img-prd">
                 <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px;">
+                    <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
                 </a>
                 </div>
                              
                 
                 <div class="text-sm-left"  id="inf">
-                    <h><b>@item.Name</b></h>
+                    <p><h><b>@item.Name</b></h></p>
                     <hr />                   
                     <p>UPC : @item.Description</p>
                     <p>Manufacturer : @item.Category.Name</p>
@@ -172,8 +169,10 @@
                 </div>
                 </div>
         </div>
+        
     }
 </div>
+
 
 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
   {
@@ -186,6 +185,7 @@
   }
 </body>
 
+
 @section Scripts{
     <script type="text/javascript">
         $(function(){
@@ -193,3 +193,19 @@
         });
         </script>
 }
+
+@*@section Scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".card").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}
+*@
