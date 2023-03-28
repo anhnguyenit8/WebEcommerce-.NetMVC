@@ -1,30 +1,79 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>W3.CSS</title>
+    <head>        
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         <style>
         .mySlides {display:none;}
-        #hr{
+        #hr1{
             border: 2px solid white ;
                      
         }
-        #infm{
-           padding:50px;
 
-        }
+        
 
         #infm1 {            
-            height: 100%;
+            height: 100%;            
             background-image: linear-gradient(to right,#bf392e,#8d44ad);
             
         }
 
         #infm2 {
             padding-bottom: 50px;
+
+        }
+
+        #atc12 {
+            transition: 0.3s;
+            border-radius:20px;
+            border:1px solid white;
+            color:white;
+        }
+
+            #atc12:hover {
+                border-radius: 20px;
+                background-color: white;
+                box-shadow: 0px 0px 10px white;
+                color: #a1407b;
+            }
+
+        #snw{
+            
+            border: 2px solid white;
+            color:white;
+            border-radius: 20px;
+            background-color: #99418e;
+        }
+        #snw:hover {
+                color: #a73f6d;
+                background-color: white;
+                box-shadow: 0px 0px 10px white;
+        }
+
+        #snw1 {
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #a73f6d;
+            width:100%;
+            max-width:300px;
+            color: #a73f6d;
+            border-radius: 20px;
+            background-color:white;
+        }
+        #snw1:hover{
+                box-shadow: 0px 0px 20px #a73f6d;
+                color: white;
+                background-color: #a73f6d;
+
         }
 
         #atc{
@@ -33,112 +82,389 @@
             border-radius:20px;
         }
 
-        #atc1 {
-            background: #8d44ad;
-            border-radius: 10px;
-            color:white;
-            
+        
+        #atc2 {
+            font-size:15px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border-radius: 30px;
+            color: white;
+        }
+
+        #infm{
+            padding:10px;
+
+        }
+        #title{
+            font-size: 40px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border-radius: 30px;
+            color: white;
+
+        }
+
+        #title1 {
+            padding-top:10px;
+            padding-bottom:30px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);            
+            color: white;
+        }
+
+        #image1{
+            width: auto;
+            height: 400px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px #a73f6d;
+            transition: 0.3s;
+        }
+
+        #image1:hover {            
+            box-shadow: 0px 0px 30px #a73f6d;
+        }
+
+        #image2{
+            width: auto;
+            height: 400px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px white;
+            transition: 0.3s;
+        }
+
+        #image2:hover {
+                box-shadow: 0px 0px 30px white;
         }
 
         
-        </style>
+       
+    </style>
     </head>
 
 <body>
-    <div class="w3-content w3-section" style="max-width:1200px;">
-        <img class="mySlides" src="~/Img/gaming.jpg" style="width:100%">
-        <img class="mySlides" src="~/Img/gaming1.jpg" style="width:100%">        
+    <div class="w3-content w3-section" style="max-width:1500px;">
+        <img class="mySlides w3-animate-right" src="~/Img/gaming6.jpg" style="width:100%">
+        <img class="mySlides w3-animate-right" src="~/Img/gaming7.jpg" style="width:100%">
+        <img class="mySlides w3-animate-right" src="~/Img/gaming8.jpg" style="width:100%">
     </div>
 
-    <hr id="hr"/>
     
-    <div id="infm" class="container">
-        <div class="row">            
-            <div class="col">
-                <h1 style="color:#743ad5">BUILDING YOUR CASE</h1>
-                <p style="font-size: 150%;">Upgrade your gaming setup with our high-quality gaming cases, now on sale! Choose from a wide selection of sizes, styles, and designs to fit your needs and budget. All of our cases come with pre-installed fans for optimal cooling and are easy to build in. Shop now and take your gaming experience to the next level!</p>
+
+    <hr id="hr1" />
+
+    <div id="infm1" class="btn1 row">
+        <div class="row" align="center" style="padding:20px">
+            <div class="col"  style="color:white;">
+                <h1>Combo PHANTOM A4070Ti</h1>
                 <br />
-                <a style="font-size:100%;" class="btn" id="atc1" asp-controller="Products" asp-action="Index">
-                    See More Devices !
+                <p style="font-size: 120%;">Processor Chip: R7 7700X</p>
+                <p style="font-size: 120%;">VGA: RTX 4070Ti</p>
+                <p style="font-size: 120%;">Mainboard: X670</p>
+                <p style="font-size: 120%;">SDD: 500GB</p>
+                <p style="font-size: 120%;">Ram: 32GB</p>
+                <p style="font-size: 120%;">Power: 850W</p>
+                <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                    SHOP NOW
                 </a>
-            </div>
-            <div class="col">
-                <img src="~/Img/gaming2.jpg" style="width:auto; height:400px; border-radius: 20px" />
-            </div>
-        </div>
-    </div>
-
-    
-
-    <div id="infm1" class="container">
-        <div class="row">   
-            
-            <div class="col" style="color:white ;padding:30px;">
-                <h1>GAMING CASE</h1>
-            <p style="font-size: 100%;">Our selection of gaming cases includes options in various sizes, styles, and designs. Choose from compact mini-ITX cases that are perfect for small form factor builds, mid-tower cases that provide plenty of space for your components, or full-tower cases that offer maximum flexibility and expandability.</p>    
+                
             </div>
 
-            <div class="col">
-                <img src="~/Img/case1.png" style="width:400px; height:300px;padding:30px;" />
-            </div>
-
-            <div class="col" style="color:white; padding:30px;">
-                <h1>GAMING CASE</h1>
-            <p style="font-size: 100%;">Our selection of gaming cases includes options in various sizes, styles, and designs. Choose from compact mini-ITX cases that are perfect for small form factor builds, mid-tower cases that provide plenty of space for your components, or full-tower cases that offer maximum flexibility and expandability.</p>    
-            </div>
-            
-        </div>
-    </div>
-    
-    <hr id="hr" />
-    
-
-    <div id="infm2" class="container">
-
-        <h1 style="color:#743ad5">OUR DEVICE</h1>
-        <br />
-        <div class="row">            
-            <div class="col">
-                <img src="~/Img/case2.jpg" style="width:400px; height:300px; border-radius: 10px" />
-            </div>
-            <div class="col">
-                <img src="~/Img/case2.jpg" style="width:400px; height:300px; border-radius: 10px" />
-            </div>
-            <div class="w-100" style="padding:20px;"></div>
-            
-            <div class="col">
-                <img src="~/Img/case2.jpg" style="width:400px; height:300px; border-radius: 10px" />
-            </div>
-            <div class="col">
-                <img src="~/Img/case2.jpg" style="width:400px; height:300px; border-radius: 10px" />
-            </div>
-
-        </div>
-    </div>
-
-    <hr id="hr" />
-
-    <div id="infm1" class="container">
-        <div class="row" style="padding:30px;">
-
-            <div class="col">
-                <img src="~/Img/gaming3.jpg" style="width:auto; height:350px;" />
+            <div class="col" style="padding:10px;">
+                <img  src="~/Img/case1.png" id="image2" />
+                <
             </div>
 
             <div class="col" style="color:white;">
-                <h1>STUDY CASE</h1>
-            <p style="font-size: 120%;">Our selection includes high-quality cases with features designed to help you stay organized and focused, such as built-in storage compartments and ergonomic designs. Get unbeatable value for your money and take your studying experience to the next level. Shop now and save!</p>
-                <a class="btn" id="atc" asp-controller="Products" asp-action="Index">
-                    SHOP NOW !
+                <h1>Combo PHANTOM A4070Ti</h1>
+                <br />
+                <p style="font-size: 120%;">Processor Chip: R7 7700X</p>
+                <p style="font-size: 120%;">VGA: RTX 4070Ti</p>
+                <p style="font-size: 120%;">Mainboard: X670</p>
+                <p style="font-size: 120%;">SDD: 500GB</p>
+                <p style="font-size: 120%;">Ram: 32GB</p>
+                <p style="font-size: 120%;">Power: 850W</p>
+                <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                    SHOP NOW
                 </a>
+
+            </div>
+            
+        </div>
+    </div>
+
+    <hr id="hr1"/>
+    
+    <div id="infm" class="container" align="center">
+        <div class="row">            
+            <div class="col" style="padding-right:20px;">
+                <br />
+                <h1 style="color:#a73f6d;"><b>BUILDING YOUR CASE</b></h1>
+                <br />
+                <p style="font-size: 150%;">Upgrade your gaming setup with our high-quality gaming cases, now on sale! Choose from a wide selection of sizes, styles, and designs to fit your needs and budget. All of our cases come with pre-installed fans for optimal cooling and are easy to build in. Shop now and take your gaming experience to the next level!</p>
+                <br />
+
+                <a style="font-size:20px;" class="btn" id="snw1" asp-controller="Products" asp-action="Index">
+                    SEE MORE DEVICES
+                </a>
+            </div>
+            <div class="col">
+                <img src="~/Img/gaming2.jpg" id="image1" style="" />
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <hr id="hr1" />
+
+    <div id="infm1" class="btn1 row">
+        <div class="row" style="padding:30px;">
+
+            <div class="col">
+                <img src="~/Img/gaming3.jpg" id="image2" />
+            </div>
+
+            <div class="col" style="color:white;">
+                <h1><b>STUDY CASE</b></h1>
+                <br />
+            <p style="font-size: 120%;">Our selection includes high-quality cases with features designed to help you stay organized and focused, such as built-in storage compartments and ergonomic designs. Get unbeatable value for your money and take your studying experience to the next level. Shop now and save!</p>
+            <br />    
+            <a style="font-size:20px;" class="btn" id="atc12" asp-controller="Products" asp-action="Index"> GET YOUR OWN </a>
         </div>
             
         </div>
     </div>
-    <br />
-     <hr />
-
     
+    <hr id="hr1" />
+    
+
+    <div id="infm2" class="container">
+        <div class="btn1" align="center" id="title">
+            <h1><b>SELLING PRODUCT</b></h1>
+        </div>
+        <br />
+        <div class="row">            
+                <div class="col">
+                    <div class="card">                        
+                        <div id="cardProduct1">
+                            <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                                </a>
+                            </div>
+                            <div class="text-sm-left" id="inf">
+                            <p align="center" ><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>     
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                            </div>
+                                 <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                                SHOP NOW</a>                            
+                            </div>
+                            <br />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">                        
+                        <div id="cardProduct1">
+                            <div id="img-prd">
+                                <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                                </a>
+                            </div>
+                            <div class="text-sm-left" id="inf">
+                            <p align="center" ><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>  
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                            </div>
+                                     <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                                    SHOP NOW</a>                            
+                            </div>
+                            <br />
+                    </div>
+                </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>  <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row" align="center">
+        <a class="btn col" id="snw1"  asp-controller="Products" asp-action="Index">
+            LOAD MORE
+        </a>
+        </div>         
+    </div>
+    <br />
+    <div id="infm1" class="btn1 row">
+        <div class="row" style="padding:30px;">
+
+            <div class="col">
+                <img src="~/Img/map.jpg" id="image2" />
+            </div>
+            <div class="col" style="color:white;">
+                <h3>ABOUT</h3>
+                <br />
+                <p style="font-size: 100%;"> Upgrade your gaming setup with our high-quality gaming cases, now on sale! Choose from a wide selection of sizes, styles, and designs to fit your needs and budget. All of our cases come with pre-installed fans for optimal cooling and are easy to build in. Shop now and take your gaming experience to the next level!</p>
+
+            </div>
+
+            <div class="col" style="color:white;">
+                <h3>CONTACT</h3>
+                <br />
+                <p style="font-size: 100%;"><i class="fa-solid fa-earth-americas"> </i> nagear.vn</p>
+                <p style="font-size: 100%;"><i class="fa-solid fa-envelope"> </i> nagear@verygood.com</p>
+                <p style="font-size: 100%;"><i class="fa-solid fa-phone"> </i> +849XXXXXXX</p>
+                <a style="font-size:20px;" class="btn" id="atc12" asp-controller="" asp-action="">SUBSCRIBE US <i class="fa-solid fa-face-smile"></i> </a>
+            </div>
+
+            <div class="col" style="color:white;">
+                <h3>STORE</h3>
+                <br />
+                <p style="font-size: 100%;"> 173C Kim Ma, Ba Dinh Str.</p>
+                <p style="font-size: 100%;"> 32 Thien Vuong, Dong Da Str.</p>
+                <p style="font-size: 100%;"> 01 Hang Cho, Dien Bien Phu Str.</p>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="btn1 row" align="center" id="title1">
+
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-truck"></i> FREE DELIVERY</b></h>
+            <br />
+            <p>We offer free shipping</p>
+        </div>
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-headset"></i> TECH SUPPORT</b></h>
+            <br />
+            <p>Nadilac-services@gmail.com</p>
+        </div>
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-shield"></i> SECURE PAYMENT</b></h>
+            <br />
+            <p>Your payment information is processed securely.</p>
+            
+        </div>        
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-toolbox"></i> 18-MONTH WARRANTY</b></h>
+            <br />
+            <p>Warranty only for official Na-store.</p>
+        </div>        
+    </div>
+    <hr id="hr1"/>
+     
 
 </body>
 </html>
@@ -156,6 +482,6 @@
         myIndex++;
         if (myIndex > x.length) { myIndex = 1 }
         x[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 5000); // Change image every 2 seconds
+        setTimeout(carousel, 3000); // Change image every 3 seconds
     }
 </script>

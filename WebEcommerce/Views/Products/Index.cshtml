@@ -86,104 +86,108 @@
         white-space: nowrap;
     }
 
-    #ad {
-        float: left;
-        width: 150px;
-        height: auto;
+    #title {
+        font-size: 40px;
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+        border-radius: 30px;
+        color: white;
     }
-
-    #ad2 {
-        float: right;
-        width: 150px;
-        height: auto;
-    }
-
-    
 
 
 </style>
 
-<body>
- 
-    <div>
-        <img id="ad" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
+<body>    
+    <div class="btn1" align="center" id="title">
+        <h2><b>> ALL PRODUCT LIST <</b></h2>
     </div>
-    <div>
-        <img id="ad2" src="https://theme.hstatic.net/1000026716/1000440777/14/stk-bn-right.png?v=35343" />
+    
+    <div style="float:right;">
+         <div>            
+                <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">
+                    <p>
+                        Manufacture:                     
+                        <span>
+                            <input type="text" placeholder="Etc: MSI" name="searchTerm" list="type1" autocomplete="off">
+                                <datalist id="type1">
+                                    <option value="MSI">  MSI</option>
+                                    <option value="GIGABYTE">  GIGABYTE</option>
+                                    <option value="ASUS">  ASUS</option>
+                                    <option value="PYN">  PYN</option>
+                                </datalist>                             
+                        </span>
+              </form>         
+         </div>
     </div>
- 
-
-     <div>            
-            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px;">
-                <p>
-                    Manufacture:                     
-                    <span>
-                        <input type="text" placeholder="Etc: MSI" name="searchTerm" list="type1" autocomplete="off">
-                            <datalist id="type1">
-                                <option value="MSI">  MSI</option>
-                                <option value="GIGABYTE">  GIGABYTE</option>
-                                <option value="ASUS">  ASUS</option>
-                                <option value="PYN">  PYN</option>
-                            </datalist>                             
-                    </span>
-          </form>         
-     </div>
-     <div class="row">
-    @foreach (var item in Model)
-    {      
-        <div class="col-md-3">    
-            <div class="card">
-                @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <span class="alert" style="background-color:white;">
-                        <a class="btn btn-sm float-left" id="edt" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
-                            Edit
-                        </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">
-                            <input type="submit" value="Delete" class="btn btn-sm float-right" id="del" onclick="return confirm('Delete This Product ?')" />
-                </a>
-                    </span>
-                }
-                    <div id="cardProduct">
-                <div id="img-prd">
-                <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
-                </a>
-                </div>
+    
+    <br />
+        
+    <div class="row">
+        @foreach (var item in Model)
+        {      
+            <div class="col-md-3">    
+                <div class="card">
+                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <span class="alert" style="border-radius:20px;">
+                            <a class="btn btn-sm float-left" id="edt" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
+                                Edit
+                            </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                                <input type="submit" value="Delete" class="btn btn-sm float-right" id="del" onclick="return confirm('Delete This Product ?')" />
+                    </a>
+                        </span>
+                    }
+                        <div id="cardProduct">
+                    <div id="img-prd">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
+                    </a>
+                    </div>
                              
                 
-                <div class="text-sm-left"  id="inf">
-                    <p><h><b>@item.Name</b></h></p>
-                    <hr />                   
-                    <p>UPC : @item.Description</p>
-                    <p>Manufacturer : @item.Category.Name</p>
-                    <p>Type : <b>@item.ProductType</b></p>
-                    <p>Price : <b>@item.Price.ToString("c")</b></p>
-                </div>
-                        <a class="btn" id="dtl" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>DETAIL
-                        </a>
+                    <div class="text-sm-left"  id="inf">
+                        <p><h><b>@item.Name</b></h></p>
+                        <hr />                   
+                        <p>UPC : @item.Description</p>
+                        <p>Manufacturer : @item.Category.Name</p>
+                        <p>Type : <b>@item.ProductType</b></p>
+                        <p>Price : <b>@item.Price.ToString("c")</b></p>
+                    </div>
+                            <a class="btn" id="dtl" style="font-size:12px; padding-right:20px;" asp-action="Details" asp-route-id="@item.Id">
+                            <i class="fa-solid fa-circle-info mr-2"></i>DETAIL</a>
 
-                        <a class="btn" id="atc" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                        <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
-                </div>
-                </div>
-        </div>
+                            <a class="btn" id="atc" style="font-size:12px" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
+                    </div>
+                    </div>
+            </div>
         
-    }
-</div>
+        }
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
 
 
 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
   {
-    <div class="text-white" style="position:fixed;right:30px;bottom:50px;">
+    <div class="text-white" style="position:fixed;right:30px;bottom:70px;">
             <a asp-action="Create" asp-controller="Products" class="btn float-right" id="crt-prd">
             <i class="fas fa-regular fa-plus-square mr-2"></i>
             Create
         </a>
     </div>
   }
+
+
+
+
 </body>
+
+
 
 
 @section Scripts{
@@ -193,19 +197,3 @@
         });
         </script>
 }
-
-@*@section Scripts
-{
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $(".card").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-}
-*@
