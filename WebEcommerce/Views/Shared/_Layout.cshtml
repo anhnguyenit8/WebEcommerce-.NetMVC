@@ -23,10 +23,14 @@
 
 
 <html lang="en">
+<link rel="apple-touch-icon" sizes="180x180" href="~/Img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Img/favicon-16x16.png">
+<link rel="manifest" href="~/Img/site.webmanifest">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NaGear.vn</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
@@ -34,12 +38,12 @@
     
     <link rel="stylesheet" href="/js/jQuery/Chosen/chosen.css" />
 </head>
-<body>
+<body style="border:none;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  navbar-light border-bottom box-shadow mb-3" id="layout")">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-4" id="layout")">
             <div class="container-fluid">
                 <a class="navbar-brand" id="logo" style="" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/Img/Nagear White.png" height="45px" width="150px" />
+                    <img src="~/Img/Nagear White.png" height="45px" width="auto" />
                     
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -87,21 +91,44 @@
                           
                     </ul>  
 
-                    <form class="form-inline"  style="" asp-action="Index" asp-controller="Products">
-                        <button type="submit" class="btn" style="color:white; font-size:25px;">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        
-                        <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
-                        <datalist id="type">                            
-                            <option value="VGA">VGA</option>
-                            <option value="HDD">HDD</option>
-                            <option value="SDD">SDD</option>
-                            <option value="RAM">RAM</option>
-                            <option value="CPU">CPU</option>
-                            <option value="MAIN">MAIN</option>
-                        </datalist> 
-                    </form>
+                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <form class="form-inline" style="" asp-action="Index" asp-controller="Products">
+                            <button type="submit" class="btn" style="color:white; font-size:25px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+
+                            <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
+                            <datalist id="type">
+                                <option value="VGA">VGA</option>
+                                <option value="HDD">HDD</option>
+                                <option value="SDD">SDD</option>
+                                <option value="RAM">RAM</option>
+                                <option value="CPU">CPU</option>
+                                <option value="MAIN">MAIN</option>
+                            </datalist>
+                        </form>
+                    }
+                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("User"))
+                    {
+                        <form class="form-inline" style="" asp-action="Index" asp-controller="Products">
+                            <button type="submit" class="btn" style="color:white; font-size:25px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+
+                            <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
+                            <datalist id="type">
+                                <option value="VGA">VGA</option>
+                                <option value="HDD">HDD</option>
+                                <option value="SDD">SDD</option>
+                                <option value="RAM">RAM</option>
+                                <option value="CPU">CPU</option>
+                                <option value="MAIN">MAIN</option>
+                            </datalist>
+                        </form>
+                    }
+
+                    
 
                     <ul class="navbar-nav mr-2" >
                         @await Component.InvokeAsync("ShoppingCartSummary")

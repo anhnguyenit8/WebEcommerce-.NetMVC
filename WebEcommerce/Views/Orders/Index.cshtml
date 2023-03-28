@@ -5,7 +5,9 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <br />
-        <h2>All Orders</h2>
+        <div align="center">
+        <h2 style ="color:#a73e6b;font-size:200%">All Orders</h2>
+        </div>
         <br />
 
         <table class="table table-hover">
@@ -26,10 +28,10 @@
                     <tr>
                         <td class="align-middle">@item.Id</td>
                         <td class="align-middle">
-                            <ul style="list-style-type:none" class="alert alert-warning">
+                            <ul style="list-style-type:none; background-image:linear-gradient(to right,#bf392e,#8d44ad);" class="alert">
                                 @foreach (var subitem in item.OrderItems)
                                 {
-                                    <li>@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
+                                    <li style="color:white">@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
                                 }
                             </ul>
                         </td>
@@ -39,7 +41,7 @@
                         </td>
                         @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
                         {
-                            @*<td> @item.User.FullName </td>*@
+                            <td class="align-middle"> @item.User.FullName </td>
                         }
                     </tr>
                 }

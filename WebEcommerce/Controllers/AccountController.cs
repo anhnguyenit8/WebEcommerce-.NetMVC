@@ -76,7 +76,7 @@ namespace WebEcommerce.Controllers
             var user = await _userManager.FindByEmailAsync(model.EmailAddress);
             if (user != null)
             {
-                TempData["Error"] = "This email address is already in use";
+                TempData["Error"] = "This email address is already in use!";
                 return View(model);
             }
             var newUser = new ApplicationUser() { Email = model.EmailAddress, FullName = model.FullName, UserName = model.EmailAddress.Split('@')[0] };
@@ -84,8 +84,14 @@ namespace WebEcommerce.Controllers
             if (Result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                return View("CompleteRegister");
             }
-            return View("CompleteRegister");
+            else
+            {
+                TempData["Error"] = "Password must be 8-16 characters long, and contain one uppercase and one lowercase character !";
+                return View(model);
+            }
+            
         }
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -95,8 +101,9 @@ namespace WebEcommerce.Controllers
         }
 
         public IActionResult AccessDenied(string ReturnUrl)
-        {
+        {            
             return View();
         }
+
     }
 }

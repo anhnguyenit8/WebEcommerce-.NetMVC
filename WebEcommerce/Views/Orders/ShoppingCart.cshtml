@@ -2,11 +2,30 @@
 @{
     ViewData["Title"] = "Shopping Cart Summary";
 }
+<style>
+    
+    #shopping {
+        height: 35px;
+        width: 250px;
+        background-color: white;
+               
+        border-radius: 30px;
+        border: 2px solid #a73e6b;
+        color: #a73e6b;
+        transition: 0.3s;
+    }
+
+    #shopping:hover {
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border:none;
+            color: white;
+        }
+</style>
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center">
-            <h2>Shopping Cart Summary</h2>
+            <h2 style="padding-top:10px;padding-bottom:20px;color:#a73e6b;font-size:200%">Shopping Cart Summary</h2>
         </div>
         <table class="table table-hover">
             <thead>
@@ -49,12 +68,15 @@
             </tfoot>
         </table>
         <div class="text-center">
-            <div class="btn btn-group">
+            <div class="btn btn-group row">
+                <div class="col">
                 <span style="padding:5px"></span>
-                <a class="btn btn-outline-warning mr-3" asp-controller="Products" asp-action="Index">
+                <a class="btn" id="shopping" asp-controller="Products" asp-action="Index">
                      Continue Shopping
-                </a>| or | 
-                <div id="paypal-btn"></div>
+                </a>
+                </div>
+                <div class="col"></div>
+                <div class="col" id="paypal-btn"></div>
 
                 @*<a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">
                     <i class="fas fa-regular fa-check mr-2"> Order</i>
