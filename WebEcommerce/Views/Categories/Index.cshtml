@@ -3,9 +3,26 @@
 @{
 ViewData["Title"] = "Category";
 }
+<style>
+    #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #a73e6b;
+          color: white;
+          border: 1px solid #ddd;
+    }
+</style>
+<!-- View table of Category -->
 
-<!-- View table of Category -->.
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">HOME</a></li>
+            <li class="breadcrumb-item">MENU</li>
+            <li class="breadcrumb-item" aria-current="page">CATEGORY</li>
+        </ol>
+    </nav>
 
     @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 { <div class="col">
@@ -20,7 +37,12 @@ ViewData["Title"] = "Category";
 <br />
 <div class="row">
     <div class="col-md-9 offset-md-1">
-        <table class=" table table-striped table-hover">
+        
+        <div align="center">
+                <h2 style="color:#a73e6b;font-size:200%">CATEGORY LIST</h2>
+        </div>
+        <br />
+            <table id="customers" class=" table table-striped table-hover">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(x=>x.Name)</th>
@@ -34,8 +56,7 @@ ViewData["Title"] = "Category";
                     <tr>
                         <td>@item.Name</td>
                         <td>@item.Description</td>
-                        <td>
-                           @* <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-regular fa-pencil mr-2"></i></a>*@
+                        <td>                          
                             <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-regular fa-eye mr-2"></i>Details</a>
                             <a asp-action="Delete" asp-route-id="@item.Id">
                                 <input type="submit" value="Delete" class="btn btn-outline-danger" onclick="return confirm('Delete This Category ?')" />
@@ -48,9 +69,8 @@ ViewData["Title"] = "Category";
 
     </div>
 </div>
-
-
+    <br />
+    <br />
 </body>
-<br />
-<br />
+
 

@@ -27,27 +27,47 @@ namespace WebEcommerce.Initializer
                         new Category()
                         {
                             Name = "MSI",
-                            Description = "C1"
+                            Description = "MAIN/VGA"
                         },
                          new Category()
                         {
                             Name = "ASUS",
-                            Description = "C2"
+                            Description = "MAIN/VGA"
                         },
                           new Category()
                         {
                             Name = "GIGABYTE",
-                            Description = "C3"
+                            Description = "MAIN/VGA"
                         },
                             new Category()
                         {
                             Name = "PYN",
-                            Description = "C4"
+                            Description = "RAM/SDD"
                         },
                          new Category()
                         {
-                            Name = "PYN",
-                            Description = "C4"
+                            Name = "KINGSTON",
+                            Description = "SDD"
+                        },new Category()
+                        {
+                            Name = "GSKILL",
+                            Description = "RAM"
+                        },new Category()
+                        {
+                            Name = "CROSAIR",
+                            Description = "RAM"
+                        },new Category()
+                        {
+                            Name = "SEAGATE",
+                            Description = "HDD"
+                        },new Category()
+                        {
+                            Name = "INTEL",
+                            Description = "CPU"
+                        },new Category()
+                        {
+                            Name = "ADM",
+                            Description = "CPU"
                         }
                     };
                     context.Categories.AddRange(categories);
@@ -68,7 +88,7 @@ namespace WebEcommerce.Initializer
                             Price = 200,
                             ImageURL="https://product.hstatic.net/1000026716/product/01_2332cba6be5243a7b5fd9dca236be128.png",
                             ProductType = ProductType.VGA,
-                            CategoryId=1
+                            CategoryId=2
 
                         },
                         new Product()
@@ -83,12 +103,12 @@ namespace WebEcommerce.Initializer
                         },
                         new Product()
                         {
-                            Name = "VGA Gigabyte GTX 1660 SUPER 6GB",
+                            Name = "VGA Gigabyte GTX 1660 SP 6GB",
                             Description = "GV-N166SOC-6GD",
                             Price = 350,
-                            ImageURL="https://product.hstatic.net/1000026716/product/pny-geforce-gtx-1650-4gb-gddr6-single-fan_683096812008461a9fab2bec9ec96027.jpg",
+                            ImageURL="https://product.hstatic.net/1000026716/product/2019102908460796f7a47f882387bf8717e5e317abe67778_big_6f606712cb7942ba9b6db228e2a6c25f.png",
                             ProductType = ProductType.VGA,
-                            CategoryId=1
+                            CategoryId=3
 
                         },
                         new Product()
@@ -98,11 +118,52 @@ namespace WebEcommerce.Initializer
                             Price = 350,
                             ImageURL="https://product.hstatic.net/1000026716/product/pny-geforce-gtx-1650-4gb-gddr6-single-fan_683096812008461a9fab2bec9ec96027.jpg",
                             ProductType = ProductType.VGA,
-                            CategoryId=1
+                            CategoryId=4
 
                         },
 
                         //RAM
+
+                        new Product()
+                        {
+                            Name = "Ram G.Skill 8GB RGB 3000",
+                            Description = "F4-3000C16D-16GTZR",
+                            Price = 25,
+                            ImageURL="https://product.hstatic.net/1000026716/product/anyconv.com__trident_z_gearvn00_large_9ffcc7aed66c450ea6a128ea85aec02b.jpg",
+                            ProductType = ProductType.RAM,
+                            CategoryId=6
+
+                        },
+                        new Product()
+                        {
+                            Name = "RAM Kingston FB 8GB 3200 RBG",
+                            Description = "KF432C16BBA/8 - DDR4",
+                            Price = 24,
+                            ImageURL="https://product.hstatic.net/1000026716/product/1_f139537c52b1489fa88e42e57f99e895.jpg",
+                            ProductType = ProductType.RAM,
+                            CategoryId=5
+
+                        },
+                        new Product()
+                        {
+                            Name = "RAM Kingston FB 64GB 5600 RBG",
+                            Description = "KF556C40BBAK2",
+                            Price = 210,
+                            ImageURL="https://product.hstatic.net/1000026716/product/ktc-product-memory-beast-ddr5-rgb-kit-of-2-2-lg_4275f28ffd3a486ba26fa3604f3bb163.png",
+                            ProductType = ProductType.RAM,
+                            CategoryId=5
+
+                        },
+                        new Product()
+                        {
+                            Name = "Ram Corsair VG 32GB 5600 RGB",
+                            Description = "CMH32GX5M2B5600C36W",
+                            Price = 150,
+                            ImageURL="https://product.hstatic.net/1000026716/product/w1_f98b77de451b4c32b638c2328aaa355a.png",
+                            ProductType = ProductType.RAM,
+                            CategoryId=7
+
+                        },
 
                     };
                     context.Products.AddRange(Products);

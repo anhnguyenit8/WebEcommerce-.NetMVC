@@ -70,7 +70,7 @@
                 <h1 style="padding-top:10px;padding-bottom:20px;color:#a73e6b;font-size:200%">
                     Create Account
                 </h1>
-                <form asp-action="Login">
+                <form asp-action="Register">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <input class="form-control" id="inputform" asp-for="FullName" placeholder="Full Name" autocomplete="off" />
@@ -90,8 +90,7 @@
                     </div>                    
                     <div class="form-group" algin="center">
                         <input class="btn" type="submit" id="lgn" value="Get Started" />
-                    </div>
-                    
+                    </div>                    
                 </form>
             </div>
 

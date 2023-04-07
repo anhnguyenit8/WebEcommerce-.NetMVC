@@ -2,15 +2,34 @@
 @{
     ViewData["Title"] = "Listing All Orders";
 }
+<style>
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #a73e6b;
+        color: white;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<body>
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">HOME</a></li>
+            <li class="breadcrumb-item" aria-current="page">MENU</li>
+            <li class="breadcrumb-item" aria-current="page">ORDER</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-8 offset-2">
         <br />
         <div align="center">
-        <h2 style ="color:#a73e6b;font-size:200%">All Orders</h2>
+        <h2 style ="color:#a73e6b;font-size:200%">ORDER LIST</h2>
         </div>
         <br />
 
-        <table class="table table-hover">
+            <table id="customers" class="table table-hover">
             <thead>
                 <tr>
                     <th>Order Id</th>
@@ -49,5 +68,6 @@
         </table>
     </div>
 </div>
+</body>
 <br />
 <br />

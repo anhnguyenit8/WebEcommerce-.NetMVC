@@ -96,7 +96,15 @@
 
 </style>
 
-<body>    
+<body>
+    
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">HOME</a></li>
+            <li class="breadcrumb-item" aria-current="page">PRODUCT</li>
+        </ol>
+    </nav>
+
     <div class="btn1" align="center" id="title">
         <h2><b>> ALL PRODUCT LIST <</b></h2>
     </div>

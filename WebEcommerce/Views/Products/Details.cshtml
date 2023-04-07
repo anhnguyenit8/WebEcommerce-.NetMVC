@@ -37,6 +37,35 @@
         color: white;
     }
 
+    #snw {
+        border: 2px solid white;
+        color: white;
+        border-radius: 20px;
+        background-color: #99418e;
+    }
+
+        #snw:hover {
+            color: #a73f6d;
+            background-color: white;
+            box-shadow: 0px 0px 10px white;
+        }
+
+    #snw1 {
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #a73f6d;
+        width: 100%;
+        max-width: 300px;
+        color: #a73f6d;
+        border-radius: 20px;
+        background-color: white;
+    }
+
+        #snw1:hover {
+            box-shadow: 0px 0px 20px #a73f6d;
+            color: white;
+            background-color: #a73f6d;
+        }
     
 
 </style>
@@ -63,19 +92,194 @@
                <hr />
                <p class="border-text">Price : <b>@Model.Price.ToString("c")</b></p>
                <br />
-               <a class="btn" style="background-image: linear-gradient(to right,#b03d56,#a1407b); color: white; " asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                    <a class="btn" id="snw1" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
                                 <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART
                </a>
              </div>                
          </div>
     </div>
 </div>
-    
+
+    <div id="infm2" class="container">
+        <div class="btn1" align="center" id="title">
+            <h2><b>OTHER DEVICES</b></h2>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>  <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA ASUS RTX 2060 EVO 6GB</b></h></p>
+                            <p align="center"><h><b>UPC : DUAL-RTX2060-O6G-EVO</b></h></p>
+                            <p align="center"><h><b>$150.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga2.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h><b>VGA MSI RTX 3070 Ventus 3X 8G</b></h></p>
+                            <p align="center"><h><b>UPC : RTX3070-VENTUS-3X-8G</b></h></p>
+                            <p align="center"><h><b>$250.00 - </b><b style="text-decoration-line:line-through; color:darkgray;">$300.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            SHOP NOW
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row" align="center">
+            <a class="btn col" id="snw1" asp-controller="Products" asp-action="Index">
+                LOAD MORE
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
 
 
 
 
-
+@*
 <div class="container" id="ctn">
     <h3>Đánh giá chi tiết card màn hình ASUS Dual GeForce RTX 2060 OC edition EVO 6GB GDDR6</h3>
     <p style="font-size:100%">Là phiên bản nâng cấp từ phiên bản RTX 2060 OC Edition trước đó, ASUS Dual GeForce RTX 2060 OC edition EVO vẫn giữa được vẻ ngoài gaming trước đó. Khoác lên màu đen mạnh mẽ cùng các góc cạnh được hoàn thiện một cách bắt mắt, ASUS Dual GeForce RTX 2060 OC edition EVO sẽ làm nổi bật chiếc case nói riêng và góc gaming nói chung.
@@ -99,7 +303,7 @@
     </p>
         <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-04_cd53306688824fbdafb43cdd0f323d98.jpg" />
         <br />
-</div>
+</div>*@
 <section/>
 
 </body>

@@ -12,8 +12,8 @@ using WebEcommerce.Data;
 namespace WebEcommerce.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230326184039_testdbv3")]
-    partial class testdbv3
+    [Migration("20230401073300_test_v1")]
+    partial class test_v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
