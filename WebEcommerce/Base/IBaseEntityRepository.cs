@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using WebEcommerce.Models;
 
 namespace WebEcommerce.Base
 {
@@ -12,7 +13,8 @@ namespace WebEcommerce.Base
 
         Task<T> GetByIdAsync(int id);
         Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] include);
-
+/*        Task<List<Product>> FilterProductsByCategoryAsync(int categoryId);
+*/
 
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);

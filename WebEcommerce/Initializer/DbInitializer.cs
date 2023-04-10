@@ -26,48 +26,41 @@ namespace WebEcommerce.Initializer
                     {
                         new Category()
                         {
-                            Name = "MSI",
-                            Description = "MAIN/VGA"
+                            Name = "VGA",
+                            Description = "VGA"
                         },
                          new Category()
                         {
-                            Name = "ASUS",
-                            Description = "MAIN/VGA"
+                            Name = "MAIN",
+                            Description = "MAIN"
                         },
                           new Category()
                         {
-                            Name = "GIGABYTE",
-                            Description = "MAIN/VGA"
+                            Name = "SDD",
+                            Description = "SDD"
                         },
                             new Category()
                         {
-                            Name = "PYN",
-                            Description = "RAM/SDD"
+                            Name = "HDD",
+                            Description = "HDD"
                         },
                          new Category()
                         {
-                            Name = "KINGSTON",
-                            Description = "SDD"
-                        },new Category()
-                        {
-                            Name = "GSKILL",
+                            Name = "RAM",
                             Description = "RAM"
                         },new Category()
                         {
-                            Name = "CROSAIR",
-                            Description = "RAM"
-                        },new Category()
-                        {
-                            Name = "SEAGATE",
-                            Description = "HDD"
-                        },new Category()
-                        {
-                            Name = "INTEL",
+                            Name = "CPU",
                             Description = "CPU"
                         },new Category()
                         {
-                            Name = "ADM",
-                            Description = "CPU"
+                            Name = "COOLERFAN",
+                            Description = "COOLERFAN"
+                        }
+                        ,new Category()
+                        {
+                            Name = "PSU",
+                            Description = "Power"
                         }
                     };
                     context.Categories.AddRange(categories);
@@ -87,8 +80,8 @@ namespace WebEcommerce.Initializer
                             Description = "DUAL-RTX2060-O6G-EVO",
                             Price = 200,
                             ImageURL="https://product.hstatic.net/1000026716/product/01_2332cba6be5243a7b5fd9dca236be128.png",
-                            ProductType = ProductType.VGA,
-                            CategoryId=2
+                            ProductType = ProductType.ASUS,
+                            CategoryId=1
 
                         },
                         new Product()
@@ -97,7 +90,7 @@ namespace WebEcommerce.Initializer
                             Description = "RTX3070-VENTUS-3X-8G",
                             Price = 250,
                             ImageURL="https://product.hstatic.net/1000026716/product/1024_398ca947c100419a9b00c5150c6f7149.png",
-                            ProductType = ProductType.VGA,
+                            ProductType = ProductType.MSI,
                             CategoryId=1
 
                         },
@@ -107,8 +100,8 @@ namespace WebEcommerce.Initializer
                             Description = "GV-N166SOC-6GD",
                             Price = 350,
                             ImageURL="https://product.hstatic.net/1000026716/product/2019102908460796f7a47f882387bf8717e5e317abe67778_big_6f606712cb7942ba9b6db228e2a6c25f.png",
-                            ProductType = ProductType.VGA,
-                            CategoryId=3
+                            ProductType = ProductType.GIGABYTE,
+                            CategoryId=1
 
                         },
                         new Product()
@@ -117,8 +110,8 @@ namespace WebEcommerce.Initializer
                             Description = "VCG16504D6SFMPB",
                             Price = 350,
                             ImageURL="https://product.hstatic.net/1000026716/product/pny-geforce-gtx-1650-4gb-gddr6-single-fan_683096812008461a9fab2bec9ec96027.jpg",
-                            ProductType = ProductType.VGA,
-                            CategoryId=4
+                            ProductType = ProductType.PYN,
+                            CategoryId=1
 
                         },
 
@@ -130,8 +123,8 @@ namespace WebEcommerce.Initializer
                             Description = "F4-3000C16D-16GTZR",
                             Price = 25,
                             ImageURL="https://product.hstatic.net/1000026716/product/anyconv.com__trident_z_gearvn00_large_9ffcc7aed66c450ea6a128ea85aec02b.jpg",
-                            ProductType = ProductType.RAM,
-                            CategoryId=6
+                            ProductType = ProductType.GSKILL,
+                            CategoryId=5
 
                         },
                         new Product()
@@ -140,7 +133,7 @@ namespace WebEcommerce.Initializer
                             Description = "KF432C16BBA/8 - DDR4",
                             Price = 24,
                             ImageURL="https://product.hstatic.net/1000026716/product/1_f139537c52b1489fa88e42e57f99e895.jpg",
-                            ProductType = ProductType.RAM,
+                            ProductType = ProductType.KINGSTON,
                             CategoryId=5
 
                         },
@@ -150,7 +143,7 @@ namespace WebEcommerce.Initializer
                             Description = "KF556C40BBAK2",
                             Price = 210,
                             ImageURL="https://product.hstatic.net/1000026716/product/ktc-product-memory-beast-ddr5-rgb-kit-of-2-2-lg_4275f28ffd3a486ba26fa3604f3bb163.png",
-                            ProductType = ProductType.RAM,
+                            ProductType = ProductType.KINGSTON,
                             CategoryId=5
 
                         },
@@ -160,8 +153,8 @@ namespace WebEcommerce.Initializer
                             Description = "CMH32GX5M2B5600C36W",
                             Price = 150,
                             ImageURL="https://product.hstatic.net/1000026716/product/w1_f98b77de451b4c32b638c2328aaa355a.png",
-                            ProductType = ProductType.RAM,
-                            CategoryId=7
+                            ProductType = ProductType.CROSAIR,
+                            CategoryId=5
 
                         },
 

@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Product";
 }
-
+@{
+    var categoryId = 0; // Thay 0 bằng giá trị id của category
+}
 <style>
 
 
@@ -47,8 +49,7 @@
         
         
     }
-    #crt-prd:hover{
-    }
+   
        
 
     #cardProduct {
@@ -59,7 +60,9 @@
 
     #cardProduct:hover {
         
-        color: white;
+        /*color: white;*/
+        background-color:white;       
+        border-radius: 10px;
     }
     
     #btn1 {
@@ -128,10 +131,20 @@
     </div>
     
     <br />
+    <a asp-action="ProductsByCategory" asp-route-categoryId="1">VGA</a> 
+    <a asp-action="ProductsByCategory" asp-route-categoryId="2">MAIN</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="3">SDD</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="4">HDD</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="5">RAM</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="6">CPU</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="7">COOLERFAN</a>
+    <a asp-action="ProductsByCategory" asp-route-categoryId="8">SPU</a>
+    <br />
         
     <div class="row">
         @foreach (var item in Model)
-        {      
+        {
+            
             <div class="col-md-3">    
                 <div class="card">
                     @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -157,8 +170,8 @@
                         <p><h><b>@item.Name</b></h></p>
                         <hr />                   
                         <p>UPC : @item.Description</p>
-                        <p>Manufacturer : @item.Category.Name</p>
-                        <p>Type : <b>@item.ProductType</b></p>
+                        <p>Type : <b>@item.Category.Name</b></p>
+                        <p>Manufacturer : <b>@item.ProductType</b></p>
                         <p>Price : <b>@item.Price.ToString("c")</b></p>
                     </div>
                             <a class="btn" id="dtl" style="font-size:12px; padding-right:20px;" asp-action="Details" asp-route-id="@item.Id">
