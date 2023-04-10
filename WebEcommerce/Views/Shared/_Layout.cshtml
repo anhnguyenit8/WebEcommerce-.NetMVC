@@ -19,7 +19,6 @@
     #item-animation:active{
             font-weight: bold;
     }
-    
 
     
 
@@ -46,7 +45,7 @@
     <link rel="stylesheet" href="/js/jQuery/Chosen/chosen.css" />
 </head>
 <body style="border:none;">
-    <header id="headersticky">
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-4" id="layout")">
             <div class="container-fluid">
                 <a class="navbar-brand" id="logo" style="" asp-area="" asp-controller="Home" asp-action="Index">
@@ -98,7 +97,7 @@
                           
                     </ul>  
 
-                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                   @* @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <form class="form-inline" style="" asp-action="Index" asp-controller="Products">
                             <button type="submit" class="btn" style="color:white; font-size:25px;">
@@ -106,36 +105,17 @@
                             </button>
 
                             <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
-                            <datalist id="type">
-                                <option value="VGA">VGA</option>
-                                <option value="HDD">HDD</option>
-                                <option value="SDD">SDD</option>
-                                <option value="RAM">RAM</option>
-                                <option value="CPU">CPU</option>
-                                <option value="MAIN">MAIN</option>
-                            </datalist>
+                            
                         </form>
-                    }
-                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("User"))
-                    {
+                    }*@                    
                         <form class="form-inline" style="" asp-action="Index" asp-controller="Products">
                             <button type="submit" class="btn" style="color:white; font-size:25px;">
                                 <i class="fas fa-search"></i>
                             </button>
 
-                            <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">
-                            <datalist id="type">
-                                <option value="VGA">VGA</option>
-                                <option value="HDD">HDD</option>
-                                <option value="SDD">SDD</option>
-                                <option value="RAM">RAM</option>
-                                <option value="CPU">CPU</option>
-                                <option value="MAIN">MAIN</option>
-                            </datalist>
+                            <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">                            
                         </form>
-                    }
-
-                    
+                                      
 
                     <ul class="navbar-nav mr-2" >
                         @await Component.InvokeAsync("ShoppingCartSummary")
