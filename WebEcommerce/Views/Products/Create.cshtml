@@ -19,25 +19,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="Name" class="control-lable"></label>
+                <label asp-for="Name" class="control-lable">Name of Product</label>
                 <input asp-for="Name" class="form-control" autocomplete="off">
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Description" class="control-lable"></label>
+                <label asp-for="Description" class="control-lable">Product Description</label>
                 <textarea asp-for="Description" class="form-control" rows="2"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Price" class="control-lable"></label>
+                <label asp-for="Price" class="control-lable">Product Price (.00$)</label>
                 <input asp-for="Price" class="form-control" autocomplete="off">
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ImageURL" class="control-lable"></label>
+                <label asp-for="ImageURL" class="control-lable">URL Image</label>
                 <input asp-for="ImageURL" class="form-control" autocomplete="off">
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
@@ -47,15 +47,15 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ProductType" class="control-lable"></label>
+                <label asp-for="ProductType" class="control-lable">Manufacture</label>
                 <select asp-for="ProductType" asp-items="@Html.GetEnumSelectList<ProductType>()" class="form-control" autocomplete="off"></select>
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                Category Name
+                Category Type
                 <select asp-for="CategoryId" asp-items="@Category" class="form-control" ></select>
-                <span asp-validation-for="ProductType" class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
 
             <div class="form-group">

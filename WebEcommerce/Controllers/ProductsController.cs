@@ -11,6 +11,7 @@ using WebEcommerce.Data.Enums;
 using WebEcommerce.Data.Static;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
+using static Google.Apis.Requests.BatchRequest;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace WebEcommerce.Controllers
@@ -31,18 +32,25 @@ namespace WebEcommerce.Controllers
 
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index(string searchTerm)
+        public async Task<IActionResult> Index(int? categoryId, string searchTerm)
         {
-           
-            var Response = await _services.GetAllAsync(x=>x.Category);
-            if(!string.IsNullOrEmpty(searchTerm))
+
+            var Response = await _services.GetAllAsync(x => x.Category);
+            if (categoryId.HasValue)
+            {
+                Response = Response.Where(x => x.CategoryId == categoryId.Value);
+            }
+            if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                Response =  Response.Where(x=>x.Name.ToLower().Contains(searchTerm));
+                Response = Response.Where(x => x.Name.ToLower().Contains(searchTerm));
             }
-           return View(Response.ToList());
+            return View(Response.ToList());
         }
-                
+
+        //TEST
+
+
 
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
@@ -92,5 +100,16 @@ namespace WebEcommerce.Controllers
             await _services.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> ProductsByCategory(int categoryId)
+        {
+            var products = await _services.GetAllAsync(x => x.Category);
+            products = products.Where(x => x.CategoryId == categoryId);
+            return View("Index", products.ToList());
+        }
+
+
+
     }
 }

@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Product";
 }
-
+@{
+    var categoryId = 0; // Thay 0 bằng giá trị id của category
+}
 <style>
 
 
@@ -47,8 +49,7 @@
         
         
     }
-    #crt-prd:hover{
-    }
+   
        
 
     #cardProduct {
@@ -59,7 +60,9 @@
 
     #cardProduct:hover {
         
-        color: white;
+        /*color: white;*/
+        background-color:white;       
+        border-radius: 10px;
     }
     
     #btn1 {
@@ -93,6 +96,34 @@
         color: white;
     }
 
+    #ulid {
+        background-image: linear-gradient(to right,#94429b,#8d44ad);
+        border-radius: 10px;        
+        max-width:fit-content;
+        height: 0%;
+        list-style-type: none;
+        padding: 20px;
+    }
+    #lid a{
+        color:white;
+    }
+    #imglogo{
+        max-width:auto;
+        height:40px;
+        padding:5px;
+        border: 2px solid white;
+        border-radius:30px;
+    }
+    hr{
+        background-color:white;
+    }
+
+    #sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top :100px ;
+    }
+        
 
 </style>
 
@@ -109,29 +140,35 @@
         <h2><b>> ALL PRODUCT LIST <</b></h2>
     </div>
     
-    <div style="float:right;">
-         <div>            
-                <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">
-                    <p>
-                        Manufacture:                     
-                        <span>
-                            <input type="text" placeholder="Etc: MSI" name="searchTerm" list="type1" autocomplete="off">
-                                <datalist id="type1">
-                                    <option value="MSI">  MSI</option>
-                                    <option value="GIGABYTE">  GIGABYTE</option>
-                                    <option value="ASUS">  ASUS</option>
-                                    <option value="PYN">  PYN</option>
-                                </datalist>                             
-                        </span>
+    <div id="sticky" style="float:right;">
+        <div >
+            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">
+                    
+                    <ul id="ulid">
+                    <h style="color:white">PRODUCT FILLTER</h>
+                        <hr />
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">@*<img id="imglogo" src="~/Img/MAIN.png" />*@VGA</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="2">MAIN</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="3">SDD</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="4">HDD</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="5">RAM</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="6">CPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="8">SPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="9">CASE</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="7">COOLERFAN</a></li>
+                    </ul>                    
               </form>         
          </div>
     </div>
     
     <br />
+    
+    <br />
         
     <div class="row">
         @foreach (var item in Model)
-        {      
+        {
+            
             <div class="col-md-3">    
                 <div class="card">
                     @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -157,8 +194,8 @@
                         <p><h><b>@item.Name</b></h></p>
                         <hr />                   
                         <p>UPC : @item.Description</p>
-                        <p>Manufacturer : @item.Category.Name</p>
-                        <p>Type : <b>@item.ProductType</b></p>
+                        <p>Type : <b>@item.Category.Name</b></p>
+                        <p>Manufacturer : <b>@item.ProductType</b></p>
                         <p>Price : <b>@item.Price.ToString("c")</b></p>
                     </div>
                             <a class="btn" id="dtl" style="font-size:12px; padding-right:20px;" asp-action="Details" asp-route-id="@item.Id">
@@ -189,9 +226,6 @@
         </a>
     </div>
   }
-
-
-
 
 </body>
 
