@@ -61,12 +61,12 @@
                         <li class="nav-item" id="prd1">
                             <a class="nav-link" style="color:white;" id="item-animation" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
                         </li>                        
-                        <li class="nav-item"  id="prd1">                            
-                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">SHOP</a> 
-                        </li>
                         <li class="nav-item" id="prd1">                          
                             <a class="nav-link" style="color:white;" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
                         </li>
+                        <li class="nav-item"  id="prd1">                            
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">SHOP</a> 
+                        </li>                        
                         
                         @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                          {                        

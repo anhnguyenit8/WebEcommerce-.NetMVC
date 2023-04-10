@@ -44,7 +44,7 @@
      
     #crt-prd{
         border-radius:30px;
-        background-color: #be3930;
+        background-color: #8d44ad;
         color: white;
         
         
@@ -137,7 +137,7 @@
     </nav>
 
     <div class="btn1" align="center" id="title">
-        <h2><b>> ALL PRODUCT LIST <</b></h2>
+        <h2><b>> PRODUCT LIST <</b></h2>
     </div>
     
     <div id="sticky" style="float:right;">
@@ -146,8 +146,9 @@
                     
                     <ul id="ulid">
                     <h style="color:white">PRODUCT FILLTER</h>
-                        <hr />
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">@*<img id="imglogo" src="~/Img/MAIN.png" />*@VGA</a></li>
+                    <hr />
+                    <li id="lid"><a asp-action="Index" asp-controller="Products">ALL</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">VGA</a></li>
                     <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="2">MAIN</a></li>
                     <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="3">SDD</a></li>
                     <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="4">HDD</a></li>                    
@@ -222,7 +223,7 @@
     <div class="text-white" style="position:fixed;right:30px;bottom:70px;">
             <a asp-action="Create" asp-controller="Products" class="btn float-right" id="crt-prd">
             <i class="fas fa-regular fa-plus-square mr-2"></i>
-            Create
+            NEW PRODUCT
         </a>
     </div>
   }
