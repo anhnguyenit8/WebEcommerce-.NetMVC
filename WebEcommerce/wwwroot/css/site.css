@@ -60,7 +60,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    background-color: white;
+    background-color: #f8f8fc;
     margin-bottom: 60px;
     height: 100%;
     margin: 0;
@@ -184,6 +184,6 @@ img {
     background-color: black;
 }*/
 #foot {
-    background-image: linear-gradient(to right,#bf392e,#8d44ad);
-    
+    /*background-image: linear-gradient(to right,#bf392e,#8d44ad);*/
+    background-color: #e9edf2;
 }

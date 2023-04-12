@@ -36,6 +36,8 @@ namespace WebEcommerce.Controllers
             ViewBag.Total = _shoppingCart.GetShoppingCartTotal();
             return View(item);
         }
+
+        //Add item from ShoppingCart by id
         public async Task<IActionResult> AddToCart(int id)
         {
             var item =  await _services.GetByIdAsync(id);
@@ -45,6 +47,8 @@ namespace WebEcommerce.Controllers
             }
             return RedirectToAction(nameof(ShoppingCart));
         }
+
+        //Remove item from ShoppingCart by id
         public async Task<IActionResult> RemoveFromCart(int id)
         {
             var item = await _services.GetByIdAsync(id);
@@ -54,6 +58,8 @@ namespace WebEcommerce.Controllers
             }
             return RedirectToAction(nameof(ShoppingCart));
         }
+
+        // Complete Order with clean shopping cart
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();

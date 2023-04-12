@@ -32,7 +32,7 @@
             <table id="customers" class="table table-hover">
             <thead>
                 <tr>
-                    @*<th>Order Id</th>*@
+                    <th>Order Id</th>
                     <th>Items - Quantity - Price</th>
                     <th>Totals</th>
                     @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
@@ -45,7 +45,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        @*<td class="align-middle">@item.Id</td>*@
+                        <td class="align-middle">@item.Id</td>
                         <td class="align-middle">
                             <ul style="list-style-type:none; background-image:linear-gradient(to right,#bf392e,#8d44ad);" class="alert">
                                 @foreach (var subitem in item.OrderItems)

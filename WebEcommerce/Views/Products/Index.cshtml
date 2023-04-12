@@ -3,20 +3,19 @@
     ViewData["Title"] = "Product";
 }
 @{
-    var categoryId = 0; // Thay 0 bằng giá trị id của category
+    var categoryId = 0;
 }
 <style>
 
 
     #dtl {
-        transition: 0.3s;
-        
+        transition: 0.3s;        
         padding-left:10px;
     }
 
         #dtl:hover {
-            background-color: white;
-            color: #a1407b;
+            background-color: #a1407b;
+            color: white;
         }
 
     #atc {
@@ -25,8 +24,8 @@
     }
 
     #atc:hover {
-            background-color: white;
-            color: #a1407b;
+            background-color: #a1407b;
+            color: white;
     }
 
     #edt {
@@ -103,6 +102,7 @@
         height: 0%;
         list-style-type: none;
         padding: 20px;
+        
     }
     #lid a{
         color:white;
@@ -121,7 +121,14 @@
     #sticky {
         position: -webkit-sticky;
         position: sticky;
-        top :100px ;
+        top :170px ;
+    }
+
+    #img-prd{
+        transition: transform .2s;
+    }
+        #img-prd:hover{
+        transform: scale(1.1);
     }
         
 
@@ -142,8 +149,7 @@
     
     <div id="sticky" style="float:right;">
         <div >
-            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">
-                    
+            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">                    
                     <ul id="ulid">
                     <h style="color:white">PRODUCT FILLTER</h>
                     <hr />
@@ -162,14 +168,12 @@
          </div>
     </div>
     
-    <br />
-    
+
     <br />
         
     <div class="row">
         @foreach (var item in Model)
-        {
-            
+        {            
             <div class="col-md-3">    
                 <div class="card">
                     @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
