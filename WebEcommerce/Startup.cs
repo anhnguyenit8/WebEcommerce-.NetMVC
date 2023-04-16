@@ -81,10 +81,10 @@ namespace WebEcommerce
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            /*app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+            });*/
 
             app.UseRouting();
             app.UseSession();
