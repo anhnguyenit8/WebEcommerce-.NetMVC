@@ -99,7 +99,7 @@
             //Configure Enviroment
             env:'sandbox',
             client:{
-                sandbox: 'ASHQuoBUwBWxLSNO_JNmOTFmH9zjMRUI-uwyMSJGmnpY-XEs5ZVY7bODE6lxtkAVhTdZPeXg5B94kSTP'
+                sandbox: 'AXdmzQS861T0MDi_w28bOZszQRdbOwd1AY7sedetwyyzT86eunvgmmwe3XDXl1MxCzbltZNjg-KP2g08'
             },
             //Customize Button
             locale:'en_US',
@@ -117,12 +117,13 @@
                         amount:{
                             total:_total,
                             currency:'USD'
-                        }
+                        }                        
                     }]
                 });
             },
             //Excute The Payment
             onAuthorize:function(data,actions){
+                                
                 return actions.payment.get().then(function(){
                   var url = '@Url.Action("CompleteOrder", "Orders", new{} )';
                   window.location.href = url;

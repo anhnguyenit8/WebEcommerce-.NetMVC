@@ -80,12 +80,6 @@ namespace WebEcommerce
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            /*app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });*/
-
             app.UseRouting();
             app.UseSession();
             app.UseAuthentication();
@@ -93,6 +87,11 @@ namespace WebEcommerce
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "ExportToCsv",
+                    pattern: "Order/ExportToCsv",
+                    defaults: new { controller = "Order", action = "ExportToCsv" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
