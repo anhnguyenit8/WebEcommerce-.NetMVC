@@ -22,11 +22,15 @@
         </ol>
     </nav>
 
-  <div class="row">
-        <div class="col-md-12">
-            <a href="@Url.Action("ExportToCsv")" class="btn btn-success pull-right">Export to CSV</a>
+    @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("ExportToCsv")" class="btn btn-success pull-right float-right">Export All Orders to CSV</a>
+            </div>
         </div>
- </div>
+    }
+  
 
 <div class="row">
     <div class="col-md-8 offset-2">

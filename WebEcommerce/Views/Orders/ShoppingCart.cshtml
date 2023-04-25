@@ -22,6 +22,8 @@
         }
 </style>
 
+
+<body>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center">
@@ -34,7 +36,7 @@
                     <th>Product</th>
                     <th>Price</th>
                     <th>Subtotal</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,12 +49,12 @@
                         <td class="align-middle">@((item.Product.Price * item.Amount).ToString("c"))</td>
                         <td>
                             <a class="text-danger" asp-controller="Orders" asp-action="RemoveFromCart"
-                            asp-route-id="@item.Product.Id">
-                                <i class="fas fa-regular fa-minus"></i>
-                            </a>
+                            asp-route-id="@item.Product.Id">Remove
+                                @*<i class="fas fa-regular fa-minus"></i>*@
+                            </a> /
                             <a class="text-warning" asp-controller="Orders" asp-action="AddToCart"
-                            asp-route-id="@item.Product.Id">
-                                <i class="fas fa-regular fa-plus"></i>
+                            asp-route-id="@item.Product.Id">Add
+                                @*<i class="fas fa-regular fa-plus"></i>*@
                             </a>
                         </td>
                     </tr>
@@ -67,6 +69,7 @@
                 </tr>
             </tfoot>
         </table>
+
         <div class="text-center">
             <div class="btn btn-group row">
                 <div class="col">
@@ -82,12 +85,10 @@
         </div>
     </div>
 </div>
+</body>
+<hr />
+@*Submit Form*@
 
-@*EL6NYkN0-bbxwtgSskVlKo_OqI5tz6sta-gJXib5Kq2brwa-3GsokyXmEwy2-W809Gd5LHVz8vl0iQhc5*@
-@*AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx*@
-@*ECjkH2JDNRLYCSAN9lOBZZxLMuJtWfvU7nQDclIH1kd6eqq4zbyQdPGMS4YKeOshhY1OsdUv6STocOMm*@
-@*ENNxAN1WOKsLaGKLR_1uJztcGWIOu5KIR0fM0d41AdObipKH7LTSqYSFavZ4wJPA0-cpiPYm_S3iE-3P*@
-@*ASHQuoBUwBWxLSNO_JNmOTFmH9zjMRUI-uwyMSJGmnpY-XEs5ZVY7bODE6lxtkAVhTdZPeXg5B94kSTP*@
 
 
 @*Paypal Sandbox API*@
