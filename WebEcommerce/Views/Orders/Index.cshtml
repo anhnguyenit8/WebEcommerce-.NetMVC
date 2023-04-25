@@ -21,6 +21,17 @@
             <li class="breadcrumb-item" aria-current="page">ORDER</li>
         </ol>
     </nav>
+
+    @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("ExportToCsv")" class="btn btn-success pull-right float-right">Export All Orders to CSV</a>
+            </div>
+        </div>
+    }
+  
+
 <div class="row">
     <div class="col-md-8 offset-2">
         <br />

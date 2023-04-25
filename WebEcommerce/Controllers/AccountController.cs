@@ -105,5 +105,37 @@ namespace WebEcommerce.Controllers
             return View();
         }
 
+        // Không thể xóa tài khoản vì gây xung đột FK dữ liệu của bảng Order
+        /*[HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                TempData["Error"] = "User not found!";
+                return RedirectToAction("Users");
+            }
+
+            if (await _userManager.IsInRoleAsync(user, UserRoles.Admin))
+            {
+                TempData["Error"] = "Can't delete admin account!";
+                return RedirectToAction("Users");
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                TempData["Success"] = "User deleted successfully!";
+            }
+            else
+            {
+                TempData["Error"] = "Failed to delete user!";
+            }
+
+            return RedirectToAction("Users");
+        }*/
+
+
     }
 }

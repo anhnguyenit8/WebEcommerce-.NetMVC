@@ -4,7 +4,6 @@
 }
 
 
-
 <!DOCTYPE html>
 <html>
     <head>        
@@ -87,7 +86,7 @@
             max-width:300px;
             color: #a73f6d;
             border-radius: 20px;
-            background-color:white;
+            background-color: #f8f8fc;
         }
         #snw1:hover{
                 box-shadow: 0px 0px 20px #a73f6d;
@@ -171,11 +170,9 @@
         color: white;
     }
         #btn1:hover{
-            box-shadow: 0px 0px 10px #a73e6b;
-        
+            box-shadow: 0px 0px 10px #a73e6b;        
         }
-
-        
+               
        
     </style>
     </head>
@@ -186,7 +183,12 @@
         <img class="mySlides w3-animate-right" src="~/Img/gaming71.jpg" style="width:100%">
         <img class="mySlides w3-animate-right" src="~/Img/gaming81.jpg"style="width:100%">
     </div>
+
+
+
     
+
+
 
     <div id="infm" class="container" align="center">
         <div class="row">            
@@ -1150,11 +1152,10 @@
     </div>
     
     <hr id="hr1"/>
-     
 
 </body>
 </html>
-
+@*Background*@
 <script>
     var myIndex = 0;
     carousel();
@@ -1171,3 +1172,24 @@
         setTimeout(carousel, 3000); // Change image every 3 seconds
     }
 </script>
+
+@*Facebook Mesenger Setup*@
+<!-- Nhúng SDK của Facebook để triển khai plugin chat -->
+@*<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1934188326934637',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v10.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>*@

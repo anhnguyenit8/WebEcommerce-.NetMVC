@@ -16,6 +16,8 @@ namespace WebEcommerce.Models
         public double Price { get; set; }
         public string ImageURL { get; set; }
         public ProductType ProductType { get; set; }
+        public string Specifications { get; set; }
+        public string Introduce { get; set; }
 
         //Navigational Property
         public int CategoryId { get; set; }

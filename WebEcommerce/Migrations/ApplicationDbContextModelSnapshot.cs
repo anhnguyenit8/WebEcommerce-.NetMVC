@@ -308,6 +308,9 @@ namespace WebEcommerce.Migrations
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Introduce")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -316,6 +319,9 @@ namespace WebEcommerce.Migrations
 
                     b.Property<int>("ProductType")
                         .HasColumnType("int");
+
+                    b.Property<string>("Specifications")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

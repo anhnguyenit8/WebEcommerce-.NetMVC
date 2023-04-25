@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Globalization;
+using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using WebEcommerce.Data;
 using WebEcommerce.Data.Cart;
 using WebEcommerce.Services;
 
@@ -14,9 +19,11 @@ namespace WebEcommerce.Controllers
         private readonly IProductServices _services;
         private readonly ShoppingCart _shoppingCart;
         private readonly IOrderServices _orderServices;
+        private readonly ApplicationDbContext _context;
 
-        public OrdersController(IProductServices services,ShoppingCart shoppingCart, IOrderServices orderServices)
+        public OrdersController(IProductServices services,ShoppingCart shoppingCart, IOrderServices orderServices, ApplicationDbContext context)
         {
+            _context = context;
             _services = services;
             _shoppingCart = shoppingCart;
             _orderServices = orderServices;
@@ -68,5 +75,29 @@ namespace WebEcommerce.Controllers
             _shoppingCart.ClearShoppingCart();
             return View("CompleteOrder");
         }
+
+        //Download CSV FIle by Order
+        public async Task<IActionResult> ExportToCsv()
+        {
+            var orders = await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .Include(o => o.User)
+                .ToListAsync();
+
+            var csvBuilder = new StringBuilder();
+            csvBuilder.AppendLine("Order Id, User Name, Items - Quantity - Price, Totals");
+
+            foreach (var order in orders)
+            {
+                var items = string.Join(", ", order.OrderItems.Select(oi => $"{oi.Product.Name} - {oi.Amount} - {oi.Price:C}"));
+                var totals = order.OrderItems.Select(oi => oi.Amount * oi.Price).Sum().ToString("C",CultureInfo.CurrentCulture);
+                csvBuilder.AppendLine($"{order.Id}, {order.User.FullName}, \"{items}\", {totals}");
+            }
+
+            return File(Encoding.UTF8.GetBytes(csvBuilder.ToString()), "text/csv", "orders.csv");
+        }
+
+
     }
 }
