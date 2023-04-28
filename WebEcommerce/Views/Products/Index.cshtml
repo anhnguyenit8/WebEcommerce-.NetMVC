@@ -1,87 +1,269 @@
 ﻿@model IEnumerable<Product>
 @{
-    ViewData["Title"] = "Listing Product";
+    ViewData["Title"] = "Product";
+}
+@{
+    var categoryId = 0;
 }
 
-<div class = "row">
-    @foreach (var item in Model)
-    {
-
-        <div class="col-md-3">    
-            <div class="card">
-                @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <span class="alert alert-info">
-                        <a class="btn btn-outline-info btn-sm float-left" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
-                            Edit
-                        </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">
-                            <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm float-right" onclick="return confirm('Delete This Product ?')" />
-                </a>
-                    </span>
-                }
-                <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="@item.ImageURL" alt="@item.Name" style="width:100%; height:300px;">
-                </a>
-                <h><b>@item.Name</b></h>
-                <p>@item.Price.ToString("c")</p>
-                <p>@item.Description</p>
-                <p><b>@item.ProductType</b></p>
-                <p>@item.Category.Name</p>
-                <a class="btn btn-warning" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add to Cart</a>
-            </div>
-        </div>
-    }
-</div>
-
-@if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-  {
-    <div class="text-white" style="position:fixed;right:30px;bottom:50px;">
-        <a asp-action="Create" asp-controller="Products" class="btn btn-outline-success float-right">
-            <i class="fas fa-regular fa-plus-square mr-2"></i>
-            Create
-        </a>
-    </div>
-  }
-
-
 <style>
-    .card{
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+
+    #dtl {
+        transition: 0.3s;        
+        padding-left:10px;
+    }
+
+        #dtl:hover {
+            background-color: #a1407b;
+            color: white;
+        }
+
+    #atc {
+        
+        transition: transform .2s;
+        background-color: #a1407b;
+        color: white;
+        
+    }
+
+    #atc:hover {
+            background-color: #7e3060;
+            color: white;
+            transform: scale(1.1);
+    }
+
+    #edt {
+        border: 1px solid limegreen;
+        color: limegreen;
+        
+    }
+
+
+    #del {
+        border: 1px solid red;
+        color: red;
+        
+    }
+     
+    #crt-prd{
+        border-radius:30px;
+        background-color: #8d44ad;
+        color: white;
+        
+        
+    }
+   
+       
+
+    #cardProduct {
+        transition: 0.2s;     
+        padding: 10px;
+        color:dimgray;
+    }
+
+    #cardProduct:hover {
+        
+        /*color: white;*/
+        background-color:white;       
+        border-radius: 10px;
+    }
+    
+    #btn1 {
+        /*border-radius: 40px;*/        
         transition: 0.3s;
-        max-width: 300px;
-        margin: auto;
-        margin-bottom: 25px;
-        text-align: center;
-        font-family: 'Franklin Gothic Medium';
-    }
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        
     }
 
-    .price{
-        color: grey;
-        font-size: 22px;
+    
+
+    #btn1:hover {
+        
+        color: white;
+        background-color: #bf392e;
     }
 
-    .card button{
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: black;
-        background-color: white;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-family:'Franklin Gothic Medium';
-        font-size: 15px;
+    #mnf{        
+        border-radius: 10px;        
+        width: auto;
+        height: 30px;
+        
+    }
+    p span {
+        white-space: nowrap;
     }
 
-    .card button:hover{
-        opacity: 0.7;
+    #title {
+        font-size: 40px;
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+        border-radius: 30px;
+        color: white;
+    }
+
+    #ulid {
+        background-color: #be3a32;
+        border-radius: 10px;        
+        max-width:fit-content;
+        height: 0%;
+        list-style-type: none;
+        padding: 20px;
+        
+    }
+    #lid a{
+        color:white;
+    }
+    #imglogo{
+        max-width:auto;
+        height:40px;
+        padding:5px;
+        border: 2px solid white;
+        border-radius:30px;
+    }
+    hr{
+        background-color:white;
+    }
+
+    #sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top :170px ;
+    }
+
+    #img-prd{
+        transition: transform .2s;
+    }
+        #img-prd:hover{
+        transform: scale(1.1);
+    }
+    #img2{
+        max-width:auto;
+        height:350px;        
+    }
+    #box1{
+        border: 2px solid black;
     }
 
 </style>
 
+<body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js" defer></script>
+    <script type="text/javascript"
+            src="jquery.min.js" defer></script>
+    <script type="text/javascript"
+            src="jquery.rateyo.min.js" defer></script>
+    <script defer>
+        $("#rateYo").rateYo({
+            rating: 1.5,
+            spacing: "10px",
+            numStars: 5,
+            minValue: 0,
+            maxValue: 5,
+            normalFill: 'black',
+            ratedFill: 'orange',
+
+        })
+    </script>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="jquery.rateyo.min.css">
+
+    <div style="padding-bottom:10px;">
+        <img id="img2" src="~/Img/wall.jpg" />
+    </div>
+
+    <div class="btn1" align="center" id="title">
+        <h2>Product List</h2>
+    </div>
+    
+    <div style="float:left;">
+        <div >
+            <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">                    
+                    <ul id="ulid">
+                    <h style="color:white"><b>Product Fillter</b></h>
+                    
+                    <li id="lid"><a asp-action="Index" asp-controller="Products">> All Product</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">> Vga</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="2">> Main Board</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="3">> Sdd</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="4">> Hdd</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="5">> Ram</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="6">> CPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="8">> SPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="9">> Case</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="7">> Coolerfan</a></li>
+                    </ul>                    
+              </form>         
+         </div>
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var item in Model)
+        {            
+            <div class="col-md-3">    
+                <div class="card">
+                    @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <span class="alert" style="border-radius:20px;">
+                            <a class="btn btn-sm float-left" id="edt" asp-action="Edit" asp-controller="Products" asp-route-id="@item.Id">
+                                Edit
+                            </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                                <input type="submit" value="Delete" class="btn btn-sm float-right" id="del" onclick="return confirm('Delete This Product ?')" />
+                    </a>
+                        </span>
+                    }
+                        <div id="cardProduct">
+                            <div id="img-prd">
+                            <a asp-action="Details" asp-route-id="@item.Id">
+                                <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                            </div>                            
+                
+                            <div  class="text-sm-left"  id="inf">
+                                <p style="font-size:100%"><b>@item.Name</b></p>                         
+                                <p style="font-size:150%;color:#b0164c"> @item.Price.ToString("c")</p>                                         
+                                <p style="font-size:80%">UPC : <b>@item.Description</b></p>
+                                <p style="font-size:80%">Type : <b>@item.Category.Name</b></p>
+                                <p style="font-size:80%">Brand : <b>@item.ProductType</b></p>                           
+                            </div>
+                            <div style="width: 600px; margin: 30px auto">
+                            <div id="rateYo"></div>
+                                </div>
+                       
+                                    <a class="btn" id="atc" style="font-size:12px" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                                    <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
+                        </div>
+                    </div>
+            </div>        
+        }
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+@if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+  {
+    <div class="text-white" style="position:fixed;right:30px;bottom:70px;">
+            <a asp-action="Create" asp-controller="Products" class="btn float-right" id="crt-prd">
+            <i class="fas fa-regular fa-plus-square mr-2"></i>
+            Adding New Product
+        </a>
+    </div>
+  }
+
+</body>
+
+@*Filter Product*@
+@section Scripts{
+    <script type="text/javascript">
+
+        $(function(){
+            $("#productType").chosen();
+        });     </script>
+}

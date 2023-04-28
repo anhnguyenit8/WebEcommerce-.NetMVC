@@ -7,6 +7,6 @@ namespace WebEcommerce.Services
 {
     public interface ICategoryServices : IBaseEntityRepository<Category>
     {
- 
+        
     }
 }

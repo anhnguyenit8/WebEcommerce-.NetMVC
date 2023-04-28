@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,10 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using WebEcommerce.Controllers.Cart;
 using WebEcommerce.Data;
-using WebEcommerce.Data.Cart;
 using WebEcommerce.Initializer;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
@@ -36,21 +38,31 @@ namespace WebEcommerce
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddControllersWithViews();
+            
             services.AddScoped<ICategoryServices, CategoryServices>();
             services.AddScoped<IProductServices, ProductServices>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(x => ShoppingCart.GetShoppingCart(x));
-            services.AddSession();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();            
+            
             services.AddScoped<IOrderServices, OrderServices>();
             //Identity
             services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddMemoryCache();
+            services.AddSession();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
-            services.AddAuthorization();
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+
+            services.AddControllersWithViews();
+            /*services.AddAuthorization();*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +80,6 @@ namespace WebEcommerce
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseSession();
             app.UseAuthentication();
@@ -77,8 +88,13 @@ namespace WebEcommerce
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "ExportToCsv",
+                    pattern: "Order/ExportToCsv",
+                    defaults: new { controller = "Order", action = "ExportToCsv" });
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Products}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             DbInitializer.Seed(app);

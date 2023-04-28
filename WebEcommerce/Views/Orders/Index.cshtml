@@ -2,15 +2,49 @@
 @{
     ViewData["Title"] = "Listing All Orders";
 }
+<style>
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #a73e6b;
+        color: white;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<body>
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">HOME</a></li>
+            <li class="breadcrumb-item" aria-current="page">MENU</li>
+            <li class="breadcrumb-item" aria-current="page">ORDER</li>
+        </ol>
+    </nav>
+
+    @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("ExportToCsv")" class="btn btn-success pull-right float-right">Export All Orders to CSV</a>
+            </div>
+        </div>
+    }
+  
+
 <div class="row">
     <div class="col-md-8 offset-2">
-        <h2>All Orders</h2>
-        <hr />
-        <table class="table table-hover">
+        <br />
+        <div align="center">
+        <h2 style ="color:#a73e6b;font-size:200%">ORDER LIST</h2>
+        </div>
+        <br />
+
+            <table id="customers" class="table table-hover">
             <thead>
                 <tr>
                     <th>Order Id</th>
-                    <th>Items</th>
+                    <th>Items - Quantity - Price</th>
                     <th>Totals</th>
                     @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
                     {
@@ -24,19 +58,20 @@
                     <tr>
                         <td class="align-middle">@item.Id</td>
                         <td class="align-middle">
-                            <ul style="list-style-type:none" class="alert alert-warning">
+                            <ul style="list-style-type:none; background-image:linear-gradient(to right,#bf392e,#8d44ad);" class="alert">
                                 @foreach (var subitem in item.OrderItems)
                                 {
-                                    <li>@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
+                                    <li style="color:white">@subitem.Product.Name - <b class="badge badge-success rounded-circle"> @subitem.Amount </b> - @subitem.Price.ToString("c")</li>
                                 }
                             </ul>
                         </td>
+                        
                         <td class="align-middle">
                             @item.OrderItems.Select(x=>x.Price * x.Amount).Sum().ToString("c")
                         </td>
                         @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
                         {
-                            <td> @item.User.FullName </td>
+                            <td class="align-middle"> @item.User.FullName </td>
                         }
                     </tr>
                 }
@@ -44,3 +79,6 @@
         </table>
     </div>
 </div>
+</body>
+<br />
+<br />

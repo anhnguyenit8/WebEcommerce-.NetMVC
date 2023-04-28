@@ -9,7 +9,6 @@ namespace WebEcommerce.Services
 {
     public class CategoryServices : BaseEntityRepository<Category>,ICategoryServices
     {
-
            public CategoryServices(ApplicationDbContext context):base(context)
         {
         }

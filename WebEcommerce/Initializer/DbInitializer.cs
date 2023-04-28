@@ -26,29 +26,42 @@ namespace WebEcommerce.Initializer
                     {
                         new Category()
                         {
-                            Name = "C1",
-                            Description = "C1"
+                            Name = "VGA",
+                            Description = "VGA"
                         },
                          new Category()
                         {
-                            Name = "C2",
-                            Description = "C2"
+                            Name = "MAIN",
+                            Description = "MAIN"
                         },
                           new Category()
                         {
-                            Name = "C3",
-                            Description = "C3"
+                            Name = "SDD",
+                            Description = "SDD"
                         },
                             new Category()
                         {
-                            Name = "C4",
-                            Description = "C4"
+                            Name = "HDD",
+                            Description = "HDD"
                         },
-                              new Category()
+                         new Category()
                         {
-                            Name = "C5",
-                            Description = "C5"
-                        },
+                            Name = "RAM",
+                            Description = "RAM"
+                        },new Category()
+                        {
+                            Name = "CPU",
+                            Description = "CPU"
+                        },new Category()
+                        {
+                            Name = "COOLERFAN",
+                            Description = "COOLERFAN"
+                        }
+                        ,new Category()
+                        {
+                            Name = "PSU",
+                            Description = "Power"
+                        }
                     };
                     context.Categories.AddRange(categories);
                     context.SaveChanges();
@@ -60,42 +73,91 @@ namespace WebEcommerce.Initializer
                 {
                     var Products = new List<Product>()
                     {
+                        //VGA
                         new Product()
                         {
-                            Name = "P1",
-                            Description = "D1",
-                            Price= 200,
-                            ImageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSleSktbNDRE9njorB2zT3TnYPPI3qjYVl8uw&usqp=CAU",
-                            ProductType = ProductType.VGA,CategoryId=1
+                            Name = "VGA ASUS RTX 2060 EVO 6GB",
+                            Description = "DUAL-RTX2060-O6G-EVO",
+                            Price = 200,
+                            ImageURL="https://product.hstatic.net/1000026716/product/01_2332cba6be5243a7b5fd9dca236be128.png",
+                            ProductType = ProductType.ASUS,
+                            CategoryId=1
 
                         },
                         new Product()
                         {
-                            Name = "P2",
-                            Description = "D2",
-                            Price= 250,
-                            ImageURL="https://antien.vn/uploads/product/dong-ho-thong-minh-fitbit-versa-2-chinh-hang_1604387316.jpg",
-                            ProductType = ProductType.SDD,CategoryId=2
+                            Name = "VGA MSI RTX 3070 Ventus Plus 3X 8G",
+                            Description = "RTX3070-VENTUS-3X-8G",
+                            Price = 250,
+                            ImageURL="https://product.hstatic.net/1000026716/product/1024_398ca947c100419a9b00c5150c6f7149.png",
+                            ProductType = ProductType.MSI,
+                            CategoryId=1
 
                         },
                         new Product()
                         {
-                            Name = "P3",
-                            Description = "D3",
-                            Price= 300,
-                            ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
-                            ProductType = ProductType.HDD,CategoryId=3
+                            Name = "VGA Gigabyte GTX 1660 SP 6GB",
+                            Description = "GV-N166SOC-6GD",
+                            Price = 350,
+                            ImageURL="https://product.hstatic.net/1000026716/product/2019102908460796f7a47f882387bf8717e5e317abe67778_big_6f606712cb7942ba9b6db228e2a6c25f.png",
+                            ProductType = ProductType.GIGABYTE,
+                            CategoryId=1
 
                         },
                         new Product()
                         {
-                            Name = "P4",
-                            Description = "D4",
-                            Price= 350,
-                            ImageURL="https://thegioigiaythethao.vn/images/Upload/images/dong-ho-puma/01-dong-ho-deo-tay-nu-puma-reset-v2/dong-ho-deo-tay-nu-puma-reset-v2-(1).jpg",
-                            ProductType = ProductType.RAM,CategoryId=4
+                            Name = "VGA PNY GTX 1650 4GB",
+                            Description = "VCG16504D6SFMPB",
+                            Price = 350,
+                            ImageURL="https://product.hstatic.net/1000026716/product/pny-geforce-gtx-1650-4gb-gddr6-single-fan_683096812008461a9fab2bec9ec96027.jpg",
+                            ProductType = ProductType.PYN,
+                            CategoryId=1
 
-                        }
+                        },
+
+                        //RAM
+
+                        new Product()
+                        {
+                            Name = "Ram G.Skill 8GB RGB 3000",
+                            Description = "F4-3000C16D-16GTZR",
+                            Price = 25,
+                            ImageURL="https://product.hstatic.net/1000026716/product/anyconv.com__trident_z_gearvn00_large_9ffcc7aed66c450ea6a128ea85aec02b.jpg",
+                            ProductType = ProductType.GSKILL,
+                            CategoryId=5
+
+                        },
+                        new Product()
+                        {
+                            Name = "RAM Kingston FB 8GB 3200 RBG",
+                            Description = "KF432C16BBA/8 - DDR4",
+                            Price = 24,
+                            ImageURL="https://product.hstatic.net/1000026716/product/1_f139537c52b1489fa88e42e57f99e895.jpg",
+                            ProductType = ProductType.KINGSTON,
+                            CategoryId=5
+
+                        },
+                        new Product()
+                        {
+                            Name = "RAM Kingston FB 64GB 5600 RBG",
+                            Description = "KF556C40BBAK2",
+                            Price = 210,
+                            ImageURL="https://product.hstatic.net/1000026716/product/ktc-product-memory-beast-ddr5-rgb-kit-of-2-2-lg_4275f28ffd3a486ba26fa3604f3bb163.png",
+                            ProductType = ProductType.KINGSTON,
+                            CategoryId=5
+
+                        },
+                        new Product()
+                        {
+                            Name = "Ram Corsair VG 32GB 5600 RGB",
+                            Description = "CMH32GX5M2B5600C36W",
+                            Price = 150,
+                            ImageURL="https://product.hstatic.net/1000026716/product/w1_f98b77de451b4c32b638c2328aaa355a.png",
+                            ProductType = ProductType.CROSAIR,
+                            CategoryId=5
+
+                        },
+
                     };
                     context.Products.AddRange(Products);
                     context.SaveChanges();
@@ -153,7 +215,7 @@ namespace WebEcommerce.Initializer
                         };
                         await userManager.CreateAsync(newOriginalUser, "@User123");
                         await userManager.AddToRoleAsync(newOriginalUser, UserRoles.User);
-                    }
+                    }                    
                 }
 
                 #endregion

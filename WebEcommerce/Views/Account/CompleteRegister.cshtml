@@ -1,13 +1,75 @@
 ﻿@{
     ViewData["Title"] = "Register Complete";
 }
-<div class="row">
+
+
+<style>
+    #back {
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+    }
+
+    #box {
+        height: fit-content;
+        width: 50%;
+        padding-bottom: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 5px #bf392e;
+    }
+
+    #lgn {
+        height: 50px;
+        width: 350px;
+        padding-bottom: 20px;
+        background-color: white;
+        border-radius: unset;
+        border: 2px solid #a73e6b;
+        color: #a73e6b;
+        transition: 0.3s;
+    }
+
+        #lgn:hover {
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border: none;
+            color: white;
+        }
+
+
+</style>
+
+<body id="back" style="border:none;">    
+    <div class="row">
+        <div class="col" align="center">
+            <div class="box" id="box">
+                <img align="center" src="~/Img/iconna.png" style="width:auto; height:100px;padding-top:20px;" />
+                <h1 style="padding-top:10px;padding-bottom:20px;color:#a73e6b;font-size:200%">
+                    Register Complete Successfully !
+                </h1>
+                <p1>Your Account has been created, please go back to login screen.</p1>
+                <br />                
+                <a class="btn" id="lgn" asp-controller="Account" asp-action="login">Back To Login</a>
+                
+            </div>
+
+        </div>
+    </div>
+</body>
+
+@*<div class="row">
     <div class="col-md-6 offset-3 alert alert-success text-center">
         <h3>Register Complete Successfully !</h3>
         <hr />
-        <a asp-action="Login" asp-controller="Account" class="btn btn-outline-info">
+        <a asp-action="Login" asp-controller="Account" class="btn btn-outline-warning">
             Back To Login
             <i class="fas fa-regular fa-refresh"></i>
         </a>
     </div>
 </div>
+*@
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

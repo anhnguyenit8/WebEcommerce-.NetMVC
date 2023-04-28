@@ -1,41 +1,58 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using WebEcommerce.Data;
+using WebEcommerce.Data.Enums;
 using WebEcommerce.Data.Static;
 using WebEcommerce.Models;
 using WebEcommerce.Services;
+using static Google.Apis.Requests.BatchRequest;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace WebEcommerce.Controllers
 {
     [Authorize(Roles = UserRoles.Admin)]
     public class ProductsController : Controller
     {
-
+        
         private readonly IProductServices _services;
         private readonly ICategoryServices _categoryServices;
 
         public ProductsController(IProductServices services, ICategoryServices categoryServices)
         {
+            
             _services = services;
             _categoryServices = categoryServices;
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Index(string searchTerm)
-        {
-            var Response =await _services.GetAllAsync(x=>x.Category);
-            if(!string.IsNullOrEmpty(searchTerm))
-            {
-                Response =  Response.Where(x=>x.Name.Contains(searchTerm)).ToList();
-            }
 
-            return View(Response);
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(int? categoryId, string searchTerm)
+        {
+
+            var Response = await _services.GetAllAsync(x => x.Category);
+            if (categoryId.HasValue)
+            {
+                Response = Response.Where(x => x.CategoryId == categoryId.Value);
+            }
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                Response = Response.Where(x => x.Name.ToLower().Contains(searchTerm));
+            }
+            return View(Response.ToList());
         }
 
+        //TEST
+
+
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var Product = await _services.GetByIdAsync(id, x => x.Category);
@@ -83,5 +100,16 @@ namespace WebEcommerce.Controllers
             await _services.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> ProductsByCategory(int categoryId)
+        {
+            var products = await _services.GetAllAsync(x => x.Category);
+            products = products.Where(x => x.CategoryId == categoryId);
+            return View("Index", products.ToList());
+        }
+
+
+
     }
 }

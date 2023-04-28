@@ -5,13 +5,13 @@
     var Category = new SelectList(ViewBag.CategoryId, "Id", "Name");
 }
 
+<body>
 
 <div class="row">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h2 class="text-center">New Product</h2>
-        </p>
-
+    <div class="col-md-8 offset-2">            
+            <div align="center">
+                <h2 style="color:#a73e6b;font-size:200%">NEW PRODUCT</h2>
+            </div>            
     </div>
 
     <div class="col-md-8 offset-2">
@@ -19,25 +19,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="Name" class="control-lable"></label>
+                <label asp-for="Name" class="control-lable">Name of Product</label>
                 <input asp-for="Name" class="form-control" autocomplete="off">
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Description" class="control-lable"></label>
+                <label asp-for="Description" class="control-lable">Model Number</label>
                 <textarea asp-for="Description" class="form-control" rows="2"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Price" class="control-lable"></label>
+                <label asp-for="Price" class="control-lable">Product Price (.00$)</label>
                 <input asp-for="Price" class="form-control" autocomplete="off">
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ImageURL" class="control-lable"></label>
+                <label asp-for="ImageURL" class="control-lable">URL Image</label>
                 <input asp-for="ImageURL" class="form-control" autocomplete="off">
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
@@ -47,15 +47,30 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ProductType" class="control-lable"></label>
+                <label asp-for="ProductType" class="control-lable">Brand</label>
                 <select asp-for="ProductType" asp-items="@Html.GetEnumSelectList<ProductType>()" class="form-control" autocomplete="off"></select>
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                Category Name
+                <label class="control-lable">Type</label>
                 <select asp-for="CategoryId" asp-items="@Category" class="form-control" ></select>
-                <span asp-validation-for="ProductType" class="text-danger"></span>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="WarrantlyPeirod" class="control-lable">Warrantly Peirod</label>
+                    <textarea asp-for="WarrantlyPeirod" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="WarrantlyPeirod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Weight" class="control-lable">Weight/Size</label>
+                    <textarea asp-for="Weight" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Introduce" class="control-lable">Introduce</label>
+                <textarea asp-for="Introduce" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Introduce" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -65,6 +80,9 @@
         </form>
     </div>
 </div>
+<br />
+    <br />
+</body>
 
 @section Scripts{
     @{

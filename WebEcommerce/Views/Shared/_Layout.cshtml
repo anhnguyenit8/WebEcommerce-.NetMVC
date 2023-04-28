@@ -1,21 +1,56 @@
 ﻿<!DOCTYPE html>
+
+<style>
+    #layout{
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+    }
+
+    #srcbx{
+        
+        border-radius: 30px;
+        border: 1px solid white;
+        height:40px;
+        width:250px;
+        padding:20px;
+    }
+    #item-animation{
+        
+    }
+    #item-animation:active{
+            font-weight: bold;
+    }
+
+    
+
+          
+
+
+</style>
+
+
 <html lang="en">
+<link rel="apple-touch-icon" sizes="180x180" href="~/Img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Img/favicon-16x16.png">
+<link rel="manifest" href="~/Img/site.webmanifest">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebEcommerce</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="/js/jQuery/Chosen/chosen.css" />
 </head>
-<body>
+<body style="border:none;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index">
-                    <img src="~/Img/Nagear yellow.png" height="67px" width="220px" />
-                    @*<i class="fas fa-duotone fa-cart-arrow-down"></i>
-                    WebEcommerce*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-4" id="layout")">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="logo" style="" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Img/Nagear VUONG.png" height="55px" width="auto" />
+                    
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -23,41 +58,56 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                                        
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item" id="prd1">
+                            <a class="nav-link" style="color:white;" id="item-animation" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>                        
+                        <li class="nav-item" id="prd1">                          
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
+                        </li>
+                        <li class="nav-item"  id="prd1">                            
+                            <a class="nav-link" style="color:white;" asp-area="" asp-controller="Products" asp-action="Index">SHOP</a> 
+                        </li>                        
+                        
                         @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index"><b>Category</b></a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index"><b>Product</b></a>
-                        </li>
+                         {                        
+                            <li class="nav-item dropdown dropdown-hover">
+                                    <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-gear" style="color:white;"></i> MENU
+                                </a>
+                                    <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">                                
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">CATEGORY</a>                                
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Users">USER</a>
+                                </div>
+                            </li>   
                         }
-                        <li class="nav-item dropdown dropdown-hover">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Menu
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">VGA</a>
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">RAM</a>
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">CPU</a>
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">Mainboard</a>                                
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">SSD/HDD</a>                                
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">Coller/Fan</a>
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">Case</a>
-                                <a class="dropdown-item" asp-controller="" asp-action="Index">PSU</a>
 
-                            </div>
-                        </li>
+                        @if (Context.User.Identity.IsAuthenticated && User.IsInRole("User"))
+                         {                        
+                            <li class="nav-item dropdown dropdown-hover">
+                                    <a class="nav-link dropdown-toggle text-white" style="font-size:15px;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-gear" style="color:white;"></i> MENU
+                                </a>
+                                    <div class="dropdown-menu" style="font-size:15px;" aria-labelledby="navbarDropdown">                                                               
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ORDER</a>
+                                
+                                </div>
+                            </li>   
+                        }
+                          
                     </ul>  
 
-                    <form class="form-inline" style="padding-right=20px;" asp-action="Index" asp-controller="Products">
-                        <input name="searchTerm" type="text" class="form-control" placeholder="Searching..." autocomplete="off"/>
-                        <button type="submit" class="btn btn-outline-warning">
-                            <i class="fas fa-regular fa-search"></i>
-                        </button>
-                    </form>
+                                     
+                        <form class="form-inline" style="" asp-action="Index" asp-controller="Products">
+                            <button type="submit" class="btn" style="color:white; font-size:25px;">
+                                <i class="fas fa-search"></i>
+                            </button>
 
-                    <ul class="navbar-nav mr-2">
+                            <input type="text" placeholder="Searching Some Devices" id="srcbx" name="searchTerm" list="type" autocomplete="off">                            
+                        </form>
+                                      
+
+                    <ul class="navbar-nav mr-2" >
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
                     <partial name="_Identity"/>                    
@@ -69,17 +119,41 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    </div>    
 
-    <footer class="footer text-muted">
-        <div class="container">
-            <i><img src="~/Img/Nagear yellow.png" height="31px" width="100px" /></i>
-            &copy; 2023 - NAGEAR.VN by Nadilac - <a asp-area="" asp-controller="Home" asp-action="Privacy">About Project</a>
-        </div>
-    </footer>
+    <!-- Call API ChatLive-->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/644b51ea4247f20fefee38b5/1gv33g00i';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/jQuery/Chosen/chosen.jquery.js "></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<footer class="footer text-muted" id="foot" >
+
+        <div class="container" style="color:black"> 
+            <div class="col" align="center">                    
+                Copyright© 2022 NAGEAR TECHNOLOGY CO. by Nadilac All Rights Reserved 
+            </div>                       
+        </div>
+
+
+    </footer>
 </html>
+
+

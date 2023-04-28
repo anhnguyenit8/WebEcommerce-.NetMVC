@@ -14,6 +14,8 @@ namespace WebEcommerce.Services
         {
             _context= context;
         }
+
+        //Get Order and UserRole with userId
         public async Task<List<Order>> GetOrderAndRoleByUserIdAsync(string userId, string role)
         {
             var order = await _context.Orders
@@ -29,7 +31,7 @@ namespace WebEcommerce.Services
 
         }
 
-
+        //Store Order
         public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId)
         {
             var order = new Order()

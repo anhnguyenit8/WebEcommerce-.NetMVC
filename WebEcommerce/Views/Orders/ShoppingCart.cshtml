@@ -2,11 +2,32 @@
 @{
     ViewData["Title"] = "Shopping Cart Summary";
 }
+<style>
+    
+    #shopping {
+        height: 35px;
+        width: 250px;
+        background-color: white;
+               
+        border-radius: 30px;
+        border: 2px solid #a73e6b;
+        color: #a73e6b;
+        transition: 0.3s;
+    }
 
+    #shopping:hover {
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border:none;
+            color: white;
+        }
+</style>
+
+
+<body>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center">
-            <h2>Shopping Cart Summary</h2>
+            <h2 style="padding-top:10px;padding-bottom:20px;color:#a73e6b;font-size:200%">Shopping Cart Summary</h2>
         </div>
         <table class="table table-hover">
             <thead>
@@ -15,7 +36,7 @@
                     <th>Product</th>
                     <th>Price</th>
                     <th>Subtotal</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,12 +49,12 @@
                         <td class="align-middle">@((item.Product.Price * item.Amount).ToString("c"))</td>
                         <td>
                             <a class="text-danger" asp-controller="Orders" asp-action="RemoveFromCart"
-                            asp-route-id="@item.Product.Id">
-                                <i class="fas fa-regular fa-minus"></i>
-                            </a>
+                            asp-route-id="@item.Product.Id">Remove
+                                @*<i class="fas fa-regular fa-minus"></i>*@
+                            </a> /
                             <a class="text-warning" asp-controller="Orders" asp-action="AddToCart"
-                            asp-route-id="@item.Product.Id">
-                                <i class="fas fa-regular fa-plus"></i>
+                            asp-route-id="@item.Product.Id">Add
+                                @*<i class="fas fa-regular fa-plus"></i>*@
                             </a>
                         </td>
                     </tr>
@@ -48,40 +69,44 @@
                 </tr>
             </tfoot>
         </table>
+
         <div class="text-center">
-            <div class="btn btn-group">
-                <a class="btn btn-outline-warning mr-3" asp-controller="Products" asp-action="Index">
-                    <i class="fas fa-regular fa-refresh mr-2"> Continue Shopping</i>
-                </a>| or | 
-                <div id="paypal-button"></div>
-
-                @*<a class="btn btn-outline-success" asp-controller="Orders" asp-action="CompleteOrder">
-                    <i class="fas fa-regular fa-check mr-2"> Order</i>
-                </a>*@
-
+            <div class="btn btn-group row">
+                <div class="col">
+                <span style="padding:5px"></span>
+                <a class="btn" id="shopping" asp-controller="Products" asp-action="Index">
+                     Continue Shopping
+                </a>
+                </div>
+                <div class="col"></div>
+                <div class="col" id="paypal-btn"></div>
             </div>
 
         </div>
     </div>
 </div>
+</body>
+<hr />
+@*Submit Form*@
+
 
 
 @*Paypal Sandbox API*@
 @section Scripts{
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
-        var _total = @Html.Raw(ViewBag.Total);
+        let _total = @Html.Raw(ViewBag.Total);
         paypal.Button.render({
             //Configure Enviroment
             env:'sandbox',
             client:{
-                sandbox: 'Afc0UyG6sSiyPfIItQykTxPnK7Uc7dESxnaFdQy96Tq11b7x73ucuinyiA8wCg-MNTdAW5LA4qB1X0L5'                
+                sandbox: 'AXdmzQS861T0MDi_w28bOZszQRdbOwd1AY7sedetwyyzT86eunvgmmwe3XDXl1MxCzbltZNjg-KP2g08'
             },
             //Customize Button
             locale:'en_US',
             style:{
                 color:'gold',
-                size:'small',
+                size:'medium',
                 shape:'pill'
             },
             //Enable Pay Now Checkout
@@ -93,17 +118,18 @@
                         amount:{
                             total:_total,
                             currency:'USD'
-                        }
+                        }                        
                     }]
                 });
             },
             //Excute The Payment
             onAuthorize:function(data,actions){
+                                
                 return actions.payment.get().then(function(){
                   var url = '@Url.Action("CompleteOrder", "Orders", new{} )';
                   window.location.href = url;
                 });
             }
-        }, "#paypal-button");
+        }, '#paypal-btn');
     </script>
 }

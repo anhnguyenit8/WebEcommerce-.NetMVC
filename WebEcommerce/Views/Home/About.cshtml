@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .mySlides {
+            display: none;
+        }
+
+        #hr1 {
+            border: 2px solid white;
+        }
+
+
+
+        #infm1 {
+            height: 100%;
+            background-color: white;
+            /* background-image: linear-gradient(to right,#bf392e,#8d44ad);*/
+        }
+
+        
+
+        #infm2 {
+            padding-bottom: 50px;
+        }
+
+        #atc12 {
+            transition: 0.3s;
+            border-radius: 20px;
+            border: 1px solid white;
+            color: white;
+        }
+
+            #atc12:hover {
+                border-radius: 20px;
+                background-color: white;
+                box-shadow: 0px 0px 10px white;
+                color: #a1407b;
+            }
+
+        #snw {
+            border: 2px solid white;
+            color: white;
+            border-radius: 20px;
+            background-color: #99418e;
+        }
+
+            #snw:hover {
+                color: #a73f6d;
+                background-color: white;
+                box-shadow: 0px 0px 10px white;
+            }
+
+        #snw1 {
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #a73f6d;
+            width: 100%;
+            max-width: 300px;
+            color: #a73f6d;
+            border-radius: 20px;
+            background-color: white;
+        }
+
+            #snw1:hover {
+                box-shadow: 0px 0px 20px #a73f6d;
+                color: white;
+                background-color: #a73f6d;
+            }
+
+        #atc {
+            background: white;
+            border-radius: 20px;
+        }
+
+
+        #atc2 {
+            font-size: 15px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border-radius: 30px;
+            color: white;
+        }
+
+        #infm {
+            padding: 10px;
+        }
+
+        #title {
+            font-size: 40px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border-radius: 30px;
+            color: white;
+        }
+
+        #title1 {
+            padding-top: 20px;
+            padding-bottom: 15px;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            color: white;
+        }
+
+        #image1 {
+            width: auto;
+            height: 400px;
+            border-radius: 5px;
+
+        }
+
+
+        #image2 {
+            width: auto;
+            height: 300px;
+            border-radius: 5px;            
+            transition: 0.3s;
+        }
+
+        #btn1 {
+            height: 50px;
+            width: 350px;
+            transition: 0.3s;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+            border: none;
+            border-radius: unset;
+            color: white;
+        }
+
+            #btn1:hover {
+                box-shadow: 0px 0px 10px #a73e6b;
+            }
+
+        #infm12 {
+            height: 100%;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color:#a73f6d;" align="center"><b>ABOUT US</b></h1>
+    <br />
+    <div id="infm12" class="btn1 row">
+        <div class="row" style="padding:30px;">
+            <div class="col">
+                <img src="~/Img/Nagear VUONG.png" id="image2" />
+            </div>
+
+            <div class="col" style="color:white;">
+                <h1><b>Nagear Technology Store</b></h1>
+                <br />
+            <p style="font-size: 120%;">Nagear Technology Store is one of the companies in Vietnam in the field of trading computer components products. With the motto that quality is the top priority, Nagear has met many people with many needs to build quality computer systems at reasonable prices. Since then, it has continuously researched and developed to meet the increasing demands of the domestic market. Shop now and save!</p>
+            
+        </div>
+            
+        </div>
+    </div>
+    <br />
+
+       <div id="infm" class="container" align="center">
+        <div class="row">
+            <div class="col" style="padding-right:20px;">
+                <img src="~/Img/team.jpg" id="image1" style="" />
+            </div>
+            <div class="col" >
+                <br />
+                <h1 style="color:#a73f6d;"><b>"Why not" spirit we aspire to convey</b></h1>
+                <br />
+                <p style="font-size: 150%;">With products built with enthusiasm, desire and creative minds of young Vietnamese people, we believe that "Why not" spirit will always accompany and inspire you everyday.</p>
+                <br />
+
+                <a style="font-size:20px;" class="btn" id="snw1" asp-controller="" asp-action="">
+                    See our vision
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    <br />
+    
+    <div id="infm" class="container" align="center">
+        <div class="row">
+            <div class="col" style="padding-right:20px;">
+                <br />
+                <h1 style="color:#a73f6d;"><b>Core values</b></h1>
+                <br />
+                <p style="font-size: 150%;">"The mission is to rise above the difficulties and bring technology and development to the youth to create a more developed community.</p>
+                <br />
+
+                <a style="font-size:20px;" class="btn" id="snw1" asp-controller="" asp-action="">
+                    Thank for buying!
+                </a>
+            </div>
+            <div class="col">
+                <img src="~/Img/tech.jpg" id="image1" style="" />
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col" style="padding-right:20px;">
+                <i class="fa-solid fa-heart" style="font-size:30px;color:#a73f6d;"></i>
+                <br />
+                <h3 style="color:#a73f6d;"><b>Dare to think - dare to do</b></h3>
+                <br />
+                <p style="font-size: 120%;">With the desire to become your companion, we believe that we must have the courage to overcome challenges, dare to think, dare to lead and be different.</p>
+                <br />                
+            </div>
+            <div class="col" style="padding-right:20px;">
+                <i class="fa-solid fa-person-half-dress" style="font-size:30px;color:#a73f6d;"></i>
+                <br />
+                <h3 style="color:#a73f6d;"><b>Start - end with the customer</b></h3>
+                <br />
+                <p style="font-size: 120%;">With the spirit of warriors, we always fight with ourselves every day to bring the most “WOW” experiences to young Vietnamese people.</p>
+                <br />                
+            </div>
+            <div class="col" style="padding-right:20px;">
+                <i class="fa-solid fa-hand-sparkles" style="font-size:30px;color:#a73f6d;"></i>
+                <br />
+                <h3 style="color:#a73f6d;"><b>Inspire</b></h3>
+                <br />
+                <p style="font-size: 120%;">The future for us is world-class products, a young Vietnamese generation full of confidence to pursue their passion, is "Why not?" become everyone's philosophy.</p>
+                <br />                
+            </div>
+            
+        </div>
+    </div>
+
+    <br />
+
+    
+
+    <br />
+    <div class="btn1 row" align="center" id="title1">
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-truck"></i> FREE DELIVERY</b></h>
+            <br />
+            <p>We offer free shipping</p>
+        </div>
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-headset"></i> TECH SUPPORT</b></h>
+            <br />
+            <p>Nadilac-services@gmail.com</p>
+        </div>
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-shield"></i> SECURE PAYMENT</b></h>
+            <br />
+            <p>Your payment information is processed securely.</p>
+
+        </div>
+        <div class="col">
+            <h style="font-size:17px;"><b><i class="fa-solid fa-toolbox"></i> 18-MONTH WARRANTY</b></h>
+            <br />
+            <p>Warranty only for official Na-store.</p>
+        </div>
+    </div>
+
+    <div id="infm1">
+        <div class="row" style="padding:20px;">
+            <div class="col" style="color:gray;font-size:17px;">
+                <p><b>LOCATION</b></p>
+                <img src="~/Img/map.jpg" id="image2" />
+            </div>
+            <div class="col" style="color:gray;font-size:17px;">
+                <p><b>STORE</b></p>
+
+                <p style="font-size: 100%;"> 173C Kim Ma, Ba Dinh Str.</p>
+                <p style="font-size: 100%;"> 32 Thien Vuong, Dong Da Str.</p>
+                <p style="font-size: 100%;"> 01 Hang Cho, Dien Bien Phu Str.</p>
+                <p style="font-size: 100%;"> 173C Kim Ma, Ba Dinh Str.</p>
+                <p style="font-size: 100%;"> 32 Thien Vuong, Dong Da Str.</p>
+                <p style="font-size: 100%;"> 01 Hang Cho, Dien Bien Phu Str.</p>
+
+            </div>
+            <div class="col" style="color:gray;font-size:17px;">
+                <p><b>CONTACT</b></p>
+
+                <p style="font-size: 100%;"><i class="fa-solid fa-earth-americas"> </i> nagear.vn</p>
+                <p style="font-size: 100%;"><i class="fa-solid fa-envelope"> </i> nagear@verygood.com</p>
+                <p style="font-size: 100%;"><i class="fa-solid fa-phone"> </i> +849XXXXXXX</p>
+                <a style="font-size:20px;" class="btn" id="atc12" asp-controller="" asp-action="">SUBSCRIBE US <i class="fa-solid fa-face-smile"></i> </a>
+            </div>
+
+            <div class="col" style="color:gray;font-size:17px;">
+                <p><b>GET THE LATEST INFORMATION</b></p>
+                <input class="form-control" placeholder="Email..." autocomplete="off" />
+                <br />
+                <input class="btn" type="submit" id="btn1" value="Register Now" />
+            </div>
+
+        </div>
+    </div>
+
+    <hr id="hr1" />
+
+
+</body>
+</html>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 3000); // Change image every 3 seconds
+    }
+</script>

@@ -3,56 +3,273 @@
     ViewData["Title"] = "Details of Product ";
 }
 
-<div class="row">
-    <div class="col-md-8 offset-2">
-        <div class="card">
-            <img src="@Model.ImageURL" alt="@Model.Name" style="width:90%;height:200px;">
-            <h1>@Model.Name</h1>
-            <p>@Model.Price.ToString("c")</p>
-            <p>@Model.Description</p>
-            <p @Model.ProductType</p>
-            <p>@Model.Category.Name</p>
-            <a class="btn btn-success" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
-                <i class="fas fa-regular fa-shopping-basket mr-2"></i>Add To Cart</a>
+<style>
+    #atc1 {
+        transition: 0.3s;
+        color: black;
+        
+    }
+
+        #atc1:hover {
+            border: none;
+            background-image: linear-gradient(to right,#b03d56,#a1407b);
+            color: white;
+        }
+    
+
+    #ctn{
+        
+        
+        padding: 25px;
+        
+    }
+    #ads{
+        width:auto;
+        height:400px;
+    }
+        
+    #title {
+        font-size: 40px;
+        background-image: linear-gradient(to right,#bf392e,#8d44ad);
+        border-radius: 30px;
+        color: white;
+    }
+
+    #snw {
+        color: white;
+        background-color: #99418e;
+        border: 2px solid white;
+        border-radius: 30px;
+    }
+
+        #snw:hover {            
+            background-color: #7c3573;
+            
+        }
+
+    #snw1 {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 300px;
+        color: white;
+        border-radius: 20px;
+        background-color: #99418e;
+    }
+
+        #snw1:hover {
+            /*box-shadow: 0px 0px 20px #a73f6d;*/
+            background-color: #7c3573;
+        }
+    #td1{
+        width: 30%
+    }
+    #table1{
+        border: 2px solid #a1407b;
+        
+    }
+
+</style>
+
+
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to result</a></li>
+        </ol>
+    </nav>
+    
+ <div class="container" id="ctn">   
+     <div class="row" >
+         <div class="col">
+             <img src="@Model.ImageURL" width="auto" height="500px;" style="padding-left:20px;" alt="@Model.Name">
+         </div>
+         <div class="col" >
+            <div class="border-body text-lg-left" >
+                    <h2 class="border-text">@Model.Name</h2>
+               <hr />
+                    <p class="border-text" style="font-size:180%;color:#b0164c">@Model.Price.ToString("c")</p>
+                    <p style="color:darkgray; font-size:80% "> $5.00 Shipping & Import Fees Deposit to Vietnam</p>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td id="td1"><b>Brand</b></td>
+                                <td class="align-middle">@Model.ProductType</td>
+                            </tr>
+                            <tr>
+                                <td id="td1"><b>Type</b></td>
+                                <td class="align-middle"> @Model.Category.Name</td>
+                            </tr>
+                            <tr>
+                                <td id="td1"><b>Model</b></td>
+                                <td class="align-middle">@Model.Description</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <a class="btn" id="snw1" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                    Add To Cart
+               </a>
+             </div>                
+         </div>         
+    </div>
+    <br /> 
+    <h2 id="nme">Specifications</h2>    
+    <div class="container" id="table1">
+        <div class="row">    
+                <table class="table table-hover">
+                    <tbody>                   
+                        <tr>
+                            <td id="td1"><b>Brand</b></td>
+                            <td class="align-middle">@Model.ProductType</td>                        
+                        </tr>        
+                        <tr>
+                            <td id="td1"><b>Warranty Period</b></td>
+                            <td class="align-middle">@Model.WarrantlyPeirod</td>
+                        </tr>
+                        <tr>
+                            <td id="td1"><b>Weight/Size</b></td>
+                            <td class="align-middle">@Model.Weight</td>
+                        </tr>    
+                        <tr>
+                            <td id="td1"><b>Other</b></td>
+                            <td class="align-middle">@Model.Introduce</td>
+                        </tr>    
+                    </tbody>
+                </table>
         </div>
     </div>
 </div>
 
+    <div id="infm2" class="container">
+        <div class="btn1" align="center" id="title">
+            <h2>Products related to this item</h2>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h>VGA ASUS RTX 2060 EVO 6GB</h></p>
+                            <p align="center"><h>Model : DUAL-RTX2060-O6G-EVO</h></p>
+                            <p align="center"><h>$150.00 - <b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            Shop Now
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h>VGA ASUS RTX 2060 EVO 6GB</h></p>
+                            <p align="center"><h>Model : DUAL-RTX2060-O6G-EVO</h></p>
+                            <p align="center"><h>$150.00 - <b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            Shop Now
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h>VGA ASUS RTX 2060 EVO 6GB</h></p>
+                            <p align="center"><h>Model : DUAL-RTX2060-O6G-EVO</h></p>
+                            <p align="center"><h>$150.00 - <b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            Shop Now
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div id="cardProduct1">
+                        <div id="img-prd">
+                            <a asp-action="Index" asp-controller="Products">
+                                <img src="~/Img/vga1.png" alt="" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                        </div>
+                        <div class="text-sm-left" id="inf">
+                            <p align="center"><h>VGA ASUS RTX 2060 EVO 6GB</h></p>
+                            <p align="center"><h>Model : DUAL-RTX2060-O6G-EVO</h></p>
+                            <p align="center"><h>$150.00 - <b style="text-decoration-line:line-through; color:darkgray;">$200.00</b></h></p>
+                        </div>
+                        <a class="btn" id="snw" align="center" asp-controller="Products" asp-action="Index">
+                            Shop Now
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row" align="center">
+            <a class="btn col" id="snw1" asp-controller="Products" asp-action="Index">
+                LOAD MORE
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
 
-<style>
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        max-width: 300px;
-        margin: auto;
-        text-align: center;
-        font-family: arial;
-    }
 
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
 
-    .price {
-        color: grey;
-        font-size: 22px;
-    }
 
-    .card button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: orangered;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-family: 'Franklin Gothic Medium';
-        font-size: 15px;
-    }
+@*
+<div class="container" id="ctn">
+    <h3>Đánh giá chi tiết card màn hình ASUS Dual GeForce RTX 2060 OC edition EVO 6GB GDDR6</h3>
+    <p style="font-size:100%">Là phiên bản nâng cấp từ phiên bản RTX 2060 OC Edition trước đó, ASUS Dual GeForce RTX 2060 OC edition EVO vẫn giữa được vẻ ngoài gaming trước đó. Khoác lên màu đen mạnh mẽ cùng các góc cạnh được hoàn thiện một cách bắt mắt, ASUS Dual GeForce RTX 2060 OC edition EVO sẽ làm nổi bật chiếc case nói riêng và góc gaming nói chung.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-01_613a93cbb44d490498312090f9f32c8b.jpg" />
+    <br />
+    <h3>Hệ thống tản nhiệt 2x Fans của ASUS Dual GeForce RTX 2060 OC edition EVO</h3>
+        <p style="font-size:100%">Trang bị 2 chiếc quạt mới mẻ và mạnh mẽ được sản xuất từ công nghệ Axial đem lại thiết kế cánh quạt dài hơn cùng vòng quay hướng áp suất không khí xuống đem lại khả năng tản nhiệt tốt nhất cho ASUS Dual GeForce RTX 2060 OC edition EVO.
+        Kết hợp cùng công nghệ 0dB giúp cho ASUS Dual GeForce RTX 2060 OC edition EVO hoạt động một cách thông minh khi có thể tự động dừng hoạt động khi nhiệt độ lõi GPU dưới 55 độ C và khi nhiệt độ tăng sẽ tự động hoạt động trở lại, đem lại không gian yên tĩnh khi làm việc và chơi game.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-02_8c89abcf25e245489cc3c770b141f03e.jpg" />
+        <br />
+    <h3>Mặt lưng bảo vệ chắc chắn</h3>
+            <p style="font-size:100%">Diện tích PCB của ASUS Dual GeForce RTX 2060 OC edition EVO được bảo vệ bằng mặt lưng được làm từ nhôm, đảm bảo sự an toàn cho PCB và tránh các va đập không mong muốn đến cho mặt sau của VGA.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-03_24d5a69f0c5043609aebd1081c41b068.jpg" />
+        <br />
+    <h3>Hoàn thiện từ công nghệ Auto-Extreme</h3>
+                <p style="font-size:100%">
+                    Tất cả linh kiện trong ASUS Dual GeForce RTX 2060 OC edition EVO được hoàn thiện bằng quy trình sản xuất tiên tiến dựa trên công nghệ Auto-Extreme mang đến chất lượng tốt nhất cho card màn hình. Các thành phần bên trong như tụ điện, DrMOS và cuộn cảm giúp đẩy hiệu năng ASUS Dual GeForce RTX 2060 OC edition EVO lên mức tối đa.
+    </p>
+        <img id="ads" src="https://file.hstatic.net/1000026716/file/gearvn-asus-dual-geforce-rtx-2060-oc-edition-evo-6gb-gddr6-04_cd53306688824fbdafb43cdd0f323d98.jpg" />
+        <br />
+</div>*@
+<section/>
 
-        .card button:hover {
-            opacity: 0.7;
-        }
+</body>
+<br />
+<br />
 
-</style>
+

@@ -18,22 +18,22 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-lable"></label>
+                <label asp-for="Name" class="control-lable">Name of Product</label>
                 <input asp-for="Name" class="form-control" autocomplete="off">
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-lable"></label>
+                <label asp-for="Description" class="control-lable">Model Number</label>
                 <textarea asp-for="Description" class="form-control" rows="2"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-lable"></label>
+                <label asp-for="Price" class="control-lable">Product Price (.00$)</label>
                 <input asp-for="Price" class="form-control" autocomplete="off">
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageURL" class="control-lable"></label>
+                <label asp-for="ImageURL" class="control-lable">URL Image</label>
                 <input asp-for="ImageURL" class="form-control" autocomplete="off">
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
@@ -41,14 +41,29 @@
                 <img style="width:100%" src="@Model.ImageURL" alt="@Model.Name" id="imagePreview" />
             </div>
             <div class="form-group">
-                <label asp-for="ProductType" class="control-lable"></label>
+                <label asp-for="ProductType" class="control-lable">Brand</label>
                 <select asp-for="ProductType" class="form-control" asp-items="@Html.GetEnumSelectList<ProductType>()"></select>
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for ="Category.Name" class="control-lable"></label>
+                <label asp-for ="Category.Name" class="control-lable">Type</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="@Category"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                    <label asp-for="WarrantlyPeirod" class="control-lable">Warrantly Peirod</label>
+                    <textarea asp-for="WarrantlyPeirod" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="WarrantlyPeirod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Weight" class="control-lable">Weight/Size</label>
+                    <textarea asp-for="Weight" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Introduce" class="control-lable">Introduce</label>
+                <textarea asp-for="Introduce" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Introduce" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Update" class="btn btn-outline-info float-right" />
@@ -57,6 +72,8 @@
         </form>
     </div>
 </div>
+<br />
+<br />
 
 @section Scripts{
     @{
