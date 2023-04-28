@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebEcommerce.Data.Cart;
+using WebEcommerce.Controllers.Cart;
 
 namespace WebEcommerce.Data.ViewComponents
 {

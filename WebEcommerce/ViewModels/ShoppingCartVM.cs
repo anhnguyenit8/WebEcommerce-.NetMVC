@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebEcommerce.Data.Cart;
+using WebEcommerce.Controllers.Cart;
 
 namespace WebEcommerce.Data.ViewModels
 {

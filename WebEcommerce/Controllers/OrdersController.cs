@@ -7,8 +7,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using WebEcommerce.Controllers.Cart;
 using WebEcommerce.Data;
-using WebEcommerce.Data.Cart;
 using WebEcommerce.Services;
 
 namespace WebEcommerce.Controllers
