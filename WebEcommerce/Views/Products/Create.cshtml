@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Description" class="control-lable">Product Description</label>
+                <label asp-for="Description" class="control-lable">Model Number</label>
                 <textarea asp-for="Description" class="form-control" rows="2"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
@@ -47,21 +47,25 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ProductType" class="control-lable">Manufacture</label>
+                <label asp-for="ProductType" class="control-lable">Brand</label>
                 <select asp-for="ProductType" asp-items="@Html.GetEnumSelectList<ProductType>()" class="form-control" autocomplete="off"></select>
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                Category Type
+                <label class="control-lable">Type</label>
                 <select asp-for="CategoryId" asp-items="@Category" class="form-control" ></select>
                 <span class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                    <label asp-for="Specifications" class="control-lable">Specifications Detail</label>
-                <textarea asp-for="Specifications" class="form-control" rows="2"></textarea>
-                <span asp-validation-for="Specifications" class="text-danger"></span>
+                    <label asp-for="WarrantlyPeirod" class="control-lable">Warrantly Peirod</label>
+                    <textarea asp-for="WarrantlyPeirod" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="WarrantlyPeirod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Weight" class="control-lable">Weight/Size</label>
+                    <textarea asp-for="Weight" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
                     <label asp-for="Introduce" class="control-lable">Introduce</label>

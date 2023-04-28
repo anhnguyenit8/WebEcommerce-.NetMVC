@@ -86,13 +86,13 @@ namespace WebEcommerce.Controllers
                 .ToListAsync();
 
             var csvBuilder = new StringBuilder();
-            csvBuilder.AppendLine("Order Id, User Name, Items - Quantity - Price, Totals");
+            csvBuilder.AppendLine("Order Id, User Name, Totals,  Items - Quantity");
 
             foreach (var order in orders)
             {
-                var items = string.Join(", ", order.OrderItems.Select(oi => $"{oi.Product.Name} - {oi.Amount} - {oi.Price:C}"));
+                var items = string.Join(", ", order.OrderItems.Select(oi => $"{oi.Product.Name} - {oi.Amount}"));
                 var totals = order.OrderItems.Select(oi => oi.Amount * oi.Price).Sum().ToString("C",CultureInfo.CurrentCulture);
-                csvBuilder.AppendLine($"{order.Id}, {order.User.FullName}, \"{items}\", {totals}");
+                csvBuilder.AppendLine($"{order.Id}, {order.User.FullName}, {totals}, \"{items}\"");
             }
 
             return File(Encoding.UTF8.GetBytes(csvBuilder.ToString()), "text/csv", "orders.csv");

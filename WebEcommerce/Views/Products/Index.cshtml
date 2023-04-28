@@ -5,6 +5,7 @@
 @{
     var categoryId = 0;
 }
+
 <style>
 
 
@@ -19,13 +20,17 @@
         }
 
     #atc {
-        transition: 0.3s;
+        
+        transition: transform .2s;
+        background-color: #a1407b;
+        color: white;
         
     }
 
     #atc:hover {
-            background-color: #a1407b;
+            background-color: #7e3060;
             color: white;
+            transform: scale(1.1);
     }
 
     #edt {
@@ -96,7 +101,7 @@
     }
 
     #ulid {
-        background-image: linear-gradient(to right,#94429b,#8d44ad);
+        background-color: #be3a32;
         border-radius: 10px;        
         max-width:fit-content;
         height: 0%;
@@ -134,43 +139,68 @@
         max-width:auto;
         height:350px;        
     }
-        
+    #box1{
+        border: 2px solid black;
+    }
 
 </style>
 
 <body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js" defer></script>
+    <script type="text/javascript"
+            src="jquery.min.js" defer></script>
+    <script type="text/javascript"
+            src="jquery.rateyo.min.js" defer></script>
+    <script defer>
+        $("#rateYo").rateYo({
+            rating: 1.5,
+            spacing: "10px",
+            numStars: 5,
+            minValue: 0,
+            maxValue: 5,
+            normalFill: 'black',
+            ratedFill: 'orange',
+
+        })
+    </script>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="jquery.rateyo.min.css">
+
     <div style="padding-bottom:10px;">
         <img id="img2" src="~/Img/wall.jpg" />
     </div>
 
     <div class="btn1" align="center" id="title">
-        <h2><b> PRODUCT LIST </b></h2>
+        <h2>Product List</h2>
     </div>
     
-    <div id="sticky" style="float:right;">
+    <div style="float:left;">
         <div >
             <form class="form-inline" asp-action="Index" asp-controller="Products" style="padding:10px; ">                    
                     <ul id="ulid">
-                    <h style="color:white">PRODUCT FILLTER</h>
-                    <hr />
-                    <li id="lid"><a asp-action="Index" asp-controller="Products">ALL</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">VGA</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="2">MAIN</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="3">SDD</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="4">HDD</a></li>                    
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="5">RAM</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="6">CPU</a></li>                    
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="8">SPU</a></li>                    
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="9">CASE</a></li>
-                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="7">COOLERFAN</a></li>
+                    <h style="color:white"><b>Product Fillter</b></h>
+                    
+                    <li id="lid"><a asp-action="Index" asp-controller="Products">> All Product</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="1">> Vga</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="2">> Main Board</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="3">> Sdd</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="4">> Hdd</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="5">> Ram</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="6">> CPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="8">> SPU</a></li>                    
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="9">> Case</a></li>
+                    <li id="lid"><a asp-action="ProductsByCategory" asp-route-categoryId="7">> Coolerfan</a></li>
                     </ul>                    
               </form>         
          </div>
     </div>
-    
-
     <br />
-        
     <div class="row">
         @foreach (var item in Model)
         {            
@@ -188,30 +218,28 @@
                         </span>
                     }
                         <div id="cardProduct">
-                    <div id="img-prd">
-                    <a asp-action="Details" asp-route-id="@item.Id">
-                        <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
-                    </a>
-                    </div>
-                             
+                            <div id="img-prd">
+                            <a asp-action="Details" asp-route-id="@item.Id">
+                                <img src="@item.ImageURL" alt="@item.Name" style="width:auto; height:250px; padding-bottom:10px;">
+                            </a>
+                            </div>                            
                 
-                    <div class="text-sm-left"  id="inf">
-                        <p><h><b>@item.Name</b></h></p>
-                        <hr />                   
-                        <p>UPC : @item.Description</p>
-                        <p>Type : <b>@item.Category.Name</b></p>
-                        <p>Manufacturer : <b>@item.ProductType</b></p>
-                        <p>Price : <b>@item.Price.ToString("c")</b></p>
+                            <div  class="text-sm-left"  id="inf">
+                                <p style="font-size:100%"><b>@item.Name</b></p>                         
+                                <p style="font-size:150%;color:#b0164c"> @item.Price.ToString("c")</p>                                         
+                                <p style="font-size:80%">UPC : <b>@item.Description</b></p>
+                                <p style="font-size:80%">Type : <b>@item.Category.Name</b></p>
+                                <p style="font-size:80%">Brand : <b>@item.ProductType</b></p>                           
+                            </div>
+                            <div style="width: 600px; margin: 30px auto">
+                            <div id="rateYo"></div>
+                                </div>
+                       
+                                    <a class="btn" id="atc" style="font-size:12px" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
+                                    <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
+                        </div>
                     </div>
-                            <a class="btn" id="dtl" style="font-size:12px; padding-right:20px;" asp-action="Details" asp-route-id="@item.Id">
-                            <i class="fa-solid fa-circle-info mr-2"></i>DETAIL</a>
-
-                            <a class="btn" id="atc" style="font-size:12px" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@item.Id">
-                            <i class="fas fa-regular fa-shopping-basket mr-2"></i>ADD TO CART</a>
-                    </div>
-                    </div>
-            </div>
-        
+            </div>        
         }
     </div>
     <br />
@@ -219,15 +247,12 @@
     <br />
     <br />
     <br />
-
-
-
 @if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
   {
     <div class="text-white" style="position:fixed;right:30px;bottom:70px;">
             <a asp-action="Create" asp-controller="Products" class="btn float-right" id="crt-prd">
             <i class="fas fa-regular fa-plus-square mr-2"></i>
-            NEW PRODUCT
+            Adding New Product
         </a>
     </div>
   }
@@ -237,8 +262,8 @@
 @*Filter Product*@
 @section Scripts{
     <script type="text/javascript">
+
         $(function(){
-        $("#productType").chosen();
-        });
-        </script>
+            $("#productType").chosen();
+        });     </script>
 }

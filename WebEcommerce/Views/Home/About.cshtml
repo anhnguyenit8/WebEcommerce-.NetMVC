@@ -112,26 +112,17 @@
         #image1 {
             width: auto;
             height: 400px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 10px #a73f6d;
-            transition: 0.3s;
+            border-radius: 5px;
+
         }
 
-            #image1:hover {
-                box-shadow: 0px 0px 30px #a73f6d;
-            }
 
         #image2 {
             width: auto;
             height: 300px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 10px white;
+            border-radius: 5px;            
             transition: 0.3s;
         }
-
-            #image2:hover {
-                box-shadow: 0px 0px 30px white;
-            }
 
         #btn1 {
             height: 50px;
@@ -146,10 +137,34 @@
             #btn1:hover {
                 box-shadow: 0px 0px 10px #a73e6b;
             }
+
+        #infm12 {
+            height: 100%;
+            background-image: linear-gradient(to right,#bf392e,#8d44ad);
+        }
     </style>
 </head>
 
-<body>   
+<body>
+    <h1 style="color:#a73f6d;" align="center"><b>ABOUT US</b></h1>
+    <br />
+    <div id="infm12" class="btn1 row">
+        <div class="row" style="padding:30px;">
+            <div class="col">
+                <img src="~/Img/Nagear VUONG.png" id="image2" />
+            </div>
+
+            <div class="col" style="color:white;">
+                <h1><b>Nagear Technology Store</b></h1>
+                <br />
+            <p style="font-size: 120%;">Nagear Technology Store is one of the companies in Vietnam in the field of trading computer components products. With the motto that quality is the top priority, Nagear has met many people with many needs to build quality computer systems at reasonable prices. Since then, it has continuously researched and developed to meet the increasing demands of the domestic market. Shop now and save!</p>
+            
+        </div>
+            
+        </div>
+    </div>
+    <br />
+
        <div id="infm" class="container" align="center">
         <div class="row">
             <div class="col" style="padding-right:20px;">
@@ -163,7 +178,7 @@
                 <br />
 
                 <a style="font-size:20px;" class="btn" id="snw1" asp-controller="" asp-action="">
-                    SEE OUR VISION
+                    See our vision
                 </a>
             </div>
             
@@ -175,13 +190,13 @@
         <div class="row">
             <div class="col" style="padding-right:20px;">
                 <br />
-                <h1 style="color:#a73f6d;"><b>CORE VALUES</b></h1>
+                <h1 style="color:#a73f6d;"><b>Core values</b></h1>
                 <br />
                 <p style="font-size: 150%;">"The mission is to rise above the difficulties and bring technology and development to the youth to create a more developed community.</p>
                 <br />
 
                 <a style="font-size:20px;" class="btn" id="snw1" asp-controller="" asp-action="">
-                    THANK FOR YOUR BUY!
+                    Thank for buying!
                 </a>
             </div>
             <div class="col">

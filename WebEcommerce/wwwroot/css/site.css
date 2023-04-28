@@ -60,7 +60,8 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    background-color: #f8f8fc;
+    background-color:white;
+    /*#f8f8fc*/
     margin-bottom: 60px;
     height: 100%;
     margin: 0;
@@ -161,7 +162,7 @@ img {
 
 
 * {
-    font-family: Bahnschrift;
+    font-family: Tahoma;
     font-style: normal;
 }
 
